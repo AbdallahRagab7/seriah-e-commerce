@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <!-- <NuxtLoadingIndicator color="rgba(236, 28, 36, 1)" /> -->
     <!-- <Toaster /> -->
     <NuxtLayout>
