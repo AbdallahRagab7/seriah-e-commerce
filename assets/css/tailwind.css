@@ -10,3 +10,7 @@
 body {
   font-family: sans-serif;
 }
+
+.heading1 {
+  @apply text-secondary text-3xl md:text-4xl  font-bold;
+}

@@ -2,7 +2,7 @@
   <nav
     class="bg-[#ffff] p-4 flex justify-between items-center shadow-md relative w-full"
   >
-    <div>
+    <div class="ms-5">
       <NuxtLink to="/">
         <NuxtImg src="/edited-logo.png" class="h-10 object-cover" />
       </NuxtLink>
@@ -34,7 +34,7 @@
 
     <aside
       :class="open ? 'left-0' : 'left-[-100%] '"
-      class="flex items-center max-md:items-start md:justify-between md:flex-row flex-col md:w-[65%] max-md:fixed top-0 left-0 h-full w-[50%] transition-[left] duration-500 ease-in"
+      class="flex items-center max-md:items-start md:justify-between md:flex-row flex-col md:w-[63%] max-md:fixed top-0 left-0 h-full w-[50%] transition-[left] duration-500 ease-in"
     >
       <div class="md:hidden p-6 w-full mb-5 border-b-2 border-slate-800">
         <!-- <a href="#" class="font-bold italic font-sans text-xl">RAGAB</a> -->
@@ -61,7 +61,7 @@
           Login
         </button> -->
         <button
-          class="bg-secondary text-white font-bold p-2 rounded-full hover:bg-[#2ea0ec] max-md:ml-6 max-md:my-5"
+          class="bg-secondary !text-white font-bold p-2 rounded-full hover:bg-[#2ea0ec] max-md:ml-6 max-md:my-5"
         >
           Login
         </button>

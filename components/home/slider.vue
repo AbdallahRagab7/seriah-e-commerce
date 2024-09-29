@@ -3,20 +3,31 @@
     <!-- Embla Carousel -->
     <div class="embla max-h-[500px]" ref="emblaRef">
       <div class="embla__container">
-        <div class="embla__slide p-5">
-          <NuxtImg src="/cover.png" class="object-contain w-full rounded-md" />
-        </div>
-        <div class="embla__slide p-5">
-          <NuxtImg src="/cover3.png" class="object-contain w-full rounded-md" />
-        </div>
-        <div class="embla__slide p-5">
-          <NuxtImg src="/cover.png" class="object-contain w-full rounded-md" />
+        <div v-for="image in images" :key="image" class="embla__slide p-5">
+          <NuxtImg
+            :src="image"
+            alt="Slider Image"
+            class="object-contain w-full rounded-md"
+          />
         </div>
       </div>
     </div>
 
+    <div
+      class="w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    >
+      <h1 class="text text-2xl text-white md:text-4xl font-bold md:mb-2">
+        Welcome To Seriah
+      </h1>
+      <button
+        class="bg-secondary text-white hover:bg-[#2ea0ec] text-[12px] sm:text-base font-bold rounded-md p-2 md:p-3"
+      >
+        SHOP NOW
+      </button>
+    </div>
+
     <!-- Dot Buttons -->
-    <div class="dot-buttons lg:bottom-[8%] bottom-[25%]">
+    <div class="dot-buttons lg:bottom-[8%] bottom-[16%]">
       <button
         v-for="(snap, index) in scrollSnaps"
         :key="index"
@@ -30,6 +41,8 @@
 
 <script setup>
 import emblaCarouselVue from "embla-carousel-vue";
+
+const images = ["/cover3.png", "/cover.png", "/cover.png"];
 
 // Set up Embla Carousel and state for dot navigation
 const [emblaRef, emblaApi] = emblaCarouselVue({ loop: false });
@@ -95,5 +108,9 @@ watchEffect(() => {
 
 .dot-button.active {
   background-color: white;
+}
+
+.text {
+  -webkit-text-stroke: 0.2px rgb(184, 0, 0);
 }
 </style>
