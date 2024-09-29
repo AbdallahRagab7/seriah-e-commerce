@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="bg-[#ffff] p-4 flex justify-between items-center shadow-md fixed w-full"
+    class="bg-[#ffff] p-4 flex justify-between items-center shadow-md relative w-full"
   >
     <div>
       <NuxtLink to="/">
@@ -8,7 +8,7 @@
       </NuxtLink>
     </div>
 
-    <div class="flex items-center gap-5">
+    <div class="flex items-center gap-2">
       <div class="flex items-center gap-2 md:hidden">
         <Icon name="ph:bag-light" class="text-3xl" />
         Cart ( 0 )
