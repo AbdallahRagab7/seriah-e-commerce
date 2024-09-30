@@ -2,5 +2,6 @@
   <div>
     <HomeSlider />
     <HomeMisson />
+    <HomeCategories />
   </div>
 </template>

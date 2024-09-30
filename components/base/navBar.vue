@@ -34,7 +34,7 @@
 
     <aside
       :class="open ? 'left-0' : 'left-[-100%] '"
-      class="flex items-center max-md:items-start md:justify-between md:flex-row flex-col md:w-[63%] max-md:fixed top-0 left-0 h-full w-[50%] transition-[left] duration-500 ease-in"
+      class="flex items-center max-md:items-start md:justify-between md:flex-row flex-col md:w-[63%] xl:w-[60%] max-md:fixed top-0 left-0 h-full w-[50%] transition-[left] duration-500 ease-in"
     >
       <div class="md:hidden p-6 w-full mb-5 border-b-2 border-slate-800">
         <!-- <a href="#" class="font-bold italic font-sans text-xl">RAGAB</a> -->

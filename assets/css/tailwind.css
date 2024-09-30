@@ -14,3 +14,7 @@ body {
 .heading1 {
   @apply text-secondary text-3xl md:text-4xl  font-bold;
 }
+
+.myContainer {
+  @apply max-w-[75%] sm:max-w-[80%] md:max-w-[90%] xl:max-w-[75%] mx-auto;
+}
