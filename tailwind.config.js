@@ -10,7 +10,7 @@ export default {
 
       container: {
         center: true,
-        padding: "2.5rem",
+        padding: "1.27rem",
       },
       screens: {
         xs: "500px", // Minimum width 500px
@@ -19,6 +19,10 @@ export default {
         lg: "1024px",
         xl: "1280px",
         "2xl": "1536px",
+      },
+
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
       },
     },
   },

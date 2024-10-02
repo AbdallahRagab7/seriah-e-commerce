@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <h1 class="heading1 mb-7 text-center">Categories</h1>
+    <h1 class="heading1 mb-8 text-center">Categories</h1>
 
     <!-- <div class="grid xs:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-14"> -->
-    <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-6 xl:gap-14">
+    <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-10 2xl:gap-14">
       <div
         v-for="category in categories"
         :key="category"
@@ -14,7 +14,7 @@
           alt="Category Image"
           class="w-full h-[200px] object-cover"
         />
-        <h1 class="text-xl font-bold text-center p-5">
+        <h1 class="text-xl font-poppins text-center p-5 text-black">
           {{ category.title }}
         </h1>
       </div>

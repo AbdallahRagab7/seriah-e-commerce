@@ -42,10 +42,10 @@
       </div>
 
       <ul class="flex gap-5 max-md:flex-col">
-        <li v-for="link in links" :key="link.name" class="max-md:ml-8">
-          <a href="#" class="hover:text-primary text-[18px]">
-            {{ link.name }}
-          </a>
+        <li v-for="route in routes" :key="route.name" class="max-md:ml-8">
+          <NuxtLink :to="route.link" class="hover:text-primary text-[18px]">
+            {{ route.name }}
+          </NuxtLink>
         </li>
       </ul>
 
@@ -72,22 +72,22 @@
 
 <script setup>
 const open = ref(false);
-const links = [
+const routes = [
   {
     name: "Home",
-    link: "#",
+    link: "/",
   },
   {
     name: "About",
-    link: "#",
+    link: "/about",
   },
   {
     name: "Products",
-    link: "#",
+    link: "/products",
   },
   {
     name: "Contact",
-    link: "#",
+    link: "/contact-us",
   },
 ];
 </script>
@@ -101,5 +101,9 @@ const links = [
   aside {
     width: 70%;
   }
+}
+
+.router-link-active {
+  color: blue;
 }
 </style>
