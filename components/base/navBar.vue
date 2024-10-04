@@ -9,10 +9,12 @@
     </div>
 
     <div class="flex items-center gap-2">
-      <div class="flex items-center gap-2 md:hidden">
-        <Icon name="ph:bag-light" class="text-3xl" />
-        Cart ( 0 )
-      </div>
+      <NuxtLink to="/cart">
+        <div class="flex items-center gap-2 md:hidden">
+          <Icon name="ph:bag-light" class="text-3xl" />
+          Cart ( 0 )
+        </div>
+      </NuxtLink>
 
       <button
         @click="open = !open"
@@ -50,10 +52,12 @@
       </ul>
 
       <div class="flex items-center gap-3">
-        <div class="flex items-center gap-1 hidden md:flex">
-          <Icon name="ph:bag-light" class="text-3xl" />
-          <span class="mt-1"> Cart ( 0 ) </span>
-        </div>
+        <NuxtLink to="/cart">
+          <div class="flex items-center gap-1 hidden md:flex">
+            <Icon name="ph:bag-light" class="text-3xl" />
+            <span class="mt-1"> Cart ( 0 ) </span>
+          </div>
+        </NuxtLink>
 
         <!-- <button
           class="bg-transparent hover:bg-secondary border-secondary border-2 text-slate-200 font-bold p-1 rounded-xl max-md:ml-6 max-md:my-5"
@@ -62,7 +66,7 @@
         </button> -->
         <NuxtLink
           to="/login"
-          class="bg-secondary !text-white font-bold p-2 rounded-full hover:bg-[#2ea0ec] max-md:ml-6 max-md:my-5"
+          class="custom-btn !text-white font-bold p-2 rounded-full max-md:ml-6 max-md:my-5"
         >
           Login
         </NuxtLink>

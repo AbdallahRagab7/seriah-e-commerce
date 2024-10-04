@@ -6,6 +6,7 @@ export default {
       colors: {
         primary: "var(--primary-color)",
         secondary: "var(--secondary-color)",
+        secondaryHover: "var(--secondary-color-hover)",
       },
 
       container: {

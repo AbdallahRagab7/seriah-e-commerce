@@ -3,7 +3,7 @@
     <form
       class="md:max-w-md max-w-sm mx-auto border shadow-md md:px-10 px-5 py-5 rounded-lg mt-20 text-center"
     >
-      <h1 class="text-2xl text-secondary mb-4">Login</h1>
+      <h1 class="text-2xl text-primary mb-4">Login</h1>
       <div class="mb-5 text-start">
         <label
           for="email"
@@ -33,7 +33,7 @@
       </div>
 
       <div class="text-end mb-2">
-        <a href="#" class="hover:underline text-blue-500">Forgot Password?</a>
+        <a href="#" class="hover:underline text-blue-700">Forgot Password?</a>
       </div>
       <button
         type="submit"

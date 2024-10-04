@@ -22,7 +22,7 @@
         Welcome To Seriah
       </h1>
       <button
-        class="bg-secondary text-white hover:bg-[#2ea0ec] text-[12px] sm:text-base font-bold rounded-md p-2 md:p-3"
+        class="custom-btn text-[12px] sm:text-base font-bold rounded-md p-2 md:p-3"
       >
         SHOP NOW
       </button>

@@ -6,6 +6,7 @@
 :root {
   --primary-color: #022f98;
   --secondary-color: #52b4f5;
+  --secondary-color-hover: #2ea0ec;
 }
 
 body {
@@ -22,4 +23,12 @@ body {
 
 .myContainer {
   @apply max-w-[75%] sm:max-w-[80%] md:max-w-[90%] xl:max-w-[75%] mx-auto;
+}
+
+.currency {
+  @apply text-slate-500 text-sm;
+}
+
+.custom-btn {
+  @apply bg-secondary hover:bg-secondaryHover text-white;
 }
