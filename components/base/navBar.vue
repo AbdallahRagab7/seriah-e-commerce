@@ -30,15 +30,17 @@
     <!-- to close the sidebar when click bra el navbar -->
     <div
       v-if="open"
-      class="overlay fixed w-screen h-full top-0"
+      class="overlay fixed w-screen h-full top-0 bg-black bg-opacity-50 z-40"
+      :class="open ? 'bg-black bg-opacity-50' : ''"
       @click="open = false"
     ></div>
 
+    <!-- SideBar -->
     <aside
       :class="open ? 'left-0' : 'left-[-100%] '"
-      class="flex items-center max-md:items-start md:justify-between md:flex-row flex-col md:w-[63%] xl:w-[60%] max-md:fixed top-0 left-0 h-full w-[50%] transition-[left] duration-500 ease-in"
+      class="flex items-center z-50 bg-white max-md:items-start md:justify-between md:flex-row flex-col md:w-[63%] xl:w-[60%] max-md:fixed top-0 left-0 h-full w-[50%] transition-[left] duration-500 ease-in"
     >
-      <div class="md:hidden p-6 w-full mb-5 border-b-2 border-slate-800">
+      <div class="md:hidden p-3 w-full mb-5 border-b-[1px] border-gray-200">
         <!-- <a href="#" class="font-bold italic font-sans text-xl">RAGAB</a> -->
         <NuxtImg src="/edited-logo.png" class="h-10 object-cover" />
       </div>
