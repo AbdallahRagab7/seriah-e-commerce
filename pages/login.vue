@@ -35,12 +35,12 @@
       <div class="text-end mb-2">
         <a href="#" class="hover:underline text-blue-700">Forgot Password?</a>
       </div>
-      <button
+      <BaseButton
         type="submit"
-        class="text-white bg-secondary hover:bg-[#2ea0ec] font-medium rounded-lg text-sm px-6 py-2.5"
+        class="font-medium rounded-lg text-sm px-6 py-2.5"
       >
         Login
-      </button>
+      </BaseButton>
     </form>
   </div>
 </template>

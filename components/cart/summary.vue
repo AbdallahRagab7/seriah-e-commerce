@@ -1,6 +1,9 @@
 <template>
   <section>
-    <div class="flex border border-secondary overflow-hidden rounded-md">
+    <div
+      v-if="showCheckoutBtnAndPromo"
+      class="flex border border-secondary overflow-hidden rounded-md"
+    >
       <input
         type="email"
         placeholder="Promo code"
@@ -47,19 +50,33 @@
       </li>
     </ul>
 
-    <div class="mt-8 space-y-2">
-      <button
-        type="button"
-        class="custom-btn text-sm px-4 py-2.5 w-full font-semibold tracking-wide rounded-md"
-      >
-        Checkout
-      </button>
-      <button
-        type="button"
-        class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent text-gray-800 border border-gray-300 rounded-md"
-      >
-        Continue Shopping
-      </button>
+    <div class="mt-8 flex flex-col gap-3">
+      <NuxtLink to="/checkout">
+        <BaseButton
+          v-if="showCheckoutBtnAndPromo"
+          type="button"
+          class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide rounded-md"
+        >
+          Checkout
+        </BaseButton>
+      </NuxtLink>
+
+      <NuxtLink to="/">
+        <BaseButton
+          type="button"
+          class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide !bg-transparent !text-slate-700 border border-secondary border-gray-300 rounded-md"
+        >
+          Continue Shopping
+        </BaseButton>
+      </NuxtLink>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+const route = useRoute();
+const showCheckoutBtnAndPromo = ref<Boolean>(true);
+if (route.path === "/checkout") {
+  showCheckoutBtnAndPromo.value = false;
+}
+</script>
