@@ -16,7 +16,9 @@
     <div
       class="w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
     >
-      <h1 class="text text-2xl text-white md:text-4xl font-bold md:mb-2">
+      <h1
+        class="text-stroke text-2xl !text-white md:text-4xl font-bold md:mb-2"
+      >
         Welcome To Seriah
       </h1>
       <button
@@ -110,7 +112,7 @@ watchEffect(() => {
   background-color: white;
 }
 
-.text {
+.text-stroke {
   -webkit-text-stroke: 0.2px rgb(184, 0, 0);
 }
 </style>

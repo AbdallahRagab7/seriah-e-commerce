@@ -60,11 +60,12 @@
         >
           Login
         </button> -->
-        <button
+        <NuxtLink
+          to="/login"
           class="bg-secondary !text-white font-bold p-2 rounded-full hover:bg-[#2ea0ec] max-md:ml-6 max-md:my-5"
         >
           Login
-        </button>
+        </NuxtLink>
       </div>
     </aside>
   </nav>

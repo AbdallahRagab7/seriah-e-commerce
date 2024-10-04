@@ -11,6 +11,13 @@ export default {
       container: {
         center: true,
         padding: "1.27rem",
+        // padding: {
+        //   DEFAULT: "0.5rem",
+        //   sm: "1rem",
+        //   lg: "2rem",
+        //   xl: "2rem",
+        //   "2xl": "2rem",
+        // },
       },
       screens: {
         xs: "500px", // Minimum width 500px

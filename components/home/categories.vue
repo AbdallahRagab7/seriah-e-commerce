@@ -9,14 +9,16 @@
         :key="category"
         class="shadow-md rounded-md overflow-hidden"
       >
-        <NuxtImg
-          :src="category.img"
-          alt="Category Image"
-          class="w-full h-[200px] object-cover"
-        />
-        <h1 class="text-xl font-poppins text-center p-5 text-black">
-          {{ category.title }}
-        </h1>
+        <NuxtLink to="/category/1">
+          <NuxtImg
+            :src="category.img"
+            alt="Category Image"
+            class="w-full h-[200px] object-cover"
+          />
+          <h2 class="text-xl font-poppins text-center p-5 text-black">
+            {{ category.title }}
+          </h2>
+        </NuxtLink>
       </div>
     </div>
   </div>

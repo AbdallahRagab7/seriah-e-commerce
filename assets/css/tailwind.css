@@ -13,8 +13,11 @@ body {
 }
 
 .heading1 {
-  @apply text-secondary text-3xl md:text-4xl;
+  @apply text-primary text-3xl md:text-4xl font-semibold;
   font-family: "Poppins";
+  background: linear-gradient(45deg, #022f98 34%, #1672a7 69%, #52b4f5 68%);
+  background-clip: text;
+  color: transparent;
 }
 
 .myContainer {
