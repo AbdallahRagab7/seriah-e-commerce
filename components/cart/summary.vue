@@ -64,7 +64,7 @@
       <NuxtLink to="/">
         <BaseButton
           type="button"
-          class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide !bg-transparent !text-slate-700 border border-secondary border-gray-300 rounded-md"
+          class="text-sm !bg-transparent hover:!bg-secondary hover:!text-white px-4 py-2.5 w-full font-semibold tracking-wide !text-slate-700 border border-secondary border-gray-300 rounded-md"
         >
           Continue Shopping
         </BaseButton>

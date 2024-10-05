@@ -15,7 +15,9 @@
             alt="Category Image"
             class="w-full h-[200px] object-cover"
           />
-          <h2 class="text-xl font-poppins text-center p-5 text-black">
+          <h2
+            class="text-xl font-poppins text-center p-5 text-black hover:text-primary"
+          >
             {{ category.title }}
           </h2>
         </NuxtLink>

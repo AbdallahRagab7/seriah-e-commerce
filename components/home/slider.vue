@@ -17,12 +17,13 @@
       class="w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
     >
       <h1
-        class="text-stroke text-2xl !text-white md:text-4xl font-bold md:mb-2"
+        class="animated-heading text-stroke text-2xl !text-white md:text-4xl font-bold md:mb-2"
       >
         Welcome To Seriah
       </h1>
+
       <button
-        class="custom-btn text-[12px] sm:text-base font-bold rounded-md p-2 md:p-3"
+        class="animated-btn custom-btn text-[12px] sm:text-base font-bold rounded-md p-2 md:p-3"
       >
         SHOP NOW
       </button>
@@ -114,5 +115,37 @@ watchEffect(() => {
 
 .text-stroke {
   -webkit-text-stroke: 0.2px rgb(184, 0, 0);
+}
+
+.animated-heading {
+  display: block;
+  opacity: 0;
+  animation: jump-down 0.9s forwards ease-out;
+}
+.animated-btn {
+  opacity: 0;
+  animation: jump-up 0.9s forwards ease-out;
+}
+
+/* Keyframe for jump-in animation */
+@keyframes jump-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-300%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes jump-up {
+  0% {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

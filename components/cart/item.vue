@@ -10,7 +10,9 @@
         <h3 class="text-base font-bold text-gray-800 mb-1">
           Apple Watch Series 7 GPS, Aluminium Case, Apple Watch
         </h3>
-        <h6 class="text-xs text-red-500 cursor-pointer mt-0.5">Remove</h6>
+        <h6 class="text-xs text-red-500 cursor-pointer mt-0.5 hover:underline">
+          Remove
+        </h6>
 
         <div class="flex gap-4 mt-4">
           <div>
@@ -21,12 +23,14 @@
               <Icon
                 name="iconamoon:sign-minus-bold"
                 class="w-4 h-4 text-black"
+                @click="decreaseCounter"
               />
-              <span class="mx-2 text-sm">1</span>
+              <span class="mx-2 text-sm">{{ quantityCounter }}</span>
 
               <Icon
                 name="iconamoon:sign-plus-fill"
                 class="w-4 h-4 text-black"
+                @click="quantityCounter++"
               />
             </button>
           </div>
@@ -42,3 +46,12 @@
     <!-- <hr class="border-gray-300" /> -->
   </div>
 </template>
+
+<script setup lang="ts">
+const quantityCounter = ref<number>(1);
+const decreaseCounter = () => {
+  if (quantityCounter.value > 1) {
+    quantityCounter.value--;
+  }
+};
+</script>
