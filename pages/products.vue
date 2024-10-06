@@ -4,8 +4,8 @@
 
     <!-- <div class="grid xs:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-14"> -->
     <section class="grid md:grid-cols-4 gap-3 px-5">
-      <div class="">
-        <p class="text-xl mb-5">Product Categories</p>
+      <div class="space-y-5">
+        <p class="text-xl font-poppins font-medium">Product Categories</p>
 
         <ul class="space-y-3">
           <li
@@ -45,6 +45,21 @@
             </div>
           </li>
         </ul>
+
+        <div class="flex flex-col items-start">
+          <label for="price-range" class="mb-2 text-xl font-poppins font-medium"
+            >Filter By Price</label
+          >
+          <input
+            id="price-range"
+            type="range"
+            min="0"
+            max="100"
+            v-model="price"
+            class="w-full mb-2"
+          />
+          <p>Price : $0 - $500</p>
+        </div>
       </div>
 
       <div class="md:col-span-3 grid md:grid-cols-3 sm:grid-cols-2 gap-5">
