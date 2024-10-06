@@ -37,5 +37,5 @@ body {
   @apply border border-blue-200  rounded-xl focus:border-secondary focus:outline-none text-gray-900 text-sm   p-2.5;
 }
 .customLabel {
-  @apply text-slate-800 font-semibold text-sm inline-block mb-1;
+  @apply text-slate-800 font-poppins text-sm inline-block mb-1;
 }
