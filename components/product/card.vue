@@ -15,7 +15,7 @@
         <a href="#">
           <!-- font-poppins -->
           <h5
-            class="font-semibold text-sm mb-5 text-black hover:text-primary duration-200 line-clamp-4"
+            class="text-base font-poppins mb-5 text-black hover:text-primary line-clamp-4"
           >
             Apple Watch Series 7 GPS, Aluminium Case, Apple Watch
           </h5>
