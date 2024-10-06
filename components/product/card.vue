@@ -33,7 +33,7 @@
           </div>
           <a
             href="#"
-            class="custom-btn border-secondary border font-medium rounded-lg text-sm p-1.5 text-center"
+            class="custom-btn border-secondary border font-medium rounded-lg text-sm p-[5px] text-center"
             >Add to cart</a
           >
         </div>

@@ -3,8 +3,8 @@
     <h1 class="my-8 heading1 text-center">Products</h1>
 
     <!-- <div class="grid xs:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-14"> -->
-    <section class="grid md:grid-cols-4 gap-3 px-5">
-      <div class="space-y-5">
+    <section class="grid md:grid-cols-7 gap-3 xl:px-10">
+      <div class="space-y-5 md:col-span-2">
         <p class="text-xl font-poppins font-medium">Product Categories</p>
 
         <ul class="space-y-3">
@@ -47,7 +47,7 @@
         </ul>
 
         <div class="flex flex-col items-start">
-          <label for="price-range" class="mb-2 text-xl font-poppins font-medium"
+          <label for="price-range" class="mb-2 text-lg font-poppins font-medium"
             >Filter By Price</label
           >
           <input
@@ -58,11 +58,40 @@
             v-model="price"
             class="w-full mb-2"
           />
-          <p>Price : $0 - $500</p>
+          <p class="text-slate-500 text-lg">Price : $0 - $500</p>
+        </div>
+        <div class="flex flex-col items-start">
+          <label for="price-range" class="mb-2 text-lg font-poppins font-medium"
+            >Any Size</label
+          >
+          <select
+            class="w-full border border-gray-300 text-slate-500 p-2 pr-8 rounded-md leading-tight focus:outline-none focus:border-gray-500"
+          >
+            <option value="">- Please select -</option>
+            <option :value="size" v-for="size in sizes" :key="size">
+              {{ size }}
+            </option>
+          </select>
+        </div>
+
+        <div class="flex flex-col items-start">
+          <label for="price-range" class="mb-2 text-lg font-poppins font-medium"
+            >Any Color</label
+          >
+          <select
+            class="w-full border border-gray-300 text-slate-500 p-2 pr-5 rounded-md leading-tight focus:outline-none focus:border-gray-500"
+          >
+            <option value="">- Please select -</option>
+            <option :value="size" v-for="color in colors" :key="color">
+              {{ color }}
+            </option>
+          </select>
         </div>
       </div>
 
-      <div class="md:col-span-3 grid md:grid-cols-3 sm:grid-cols-2 gap-5">
+      <div
+        class="md:col-span-5 grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5"
+      >
         <ProductCard v-for="i in 6" :key="i" />
       </div>
     </section>
@@ -84,6 +113,8 @@ const categories = reactive([
     subCategories: ["clothing", "Chair", "Oil"],
   },
 ]);
+const colors = ["Red", "Green", "Blue", "Gray"];
+const sizes = ["Small", "Medium", "Large", "X Large"];
 
 const toggleCategory = (index, identefier) => {
   if (categories[index][identefier]) {
@@ -94,4 +125,16 @@ const toggleCategory = (index, identefier) => {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+@media (min-width: 1024px) and (max-width: 1125px) {
+  .container {
+    max-width: 99%;
+  }
+}
+@media (min-width: 1023px) and (max-width: 1056px) {
+  :deep(.custom-btn) {
+    padding: 1.2px;
+    padding-top: 4px;
+  }
+}
+</style>
