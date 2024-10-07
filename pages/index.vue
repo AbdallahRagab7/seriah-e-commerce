@@ -4,5 +4,8 @@
     <HomeMisson />
     <HomeCategories />
     <HomeProducts />
+    <HomeSubscribe />
+
+    <!-- HTML -->
   </div>
 </template>

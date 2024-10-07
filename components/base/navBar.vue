@@ -66,12 +66,17 @@
         >
           Login
         </button> -->
-        <NuxtLink
+        <!-- <NuxtLink
           to="/login"
           class="custom-btn !text-white font-bold p-2 rounded-full max-md:ml-6 max-md:my-5"
         >
           Login
-        </NuxtLink>
+        </NuxtLink> -->
+        <NuxtLink
+          to="/profile"
+          class="text-medium hover:text-primary text-[18px] max-md:ml-5 max-md:mt-5"
+          >My Account</NuxtLink
+        >
       </div>
     </aside>
   </nav>
