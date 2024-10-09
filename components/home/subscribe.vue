@@ -1,8 +1,8 @@
 <template>
-  <div class="py-12 mt-20 container">
+  <div class="py-12 pt-[60px] mt-20 container">
     <div class="max-w-xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-gray-800">Get Discount Info</h2>
-      <p class="text-gray-500 mt-4">
+      <h2 class="heading1">Get Discount Info</h2>
+      <p class="text-customSlate text-base mt-4">
         Subscribe to the Seriah mailing list to receive updates on new arrivals,
         special offers, and other discount information.
       </p>

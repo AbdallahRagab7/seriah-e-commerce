@@ -7,22 +7,21 @@
   --primary-color: #022f98;
   --secondary-color: #52b4f5;
   --secondary-color-hover: #2ea0ec;
+  --customGray: #323232;
+  --customSlate: #848b8a;
+  /* custom slate for <p> elements  */
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Poppins", "sans-serif";
 }
 
 .heading1 {
-  @apply text-primary text-3xl md:text-4xl font-semibold;
+  @apply text-[36px] leading-[1.2] text-[#201f1f];
   font-family: "Poppins";
-  background: linear-gradient(45deg, #022f98 34%, #1672a7 69%, #52b4f5 68%);
+  /* background: linear-gradient(45deg, #022f98 34%, #1672a7 69%, #52b4f5 68%);
   background-clip: text;
-  color: transparent;
-}
-
-.myContainer {
-  @apply max-w-[75%] sm:max-w-[80%] md:max-w-[90%] xl:max-w-[75%] mx-auto;
+  color: transparent; */
 }
 
 .currency {
@@ -38,4 +37,47 @@ body {
 }
 .customLabel {
   @apply text-slate-800 font-poppins text-sm inline-block mb-1;
+}
+
+/* bootstrap container */
+.myContainer {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Extra small (default width 100%) */
+
+/* Small devices (≥576px) */
+@media (min-width: 576px) {
+  .myContainer {
+    max-width: 540px;
+  }
+}
+
+/* Medium devices (≥768px) */
+@media (min-width: 768px) {
+  .myContainer {
+    max-width: 720px;
+  }
+}
+
+/* Large devices (≥992px) */
+@media (min-width: 992px) {
+  .myContainer {
+    max-width: 960px;
+  }
+}
+
+/* Extra large devices (≥1200px) */
+@media (min-width: 1200px) {
+  .myContainer {
+    max-width: 1140px;
+  }
+}
+
+/* Extra extra large devices (≥1400px) */
+@media (min-width: 1400px) {
+  .myContainer {
+    max-width: 1320px;
+  }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mb-10">
+  <div class="relative p-2">
     <!-- Embla Carousel -->
     <div class="embla max-h-[500px]" ref="emblaRef">
       <div class="embla__container">
@@ -7,7 +7,7 @@
           <NuxtImg
             :src="image"
             alt="Slider Image"
-            class="object-contain w-full rounded-md"
+            class="object-contain w-full rounded-sm"
           />
         </div>
       </div>
@@ -17,13 +17,13 @@
       class="w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
     >
       <h1
-        class="animated-heading text-stroke text-2xl !text-white md:text-4xl font-bold md:mb-2"
+        class="animated-heading text-stroke lg:text-[36px] !text-white sm:text-3xl font-bold md:mb-2"
       >
         Welcome To Seriah
       </h1>
 
       <button
-        class="animated-btn custom-btn w-[200px] mt-2 text-[12px] sm:text-base font-bold rounded-md p-2 md:p-3"
+        class="animated-btn custom-btn w-[185px] mt-2 text-[12px] sm:text-base font-semibold rounded-sm p-2 md:p-3"
       >
         SHOP NOW
       </button>
@@ -42,10 +42,17 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import emblaCarouselVue from "embla-carousel-vue";
 
 const images = ["/cover3.png", "/cover.png", "/cover.png"];
+
+//GET DATA
+const { getSliders } = useHomePage();
+
+const { data: sliders, status } = await useAsyncData("sliders", () =>
+  getSliders()
+);
 
 // Set up Embla Carousel and state for dot navigation
 const [emblaRef, emblaApi] = emblaCarouselVue({ loop: false });
@@ -53,16 +60,16 @@ const selectedIndex = ref(0); // Tracks the currently selected slide
 const scrollSnaps = ref([]); // Holds the scroll snaps (positions)
 
 // Function to scroll to a specific slide
-const onDotButtonClick = (index) => {
+const onDotButtonClick = (index: number) => {
   if (emblaApi.value) emblaApi.value.scrollTo(index);
 };
 
 // Initialize scroll snap positions and handle slide selection
-const onInit = (api) => {
+const onInit = (api: any) => {
   scrollSnaps.value = api.scrollSnapList();
 };
 
-const onSelect = (api) => {
+const onSelect = (api: any) => {
   selectedIndex.value = api.selectedScrollSnap();
 };
 
@@ -111,10 +118,6 @@ watchEffect(() => {
 
 .dot-button.active {
   background-color: white;
-}
-
-.text-stroke {
-  -webkit-text-stroke: 0.2px rgb(184, 0, 0);
 }
 
 .animated-heading {

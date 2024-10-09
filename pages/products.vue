@@ -1,9 +1,9 @@
 <template>
-  <div class="container mb-10">
+  <div class="container pt-[60px] mb-10">
     <h1 class="my-8 heading1 text-center">Products</h1>
 
     <!-- <div class="grid xs:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-14"> -->
-    <section class="grid md:grid-cols-7 gap-3 xl:px-12">
+    <section class="grid md:grid-cols-7 gap-3">
       <div class="md:col-span-2 xl:max-w-[95%]">
         <ProductsFilter />
       </div>

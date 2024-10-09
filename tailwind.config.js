@@ -7,6 +7,8 @@ export default {
         primary: "var(--primary-color)",
         secondary: "var(--secondary-color)",
         secondaryHover: "var(--secondary-color-hover)",
+        customGray: "var(--customGray)",
+        customSlate: "var(--customSlate)",
       },
 
       container: {

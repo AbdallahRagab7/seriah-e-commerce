@@ -1,5 +1,5 @@
 <template>
-  <section class="container mx-auto py-8">
+  <section class="container mx-auto py-[60px]">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Left Column - Find Us Here -->
       <div class="space-y-6">
