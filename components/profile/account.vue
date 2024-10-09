@@ -1,9 +1,11 @@
 <template>
   <div>
-    <h1 class="text-start font-semibold bg-white p-4 mb-5 rounded-md shadow-sm">
-      currentComponent
+    <h1
+      class="text-start text-[16px] font-semibold bg-white py-[20px] px-[70px] mb-5 border border-[#eceaea] rounded-sm"
+    >
+      Profile Information
     </h1>
-    <form class="bg-white p-5 rounded-md shadow-sm">
+    <form class="bg-white p-5 px-[70px] border border-[#eceaea] rounded-sm">
       <div class="grid md:grid-cols-2 gap-3 mt-2">
         <div>
           <label class="customLabel" for="firstName"> First Name</label>

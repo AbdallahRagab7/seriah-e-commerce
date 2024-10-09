@@ -1,6 +1,6 @@
 <template>
-  <div class="container mx-auto px-4 py-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <div class="myContainer mx-auto px-4 py-[65px]">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-9">
       <section class="space-y-6">
         <NuxtImg
           :src="activeImage"
@@ -21,22 +21,27 @@
       </section>
 
       <section class="space-y-4">
-        <h1 class="text-3xl font-semibold">
+        <h1 class="text-2xl font-medium text-customGray">
           Men's Regular T-shirt
-          <span class="text-green-500 text-sm font-normal">In Stock</span>
+          <span
+            class="text-green-500 inline-flex items-center gap-[2px] text-xs font-normal"
+          >
+            In Stock
+            <Icon name="carbon:checkmark-filled" style="color: #0da032" />
+          </span>
         </h1>
         <div class="mt-8 space-y-4">
-          <p class="text-gray-700">
+          <p class="text-customSlate text-sm">
             {{ description.substring(0, 200) }}
           </p>
         </div>
 
         <div class="flex items-center space-x-4 text-gray-500">
-          <span class="text-lg line-through">$50.00</span>
-          <span class="text-lg text-black">$35.00</span>
+          <span class="text-xs line-through">$50.00</span>
+          <span class="text-base text-black">$35.00</span>
         </div>
         <div class="flex items-center space-x-2">
-          <label for="quantity" class="text-gray-600 font-semibold"
+          <label for="quantity" class="text-customSlate text-sm"
             >Quantity:</label
           >
           <div class="flex items-center">
@@ -46,14 +51,14 @@
             >
               <Icon
                 name="iconamoon:sign-minus-bold"
-                class="w-4 h-4 text-black"
+                class="w-3 h-3 text-black"
                 @click="decreaseCounter"
               />
               <span class="mx-2 text-sm">{{ quantityCounter }}</span>
 
               <Icon
                 name="iconamoon:sign-plus-fill"
-                class="w-4 h-4 text-black"
+                class="w-3 h-3 text-black"
                 @click="quantityCounter++"
               />
             </button>
@@ -61,10 +66,12 @@
         </div>
 
         <div class="space-y-2">
-          <h2 class="text-md font-semibold">Select Size</h2>
+          <h2 class="customLabel">
+            Select Size <span class="text-red-600">*</span>
+          </h2>
           <div class="relative">
             <select
-              class="block appearance-none w-full border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:border-gray-500"
+              class="block appearance-none w-full border border-gray-300 text-customSlate text-sm py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:border-gray-500"
             >
               <option value="">- Please select -</option>
               <option :value="size" v-for="size in sizes" :key="size">
@@ -81,11 +88,13 @@
 
         <!-- Select Color Dropdown -->
         <div class="space-y-2">
-          <label class="text-md font-semibold">Select Color</label>
+          <label class="customLabel"
+            >Select Color <span class="text-red-600">*</span></label
+          >
           <div class="relative">
             <select
               id="color"
-              class="block appearance-none w-full border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:border-gray-500"
+              class="block appearance-none w-full border border-gray-300 text-customSlate text-sm py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:border-gray-500"
             >
               <option value="">- Please select -</option>
               <option :value="color" v-for="color in colors" :key="color">
@@ -103,16 +112,16 @@
           </div>
         </div>
         <BaseButton
-          class="w-full py-3 text-white rounded-md flex items-center justify-center gap-2"
+          class="w-full py-3 text-white rounded-md flex items-center justify-center"
         >
-          <Icon name="bi:cart" class="text-2xl" /> Add to Cart
+          <Icon name="iconamoon:sign-plus" /> Add to Cart
         </BaseButton>
       </section>
     </div>
 
     <div class="mt-8 space-y-4 max-w-[80%] md:max-w-[50%]">
       <h2 class="text-xl font-semibold">Description</h2>
-      <p class="text-gray-700">
+      <p class="text-customSlate text-sm">
         {{ description }}
       </p>
     </div>

@@ -17,7 +17,7 @@
       class="w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
     >
       <h1
-        class="animated-heading text-stroke lg:text-[36px] !text-white sm:text-3xl font-bold md:mb-2"
+        class="animated-heading text-stroke lg:text-[36px] !text-white sm:text-3xl font-semibold md:mb-2"
       >
         Welcome To Seriah
       </h1>

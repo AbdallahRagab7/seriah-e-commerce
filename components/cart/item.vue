@@ -7,7 +7,7 @@
       </div>
 
       <div>
-        <h3 class="text-base font-bold text-gray-800 mb-1">
+        <h3 class="text-base mb-1">
           Apple Watch Series 7 GPS, Aluminium Case, Apple Watch
         </h3>
         <h6 class="text-xs text-red-500 cursor-pointer mt-0.5 hover:underline">
@@ -37,8 +37,13 @@
         </div>
       </div>
     </div>
+
+    <!-- <div class="flex items-center space-x-4 text-gray-500">
+      <span class="text-xs line-through">$50.00</span>
+      <span class="text-base text-black">$35.00</span>
+    </div> -->
     <div class="ml-auto">
-      <h4 class="text-base font-bold text-gray-800">
+      <h4 class="text-base text-black">
         <span class="currency">EGP</span>
         20.00
       </h4>

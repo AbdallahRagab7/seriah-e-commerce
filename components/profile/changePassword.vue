@@ -1,12 +1,11 @@
 <template>
   <div>
-    <h1 class="text-start font-semibold bg-white p-4 mb-5 rounded-md shadow-sm">
+    <h1
+      class="text-start text-[16px] font-semibold bg-white py-[20px] px-[70px] mb-5 border border-[#eceaea] rounded-sm"
+    >
       Change Password
     </h1>
-    <form
-      @submit="onSubmit"
-      class="bg-white p-5 rounded-md shadow-sm space-y-5"
-    >
+    <form class="bg-white p-5 border border-[#eceaea] rounded-sm space-y-5">
       <div class="w-[75%] mx-auto">
         <label class="block mb-2 text-sm font-medium text-gray-700"
           >Old Password</label

@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         primary: "var(--primary-color)",
+        primaryHover: "var(--primary-color-hover)",
         secondary: "var(--secondary-color)",
         secondaryHover: "var(--secondary-color-hover)",
         customGray: "var(--customGray)",

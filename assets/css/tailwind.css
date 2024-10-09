@@ -5,6 +5,7 @@
 
 :root {
   --primary-color: #022f98;
+  --primary-color-hover: #1042b6;
   --secondary-color: #52b4f5;
   --secondary-color-hover: #2ea0ec;
   --customGray: #323232;
@@ -25,18 +26,18 @@ body {
 }
 
 .currency {
-  @apply text-slate-500 text-sm;
+  @apply text-[11px] text-black font-medium;
 }
 
 .custom-btn {
-  @apply bg-primary hover:bg-secondaryHover text-white;
+  @apply bg-primary hover:bg-primaryHover text-white;
 }
 
 .customInput {
-  @apply border  border-gray-500 rounded-sm   bg-transparent focus:border-primary focus:outline-none text-gray-900 text-sm   p-2.5;
+  @apply border  border-customSlate rounded-sm   bg-transparent focus:border-primary focus:outline-none text-gray-900 text-sm   p-2.5;
 }
 .customLabel {
-  @apply text-slate-800 font-poppins text-sm inline-block mb-1;
+  @apply font-medium text-sm inline-block mb-1;
 }
 
 /* bootstrap container */
