@@ -30,11 +30,11 @@ body {
 }
 
 .custom-btn {
-  @apply bg-secondary hover:bg-secondaryHover text-white;
+  @apply bg-primary hover:bg-secondaryHover text-white;
 }
 
 .customInput {
-  @apply border border-blue-200  rounded-xl focus:border-secondary focus:outline-none text-gray-900 text-sm   p-2.5;
+  @apply border  border-gray-500 rounded-sm   bg-transparent focus:border-primary focus:outline-none text-gray-900 text-sm   p-2.5;
 }
 .customLabel {
   @apply text-slate-800 font-poppins text-sm inline-block mb-1;
