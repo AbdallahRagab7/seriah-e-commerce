@@ -18,9 +18,7 @@ export default defineNuxtConfig({
   },
 
   strapi: {
-    url:
-      process.env.STRAPI_URL ||
-      "https://seirah.mbadr.dev/documentation/v1.0.0/api",
+    url: "https://seirah.mbadr.dev",
     prefix: "/api",
     admin: "/admin",
     version: "v4",

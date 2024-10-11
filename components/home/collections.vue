@@ -7,7 +7,7 @@
       <div
         v-for="collection in collections"
         :key="collection"
-        class="shadow-md rounded-md overflow-hidden"
+        class="shadow-md rounded-md overflow-hidden max-sm:px-8"
       >
         <NuxtLink to="/collection/1">
           <NuxtImg

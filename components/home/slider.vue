@@ -3,30 +3,37 @@
     <!-- Embla Carousel -->
     <div class="embla max-h-[500px]" ref="emblaRef">
       <div class="embla__container">
-        <div v-for="image in images" :key="image" class="embla__slide p-5">
+        <div
+          v-for="slider in sliders"
+          :key="slider.id"
+          class="embla__slide p-5 relative"
+        >
           <NuxtImg
-            :src="image"
+            :src="slider.attributes?.image?.data?.attributes?.url"
             alt="Slider Image"
+            placeholer
             class="object-contain w-full rounded-sm"
           />
+
+          <div class="w-full absolute top-[30%] left-[10%] max-w-[400px]">
+            <h1
+              class="animated-heading !mb-[14px] text-stroke lg:text-[36px] !text-[#32323] sm:text-3xl font-semibold md:mb-2"
+            >
+              {{ slider.attributes.title }}
+            </h1>
+            <p class="text-[#32323] text-sm mb-6">
+              {{ slider.attributes.description }}
+            </p>
+
+            <NuxtLink
+              :to="slider.attributes.buttonUrl"
+              class="animated-btn custom-btn w-[160px] mt-2 text-[12px] sm:text-base font-semibold rounded-sm p-2 md:p-3"
+            >
+              {{ slider.attributes.buttonLabel }}
+            </NuxtLink>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div
-      class="w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-    >
-      <h1
-        class="animated-heading text-stroke lg:text-[36px] !text-white sm:text-3xl font-semibold md:mb-2"
-      >
-        Welcome To Seriah
-      </h1>
-
-      <button
-        class="animated-btn custom-btn w-[160px] mt-2 text-[12px] sm:text-base font-semibold rounded-sm p-2 md:p-3"
-      >
-        SHOP NOW
-      </button>
     </div>
 
     <!-- Dot Buttons -->
@@ -47,12 +54,77 @@ import emblaCarouselVue from "embla-carousel-vue";
 
 const images = ["/cover3.png", "/cover.png", "/cover.png"];
 
-//GET DATA
+const fakeSliders = [
+  {
+    image: {
+      data: {
+        id: 1,
+        attributes: {
+          name: "Image 1",
+          alternativeText: "An image of the first slider.",
+          url: "/cover3.png", // Replace with your image URL
+        },
+      },
+    },
+    title: "First Slider",
+    description: "This is the description for the first slider.",
+    buttonLabel: "Learn More",
+    buttonUrl: "https://example.com/first",
+  },
+  {
+    image: {
+      data: {
+        id: 1,
+        attributes: {
+          name: "Image 1",
+          alternativeText: "An image of the first slider.",
+          url: "/cover.png", // Replace with your image URL
+        },
+      },
+    }, // Replace with your image URL
+    title: "Second Slider",
+    description: "This is the description for the second slider.",
+    buttonLabel: "Discover More",
+    buttonUrl: "https://example.com/second",
+  },
+  {
+    image: {
+      data: {
+        id: 1,
+        attributes: {
+          name: "Image 1",
+          alternativeText: "An image of the first slider.",
+          url: "/cover.png", // Replace with your image URL
+        },
+      },
+    }, // Replace with your image URL
+    title: "Third Slider",
+    description: "This is the description for the third slider.",
+    buttonLabel: "Get Started",
+    buttonUrl: "https://example.com/third",
+  },
+  {
+    image: {
+      data: {
+        id: 1,
+        attributes: {
+          name: "Image 1",
+          alternativeText: "An image of the first slider.",
+          url: "/cover.png", // Replace with your image URL
+        },
+      },
+    }, // Replace with your image URL
+    title: "Third Slider",
+    description: "This is the description for the fourth slider.",
+    buttonLabel: "Get Started",
+    buttonUrl: "https://example.com/third",
+  },
+];
+
+// GET DATA
 const { getSliders } = useHomePage();
 
-const { data: sliders, status } = await useAsyncData("sliders", () =>
-  getSliders()
-);
+const { data: sliders, error } = useAsyncData("sliders", () => getSliders());
 
 // Set up Embla Carousel and state for dot navigation
 const [emblaRef, emblaApi] = emblaCarouselVue({ loop: false });

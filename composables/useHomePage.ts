@@ -7,8 +7,8 @@ export function useHomePage() {
 
   const getSliders = async () => {
     try {
-      const response = await find<Slider>("restaurants");
-      return response;
+      const response = await find<Slider>("sliders");
+      return response?.data;
     } catch (error) {
       //call toast , pass error.message
       throw new Error(
@@ -17,15 +17,5 @@ export function useHomePage() {
     }
   };
 
-  //   const createRestaurant = async (restaurantData: Partial<Slider>) => {
-  //     try {
-  //       const response = await create("restaurants", restaurantData);
-  //       return response;
-  //     } catch (error) {
-  //       throw new Error(error?.message || "Failed to create restaurant");
-  //     }
-  //   };
-
-  //   return { getSlider, createRestaurant };
   return { getSliders };
 }
