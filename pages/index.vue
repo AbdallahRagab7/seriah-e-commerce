@@ -2,7 +2,7 @@
   <div>
     <HomeSlider />
     <HomeMisson />
-    <HomeCategories />
+    <HomeCollections />
     <HomeProducts />
     <HomeSubscribe />
 

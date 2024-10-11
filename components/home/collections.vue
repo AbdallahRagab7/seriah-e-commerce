@@ -1,24 +1,24 @@
 <template>
-  <div class="container pt-[60px]">
-    <h1 class="heading1 mb-8 text-center">Categories</h1>
+  <div class="myContainer pt-[60px]">
+    <h1 class="heading1 mb-8 text-center">Collections</h1>
 
     <!-- <div class="grid xs:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-14"> -->
     <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-10 2xl:gap-14">
       <div
-        v-for="category in categories"
-        :key="category"
+        v-for="collection in collections"
+        :key="collection"
         class="shadow-md rounded-md overflow-hidden"
       >
-        <NuxtLink to="/category/1">
+        <NuxtLink to="/collection/1">
           <NuxtImg
-            :src="category.img"
-            alt="Category Image"
+            :src="collection.img"
+            alt="collection Image"
             class="w-full h-[200px] object-cover"
           />
           <h2
             class="text-[20px] font-poppins text-center p-5 text-[#201f1f] font-medium hover:text-primary"
           >
-            {{ category.title }}
+            {{ collection.title }}
           </h2>
         </NuxtLink>
       </div>
@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-const categories = [
+const collections = [
   {
     title: "Men's Clothing",
     img: "https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=600",

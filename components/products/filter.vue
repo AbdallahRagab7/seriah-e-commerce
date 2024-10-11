@@ -1,5 +1,5 @@
 <template>
-  <section class="space-y-5">
+  <section class="space-y-10">
     <ul class="space-y-4">
       <p class="text-xl font-poppins font-medium">Product Categories</p>
 
@@ -10,7 +10,7 @@
       >
         <p
           @click="toggleCategory(index, category.title)"
-          class="flex items-center mb-2 justify-between text-lg cursor-pointer hover:text-primary"
+          class="flex items-center justify-between text-base cursor-pointer hover:text-primary"
         >
           {{ category.title }}
           <span>
@@ -31,7 +31,7 @@
           <p
             v-for="subCategory in category.subCategories"
             :key="subCategory"
-            class="mb-2 hover:text-primary cursor-pointer capitalize"
+            class="my-2 hover:text-primary cursor-pointer capitalize"
           >
             {{ subCategory }}
           </p>
@@ -51,14 +51,14 @@
         v-model="price"
         class="w-full mb-2"
       />
-      <p class="text-slate-500 text-lg">Price : $0 - $500</p>
+      <p class="text-slate-500 text-base">Price : $0 - $500</p>
     </div>
     <div class="flex flex-col items-start">
       <label for="price-range" class="mb-2 text-lg font-poppins font-medium"
         >Any Size</label
       >
       <select
-        class="w-full border border-gray-300 text-slate-500 p-2 pr-8 rounded-md leading-tight focus:outline-none focus:border-gray-500"
+        class="w-full border border-gray-300 text-customSlate text-sm py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:border-gray-500"
       >
         <option value="">- Please select -</option>
         <option :value="size" v-for="size in sizes" :key="size">
@@ -72,7 +72,7 @@
         >Any Color</label
       >
       <select
-        class="w-full border border-gray-300 text-slate-500 p-2 pr-5 rounded-md leading-tight focus:outline-none focus:border-gray-500"
+        class="w-full border border-gray-300 text-customSlate text-sm py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:border-gray-500"
       >
         <option value="">- Please select -</option>
         <option :value="size" v-for="color in colors" :key="color">
@@ -81,7 +81,7 @@
       </select>
     </div>
 
-    <div class="flex items-center justify-center gap-3 !mt-6">
+    <div class="flex items-center justify-center gap-3 !mt-8">
       <BaseButton
         class="text-sm py-2.5 w-full font-semibold tracking-wide rounded-lg"
         >Filter</BaseButton

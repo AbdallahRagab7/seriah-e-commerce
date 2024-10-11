@@ -1,6 +1,6 @@
 <template>
   <div class="container py-[60px] mb-10">
-    <h1 class="my-8 heading1 text-center">Category Title</h1>
+    <h1 class="mb-12 heading1 text-center capitalize">collection title</h1>
 
     <!-- <div class="grid xs:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-14"> -->
     <div

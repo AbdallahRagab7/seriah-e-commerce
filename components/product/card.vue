@@ -1,6 +1,8 @@
 <template>
   <NuxtLink to="/product/1">
-    <div class="w-full max-w-sm mx-auto border border-gray-100 rounded-sm">
+    <div
+      class="w-full max-w-sm mx-auto border border-gray-100 rounded-sm max-sm:px-5"
+    >
       <div class="overflow-hidden !rounded-md">
         <NuxtImg
           class="max-h-[90%] max-w-[90%] rounded-md my-5 object-contain mix-blend-multiply mx-auto"
@@ -25,7 +27,7 @@
 
             <span class="text-sm text-black font-medium"> 699</span>
 
-            <span class="sale mx-1 text-sm line-through text-customSlate">
+            <span class="sale mx-1 text-xs line-through text-customSlate">
               $999
             </span>
           </div>

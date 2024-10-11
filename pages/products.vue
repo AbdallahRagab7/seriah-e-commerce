@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-[60px] mb-10">
+  <div class="myContainer py-[60px] mb-10">
     <h1 class="my-8 heading1 text-center">Products</h1>
 
     <!-- <div class="grid xs:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-14"> -->
@@ -23,10 +23,10 @@
     max-width: 99%;
   }
 }
-@media (min-width: 1023px) and (max-width: 1056px) {
-  :deep(.custom-btn) {
-    padding: 1.2px;
-    padding-top: 4px;
+@media (min-width: 1023px) and (max-width: 1156px) {
+  :deep(.add-cart) {
+    padding: 0px !important;
+    font-size: 10px !important;
   }
 }
 </style>

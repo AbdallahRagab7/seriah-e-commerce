@@ -1,6 +1,6 @@
 <template>
   <section class="myContainer py-[60px]">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-5 !pl-7">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Left Column - Find Us Here -->
       <div class="space-y-8">
         <h2 class="text-2xl font-medium">Find us here.</h2>

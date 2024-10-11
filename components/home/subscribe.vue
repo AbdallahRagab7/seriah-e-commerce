@@ -1,5 +1,5 @@
 <template>
-  <div class="py-12 pt-[60px] mt-20 container">
+  <div class="py-12 pt-[60px] mt-20 myContainer">
     <div class="max-w-xl mx-auto text-center">
       <h2 class="heading1">Get Discount Info</h2>
       <p class="text-customSlate text-base mt-4">
@@ -27,7 +27,7 @@
         </button> -->
         <div class="w-full flex items-center justify-center mt-7">
           <BaseButton
-            class="text-sm px-4 py-2.5 w-[30%] font-semibold tracking-wide rounded-lg"
+            class="text-sm p-3 w-[30%] font-semibold tracking-wide rounded-lg"
           >
             SUBSCRIBE
           </BaseButton>

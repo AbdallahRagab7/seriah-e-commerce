@@ -23,7 +23,7 @@
       </h1>
 
       <button
-        class="animated-btn custom-btn w-[185px] mt-2 text-[12px] sm:text-base font-semibold rounded-sm p-2 md:p-3"
+        class="animated-btn custom-btn w-[160px] mt-2 text-[12px] sm:text-base font-semibold rounded-sm p-2 md:p-3"
       >
         SHOP NOW
       </button>

@@ -1,9 +1,9 @@
 <template>
   <section class="shadow-[0_10px_15px_rgba(25,25,25,0.1)]">
     <nav
-      class="bg-[#ffff] myContainer p-4 flex justify-between items-center relative w-full"
+      class="bg-[#ffff] myContainer py-4 flex justify-between items-center relative w-full"
     >
-      <div class="ms-5">
+      <div class="">
         <NuxtLink to="/">
           <NuxtImg src="/edited-logo.png" class="h-10 object-cover" />
         </NuxtLink>
@@ -46,7 +46,7 @@
       <!-- w-[62%] sm:w-[53%] md:w-[60%] -->
       <!-- SideBar -->
       <aside
-        :class="open ? 'left-0' : 'left-[-100%] '"
+        :class="open ? 'left-0' : 'left-[-150%] '"
         class="flex items-center z-50 bg-white max-md:items-start md:justify-between md:flex-row flex-col w-[350px] md:w-[65%] max-md:fixed top-0 left-0 h-full transition-[left] duration-500 ease-in"
       >
         <!-- logo mobile view -->
@@ -61,7 +61,7 @@
           />
         </div>
 
-        <ul class="flex gap-5 max-md:flex-col max-md:w-full">
+        <ul class="flex gap-8 max-md:flex-col max-md:w-full">
           <li
             v-for="route in routes"
             :key="route.name"
