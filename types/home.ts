@@ -1,7 +1,18 @@
 export interface Slider {
-  image: IImage; // The image field is of type Image
-  title: string; // Title is a string
-  description: string; // Description is a string (optional)
-  buttonLabel: string; // Button label is a string (optional)
-  buttonUrl: string; // Button URL is a string (optional)
+  image: IImage;
+  title: string;
+  description: string;
+  buttonLabel: string;
+  buttonUrl: string;
+}
+
+export interface Home {
+  about: string;
+  mission: string;
+  whatsappNumber: string;
+  Instagram?: string;
+  youtube?: string;
+  shipping_policy?: string;
+  refund_policy?: string;
+  privacy_policy?: string;
 }

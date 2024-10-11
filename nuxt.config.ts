@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxtjs/google-fonts",
     "@nuxtjs/strapi",
-    // "@pinia/nuxt",
+    "@pinia/nuxt",
   ],
 
   googleFonts: {
@@ -16,9 +16,16 @@ export default defineNuxtConfig({
       Poppins: [400, 500, 600, 700],
     },
   },
+  runtimeConfig: {
+    // Make environment variables accessible here
+    public: {
+      STRAPI_URL: process.env.STRAPI_URL,
+      // Add more environment variables as needed
+    },
+  },
 
   strapi: {
-    url: "https://seirah.mbadr.dev",
+    url: process.env.STRAPI_URL,
     prefix: "/api",
     admin: "/admin",
     version: "v4",
@@ -26,13 +33,3 @@ export default defineNuxtConfig({
     cookieName: "strapi_jwt",
   },
 });
-
-// nuxt config
-// import type { NuxtConfig } from "@nuxt/types";
-
-// const config: NuxtConfig = {
-//   buildModules: ["@nuxt/typescript-build"],
-//   devtools: { enabled: true },
-// };
-
-// export default config;

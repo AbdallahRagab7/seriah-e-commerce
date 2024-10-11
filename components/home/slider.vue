@@ -9,7 +9,7 @@
           class="embla__slide p-5 relative"
         >
           <NuxtImg
-            :src="slider.attributes?.image?.data?.attributes?.url"
+            :src="`${$config.public.STRAPI_URL}${slider.attributes?.image?.data?.attributes?.url}`"
             alt="Slider Image"
             placeholer
             class="object-contain w-full rounded-sm"
@@ -124,7 +124,7 @@ const fakeSliders = [
 // GET DATA
 const { getSliders } = useHomePage();
 
-const { data: sliders, error } = useAsyncData("sliders", () => getSliders());
+const { data: sliders, error } = useAsyncData("sliderss", () => getSliders());
 
 // Set up Embla Carousel and state for dot navigation
 const [emblaRef, emblaApi] = emblaCarouselVue({ loop: false });
