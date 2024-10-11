@@ -9,8 +9,6 @@
 </template>
 
 <script setup lang="ts">
-const config = useRuntimeConfig();
-
 interface Props {
   HomeMission?: string;
 }
