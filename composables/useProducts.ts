@@ -3,7 +3,7 @@ import { toast } from "vue-sonner";
 export function useProducts() {
   const { find } = useStrapi();
 
-  const getProducts = async (pagination = { page: 1, pageSize: 5 }) => {
+  const getProducts = async (pagination = { page: 1, pageSize: 10 }) => {
     try {
       const response = await find<IProduct>("products", {
         populate: "*", // Populate all related data
