@@ -83,11 +83,11 @@
 
     <div class="flex items-center justify-center gap-3 !mt-8">
       <BaseButton
-        class="text-sm py-2.5 w-full font-semibold tracking-wide rounded-lg"
+        class="text-sm py-2.5 w-full font-semibold tracking-wide rounded-sm"
         >Filter</BaseButton
       >
       <BaseButton
-        class="w-full text-sm !bg-transparent hover:!bg-secondary hover:!text-white !text-secondary border border-secondary py-2.5 font-semibold tracking-wide rounded-lg"
+        class="w-full text-sm !bg-transparent hover:!bg-secondary hover:!text-white !text-secondary border border-secondary py-2.5 font-semibold tracking-wide rounded-sm"
         >Reset Filter</BaseButton
       >
     </div>

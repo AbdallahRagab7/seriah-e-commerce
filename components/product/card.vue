@@ -44,7 +44,7 @@
 
           <a
             href="#"
-            class="add-cart text-[bc8246] relative text-sm font-medium hover:text-primary"
+            class="add-cart text-[bc8246] relative text-[13px] font-medium hover:text-primary"
             >+ Add to Cart</a
           >
         </div>

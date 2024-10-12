@@ -4,7 +4,7 @@
 
     <!-- <div class="grid xs:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-14"> -->
     <div
-      class="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6 xl:gap-14"
+      class="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6 md:gap-3 lg:gap-8"
     >
       <ProductCard v-for="i in 6" :key="i" />
     </div>
