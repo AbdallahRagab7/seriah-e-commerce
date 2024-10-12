@@ -6,7 +6,30 @@
     <div
       class="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6 md:gap-3 lg:gap-8"
     >
-      <ProductCard v-for="i in 6" :key="i" />
+      <ProductCard
+        v-for="product in products.slice(0, 8)"
+        :key="product.id"
+        :product="product"
+      />
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const { getProducts } = useProducts();
+
+const {
+  data: products,
+  error,
+  status,
+} = useAsyncData("products", () => getProducts());
+</script>
+
+<style scoped>
+@media (min-width: 1023px) and (max-width: 1156px) {
+  :deep(.add-cart) {
+    padding: 0.05px !important;
+    font-size: 10px !important;
+  }
+}
+</style>

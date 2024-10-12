@@ -5,7 +5,7 @@
     <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-10 2xl:gap-14">
       <div
         v-for="collection in collections"
-        :key="collection"
+        :key="collection.id"
         class="shadow-md rounded-md overflow-hidden max-sm:px-8"
       >
         <NuxtLink to="/collection/1">
@@ -26,7 +26,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const Fakecollections = [
   {
     title: "Men's Clothing",

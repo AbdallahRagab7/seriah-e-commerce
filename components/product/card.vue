@@ -6,7 +6,7 @@
       <div class="overflow-hidden !rounded-md">
         <NuxtImg
           class="max-h-[90%] max-w-[90%] rounded-md my-5 object-contain mix-blend-multiply mx-auto"
-          src="/apple-watch.png"
+          :src="`${$config.public.STRAPI_URL}${product?.attributes?.main_image?.data?.attributes?.url}`"
           alt="product image"
         />
       </div>
@@ -15,9 +15,9 @@
         <a href="#">
           <!-- font-poppins -->
           <h5
-            class="text-sm mb-5 text-customSlate hover:text-primary line-clamp-4"
+            class="text-base mb-5 text-customSlate hover:text-primary line-clamp-4"
           >
-            Apple Watch Series 7 GPS, Aluminium Case, Apple Watch
+            {{ product?.attributes?.name }}
           </h5>
         </a>
 
@@ -25,22 +25,14 @@
           <div class="text-lg text-gray-900">
             <span class="text-[11px] text-black font-medium"> EGP </span>
 
-            <span class="text-sm text-black font-medium"> 699</span>
+            <span class="text-sm text-black font-medium">
+              {{ product?.attributes?.price }}</span
+            >
 
             <span class="sale mx-1 text-xs line-through text-customSlate">
-              $999
+              {{ product?.attributes?.sale_price }}
             </span>
           </div>
-
-          <!-- <div class="flex items-center space-x-4 text-gray-500">
-            <span class="text-xs line-through">$50.00</span>
-            <span class="text-base text-black">$35.00</span>
-          </div> -->
-          <!-- <a
-            href="#"
-            class="custom-btn border-secondary border font-medium rounded-lg text-sm p-[5px] text-center"
-            >Add to cart</a
-          > -->
 
           <a
             href="#"
@@ -52,6 +44,14 @@
     </div>
   </NuxtLink>
 </template>
+
+<script setup lang="ts">
+interface Props {
+  product: IProduct;
+}
+
+const props = defineProps<Props>();
+</script>
 
 <style scoped>
 /* .custom-btn {
