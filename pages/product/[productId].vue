@@ -37,8 +37,13 @@
         </div>
 
         <div class="flex items-center space-x-4 text-gray-500">
-          <span class="text-xs line-through">$50.00</span>
-          <span class="text-base text-black">$35.00</span>
+          <span class="text-xs">
+            <span class="currency mr-1">EGP</span>
+            <span class="line-through"> 50.00 </span>
+          </span>
+          <span class="text-base text-black"
+            ><span class="currency mr-1">EGP</span>35.00</span
+          >
         </div>
         <div class="flex items-center space-x-2">
           <label for="quantity" class="text-customSlate text-sm"

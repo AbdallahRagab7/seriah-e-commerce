@@ -1,4 +1,4 @@
-import type { Slider, Home } from "~/types/home";
+import type { Slider, Home, Collection } from "~/types/home";
 import { toast } from "vue-sonner";
 
 type Strapi4ResponseData<T> = {
@@ -31,6 +31,20 @@ export function useHomePage() {
       throw new Error((error as Error)?.message || "Failed to fetch home-page");
     }
   };
+  const getCollections = async () => {
+    try {
+      const response = await find<Collection>("collections", {
+        populate: "*",
+      });
+      return response?.data;
+    } catch (error: any) {
+      toast.error(error.message || "Failed to fetch collections");
 
-  return { getSliders, getHome };
+      throw new Error(
+        (error as Error)?.message || "Failed to fetch collections"
+      );
+    }
+  };
+
+  return { getSliders, getHome, getCollections };
 }

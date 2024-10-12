@@ -15,13 +15,13 @@
             class="object-contain w-full rounded-sm"
           />
 
-          <div class="w-full absolute top-[30%] left-[10%] max-w-[400px]">
+          <div class="w-full absolute top-[35%] left-[10%] max-w-[400px]">
             <h1
               class="animated-heading !mb-[14px] text-stroke lg:text-[36px] !text-[#32323] sm:text-3xl font-semibold md:mb-2"
             >
               {{ slider.attributes.title }}
             </h1>
-            <p class="text-[#32323] text-sm mb-6">
+            <p class="text-[#32323] text-sm mb-8">
               {{ slider.attributes.description }}
             </p>
 
@@ -124,7 +124,7 @@ const fakeSliders = [
 // GET DATA
 const { getSliders } = useHomePage();
 
-const { data: sliders, error } = useAsyncData("sliderss", () => getSliders());
+const { data: sliders, error } = useAsyncData("sliders", () => getSliders());
 
 // Set up Embla Carousel and state for dot navigation
 const [emblaRef, emblaApi] = emblaCarouselVue({ loop: false });
