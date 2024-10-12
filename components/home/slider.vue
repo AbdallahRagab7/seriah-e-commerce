@@ -1,18 +1,25 @@
 <template>
-  <div class="relative p-2">
+  <div class="relative">
     <!-- Embla Carousel -->
     <div class="embla max-h-[500px]" ref="emblaRef">
       <div class="embla__container">
         <div
           v-for="slider in sliders"
           :key="slider.id"
-          class="embla__slide p-5 relative"
+          class="embla__slide relative w-full"
         >
+          <NuxtImg
+            v-if="status === 'pending'"
+            src="/myPlaceHolder.jpg"
+            alt="Slider Image"
+            placeholer
+            class="object-contain w-full rounded-sm max-h-[450px]"
+          />
+          <!-- :src="`${$config.public.STRAPI_URL}${slider.attributes?.image?.data?.attributes?.url}`" -->
           <NuxtImg
             :src="`${$config.public.STRAPI_URL}${slider.attributes?.image?.data?.attributes?.url}`"
             alt="Slider Image"
-            placeholer
-            class="object-contain w-full rounded-sm"
+            class="object-cover w-full rounded-sm max-h-[520px]"
           />
 
           <div class="w-full absolute top-[35%] left-[10%] max-w-[400px]">
@@ -27,7 +34,7 @@
 
             <NuxtLink
               :to="slider.attributes.buttonUrl"
-              class="animated-btn custom-btn w-[160px] mt-2 text-[12px] sm:text-base font-semibold rounded-sm p-2 md:p-3"
+              class="animated-btn custom-btn w-[160px] mt-2 text-[12px] sm:text-base font-medium rounded-sm p-2 md:p-3"
             >
               {{ slider.attributes.buttonLabel }}
             </NuxtLink>
@@ -54,77 +61,14 @@ import emblaCarouselVue from "embla-carousel-vue";
 
 const images = ["/cover3.png", "/cover.png", "/cover.png"];
 
-const fakeSliders = [
-  {
-    image: {
-      data: {
-        id: 1,
-        attributes: {
-          name: "Image 1",
-          alternativeText: "An image of the first slider.",
-          url: "/cover3.png", // Replace with your image URL
-        },
-      },
-    },
-    title: "First Slider",
-    description: "This is the description for the first slider.",
-    buttonLabel: "Learn More",
-    buttonUrl: "https://example.com/first",
-  },
-  {
-    image: {
-      data: {
-        id: 1,
-        attributes: {
-          name: "Image 1",
-          alternativeText: "An image of the first slider.",
-          url: "/cover.png", // Replace with your image URL
-        },
-      },
-    }, // Replace with your image URL
-    title: "Second Slider",
-    description: "This is the description for the second slider.",
-    buttonLabel: "Discover More",
-    buttonUrl: "https://example.com/second",
-  },
-  {
-    image: {
-      data: {
-        id: 1,
-        attributes: {
-          name: "Image 1",
-          alternativeText: "An image of the first slider.",
-          url: "/cover.png", // Replace with your image URL
-        },
-      },
-    }, // Replace with your image URL
-    title: "Third Slider",
-    description: "This is the description for the third slider.",
-    buttonLabel: "Get Started",
-    buttonUrl: "https://example.com/third",
-  },
-  {
-    image: {
-      data: {
-        id: 1,
-        attributes: {
-          name: "Image 1",
-          alternativeText: "An image of the first slider.",
-          url: "/cover.png", // Replace with your image URL
-        },
-      },
-    }, // Replace with your image URL
-    title: "Third Slider",
-    description: "This is the description for the fourth slider.",
-    buttonLabel: "Get Started",
-    buttonUrl: "https://example.com/third",
-  },
-];
-
 // GET DATA
 const { getSliders } = useHomePage();
 
-const { data: sliders, error } = useAsyncData("sliders", () => getSliders());
+const {
+  data: sliders,
+  error,
+  status,
+} = useAsyncData("sliders", () => getSliders());
 
 // Set up Embla Carousel and state for dot navigation
 const [emblaRef, emblaApi] = emblaCarouselVue({ loop: false });
@@ -182,14 +126,14 @@ watchEffect(() => {
   height: 15px;
   margin: 0 5px;
   border-radius: 50%;
-  border: 2px solid white;
+  border: 2px solid rgb(114, 106, 106);
   background-color: transparent;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .dot-button.active {
-  background-color: white;
+  background-color: rgb(28, 29, 27);
 }
 
 .animated-heading {
