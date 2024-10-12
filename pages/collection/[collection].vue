@@ -11,11 +11,25 @@
       <div
         class="md:col-span-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 2xl:gap-8"
       >
-        <ProductCard v-for="i in 6" :key="i" />
+        <ProductCard
+          v-for="product in products?.data.slice(0, 8)"
+          :key="product.id"
+          :product="product"
+        />
       </div>
     </section>
   </div>
 </template>
+
+<script setup lang="ts">
+const { getProducts } = useProducts();
+
+const {
+  data: products,
+  error,
+  status,
+} = useAsyncData("products", () => getProducts());
+</script>
 
 <style scoped>
 @media (min-width: 1023px) and (max-width: 1156px) {

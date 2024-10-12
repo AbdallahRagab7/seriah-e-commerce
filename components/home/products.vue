@@ -7,7 +7,7 @@
       class="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6 md:gap-3 lg:gap-8"
     >
       <ProductCard
-        v-for="product in products.slice(0, 8)"
+        v-for="product in products?.data?.slice(0, 8)"
         :key="product.id"
         :product="product"
       />

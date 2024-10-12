@@ -13,17 +13,43 @@
         class="md:col-span-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 2xl:gap-8"
       >
         <ProductCard
-          v-for="product in products"
+          v-for="product in products?.data"
           :key="product.id"
           :product="product"
         />
       </div>
     </section>
+    <!-- dh tmam -->
+    <h1>{{ rowsPerPage }}</h1>
+
+    <h1>{{ currentPage }}</h1>
+
+    <div class="w-full md:w-[75%] ml-auto mt-8">
+      <Paginator
+        :rows="rowsPerPage"
+        :totalRecords="products?.meta?.pagination?.total"
+        :rowsPerPageOptions="[10, 20, 30]"
+        @update:rows="onRowsPerPageChange"
+        @page="onPageChange"
+      ></Paginator>
+    </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 const { getProducts } = useProducts();
+const rowsPerPage = ref(10); // Default rows per page
+const currentPage = ref(0); // Current page state
+
+const onRowsPerPageChange = (value) => {
+  rowsPerPage.value = value; // Update rows per page
+  currentPage.value = 0; // Reset to the first page
+};
+
+// Event handler when the page changes
+const onPageChange = (event) => {
+  currentPage.value = event.page; // Update the current page
+};
 
 const {
   data: products,

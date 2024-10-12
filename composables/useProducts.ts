@@ -8,7 +8,7 @@ export function useProducts() {
       const response = await find<IProduct>("products", {
         populate: "*", // Populate all related data
       });
-      return response?.data;
+      return response; // here return response to use meta in pagination
     } catch (error: any) {
       toast.error(error.message || "Failed to fetch products");
 
