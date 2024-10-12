@@ -20,15 +20,20 @@
       </div>
     </section>
     <!-- dh tmam -->
-    <h1>{{ rowsPerPage }}</h1>
-
+    <h1>{{ componentPaginationObject }} component pagination object</h1>
     <h1>{{ currentPage }}</h1>
+    <h1>{{ pageSize }} rows per page</h1>
+
+    <h1>{{ pageNumber }} page number</h1>
+    <h1>{{ pagination }} my Pagination Object</h1>
 
     <div class="w-full md:w-[75%] ml-auto mt-8">
+      <!-- :totalRecords="products?.meta?.pagination?.total" -->
       <Paginator
-        :rows="rowsPerPage"
-        :totalRecords="products?.meta?.pagination?.total"
-        :rowsPerPageOptions="[10, 20, 30]"
+        :rows="pageSize"
+        :first="currentPage"
+        :totalRecords="60"
+        :rowsPerPageOptions="[5, 10, 20, 30]"
         @update:rows="onRowsPerPageChange"
         @page="onPageChange"
       ></Paginator>
@@ -38,17 +43,34 @@
 
 <script setup>
 const { getProducts } = useProducts();
-const rowsPerPage = ref(10); // Default rows per page
-const currentPage = ref(0); // Current page state
+const componentPaginationObject = ref({});
+
+const pageSize = ref(10);
+const pageNumber = ref(1);
+const currentPage = ref(0);
+// current page btt7sb 3la 7sb el page size
+// setTimeout(() => {
+//   currentPage.value = 1;
+// }, 4000);
+
+const pagination = computed(() => {
+  return {
+    pageNumber: pageNumber.value,
+    pageSize: pageSize.value,
+  };
+});
 
 const onRowsPerPageChange = (value) => {
-  rowsPerPage.value = value; // Update rows per page
-  currentPage.value = 0; // Reset to the first page
+  pageSize.value = value; // Update rows per page
+  currentPage.value = 0; // reset to first page
+  pageNumber.value = 1; // Reset to the first page
 };
 
-// Event handler when the page changes
 const onPageChange = (event) => {
-  currentPage.value = event.page; // Update the current page
+  componentPaginationObject.value = event; // Update the current page
+  // +1 because default page is 0 in component
+  pageNumber.value = event.page + 1;
+  // Update my pagination object
 };
 
 const {

@@ -3,10 +3,11 @@ import { toast } from "vue-sonner";
 export function useProducts() {
   const { find } = useStrapi();
 
-  const getProducts = async () => {
+  const getProducts = async (pagination = { page: 1, pageSize: 5 }) => {
     try {
       const response = await find<IProduct>("products", {
         populate: "*", // Populate all related data
+        pagination,
       });
       return response; // here return response to use meta in pagination
     } catch (error: any) {
