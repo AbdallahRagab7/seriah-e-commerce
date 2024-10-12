@@ -2,7 +2,7 @@
   <div class="grid grid-cols-3 items-center gap-4 mb-12">
     <div class="col-span-2 flex items-center gap-4">
       <!-- to make image size static , don't shrink when resizing -->
-      <div class="w-24 h-24 shrink-0 bg-white p-2 rounded-md">
+      <div class="w-24 h-24 shrink-0 p-2 rounded-md">
         <NuxtImg src="/apple-watch.png" class="w-full h-full object-contain" />
       </div>
 

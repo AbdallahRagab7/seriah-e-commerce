@@ -98,7 +98,7 @@
         </NuxtLink> -->
           <NuxtLink
             to="/profile"
-            class="text-medium !text-[15px] hover:text-primary max-md:ml-5 max-md:mt-5 max-md:!font-semibold"
+            class="text-medium !text-[15px] hover:text-primary max-md:ml-5 max-md:mt-10 max-md:!font-semibold"
             >My Account</NuxtLink
           >
         </div>
