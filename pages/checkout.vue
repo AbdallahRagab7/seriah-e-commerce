@@ -1,5 +1,5 @@
 <template>
-  <div class="container xl:p-[2rem] bg-white py-10">
+  <div class="myContainer bg-white py-[60px] mt-10">
     <div class="grid md:grid-cols-3 gap-6">
       <!--START ITEMS CONTAINER -->
       <div class="md:col-span-2 bg-gray-50 p-4">
