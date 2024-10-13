@@ -1,13 +1,8 @@
 import type { Slider, Home, Collection } from "~/types/home";
 import { toast } from "vue-sonner";
 
-type Strapi4ResponseData<T> = {
-  id: number;
-  attributes: T;
-};
-
 export function useHomePage() {
-  const { find, findOne } = useStrapi();
+  const { find, findOne, create } = useStrapi();
 
   const getSliders = async () => {
     try {
@@ -46,5 +41,21 @@ export function useHomePage() {
     }
   };
 
-  return { getSliders, getHome, getCollections };
+  const createSubscribe = async (email: string) => {
+    try {
+      const response = await create<any>("restaurants", {
+        data: {
+          email: email,
+        },
+      });
+
+      return response?.data;
+    } catch (error: any) {
+      toast.error(error.message || "Failed to subscribe`");
+
+      throw new Error((error as Error)?.message || "Failed to subscribe`");
+    }
+  };
+
+  return { getSliders, getHome, getCollections, createSubscribe };
 }

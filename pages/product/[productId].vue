@@ -22,7 +22,7 @@
 
       <section class="space-y-4">
         <h1 class="text-2xl font-medium text-customGray">
-          <!-- {{ product?.data.attributes.name }} -->
+          {{ product?.data.attributes.name }}
 
           <span
             class="text-green-500 inline-flex items-center gap-[2px] text-xs font-normal"
@@ -117,11 +117,11 @@
             <div
               class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
             >
-              <!-- <Icon name="iconamoon:arrow-down-2-thin " class="text-2xl" /> -->
               <Icon name="iconamoon:arrow-down-2-thin" class="text-2xl" />
             </div>
           </div>
         </div>
+        <!-- End of color -->
         <BaseButton
           class="w-full py-3 text-white rounded-md flex items-center justify-center"
         >
@@ -145,16 +145,17 @@ const sizes = ["Small", "Medium", "Large", "X Large"];
 
 const route = useRoute();
 const { getProduct } = useProducts();
-const { data: product, error } = useAsyncData("product", () =>
+
+const { data: product, error } = await useAsyncData("product", () =>
   getProduct(route.params.productId as any)
 );
 
 const productImages = computed(() => {
   const main_image =
     product?.value?.data?.attributes?.main_image?.data?.attributes?.url;
-  let images = product?.value?.data.attributes.images.data.map((image: any) => {
-    return image.attributes.url;
-  });
+  let images = product?.value?.data?.attributes?.images?.data || [];
+
+  images = images.map((image: any) => image.attributes.url) || [];
   return [main_image, ...images];
 });
 
