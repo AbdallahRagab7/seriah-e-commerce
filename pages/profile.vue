@@ -60,9 +60,7 @@
             <!-- <ProfileAccount /> -->
             <!-- <ProfileOrders /> -->
             <!-- <ProfileChangePassword /> -->
-            <keep-alive>
-              <component :is="ProfileChangePassword" />
-            </keep-alive>
+            <Component :is="currentComponentToRender" />
           </section>
         </div>
       </div>
@@ -70,9 +68,20 @@
   </section>
 </template>
 
-<script setup>
-import ProfileAccount from "@/components/profile/account.vue";
-import ProfileOrders from "@/components/profile/orders.vue";
-import ProfileChangePassword from "@/components/profile/changePassword.vue";
+<script setup lang="ts">
+import ProfileAccount from "~/components/profile/account.vue";
+import ProfileOrders from "~/components/profile/orders.vue";
+import ProfileChangePassword from "~/components/profile/changePassword.vue";
+// const currentComponent = ref("ProfileAccount");
 const currentComponent = ref("ProfileAccount");
+const currentComponentToRender = ref(ProfileAccount);
+watch(currentComponent, () => {
+  if (currentComponent.value === "ProfileAccount") {
+    currentComponentToRender.value = ProfileAccount;
+  } else if (currentComponent.value === "ProfileOrders") {
+    currentComponentToRender.value = ProfileOrders;
+  } else if (currentComponent.value === "ProfileChangePassword") {
+    currentComponentToRender.value = ProfileChangePassword;
+  }
+});
 </script>
