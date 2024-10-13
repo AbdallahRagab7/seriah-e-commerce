@@ -6,7 +6,7 @@
       Change Password
     </h1>
     <form class="bg-white p-5 border border-[#eceaea] rounded-sm space-y-5">
-      <div class="px-[70px]">
+      <div class="px-[50px]">
         <label class="block mb-2 text-sm font-medium text-gray-700"
           >Old Password</label
         >
@@ -18,7 +18,7 @@
         />
       </div>
 
-      <div class="px-[70px]">
+      <div class="px-[50px]">
         <label class="block mb-2 text-sm font-medium text-gray-700"
           >New Password</label
         >
@@ -30,7 +30,7 @@
         />
       </div>
 
-      <div class="px-[70px]">
+      <div class="px-[50px]">
         <label class="block mb-2 text-sm font-medium text-gray-700"
           >Confirm Password</label
         >

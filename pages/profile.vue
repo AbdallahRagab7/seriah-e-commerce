@@ -56,7 +56,7 @@
         <!-- Main Content -->
         <div class="md:col-span-2">
           <!-- <component :is="currentComponent" /> -->
-          <section class="p-1 lg:px-4">
+          <section class="">
             <!-- <ProfileAccount /> -->
             <!-- <ProfileOrders /> -->
             <!-- <ProfileChangePassword /> -->

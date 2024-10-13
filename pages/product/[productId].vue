@@ -3,15 +3,15 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-9">
       <section class="space-y-6">
         <NuxtImg
-          :src="activeImage"
           alt="Product"
           class="w-full rounded-md shadow-md object-cover"
+          :src="`${$config.public.STRAPI_URL}${activeImage}`"
         />
         <div class="flex flex-wrap gap-5">
           <NuxtImg
             v-for="image in productImages"
             :key="image"
-            :src="image"
+            :src="`${$config.public.STRAPI_URL}${image}`"
             @click="activeImage = image"
             alt="ProductImage"
             class="w-1/6 h-full cursor-pointer object-contain rounded-md shadow-md"
@@ -22,7 +22,8 @@
 
       <section class="space-y-4">
         <h1 class="text-2xl font-medium text-customGray">
-          Men's Regular T-shirt
+          <!-- {{ product?.data.attributes.name }} -->
+
           <span
             class="text-green-500 inline-flex items-center gap-[2px] text-xs font-normal"
           >
@@ -32,17 +33,22 @@
         </h1>
         <div class="mt-8 space-y-4">
           <p class="text-customSlate text-sm">
-            {{ description.substring(0, 200) }}
+            {{ product?.data.attributes.short_description }}
           </p>
         </div>
 
         <div class="flex items-center space-x-4 text-gray-500">
           <span class="text-xs">
+            <!-- sale price -->
             <span class="currency mr-1">EGP</span>
-            <span class="line-through"> 50.00 </span>
+            <span class="line-through">
+              {{ product?.data.attributes.sale_price }}
+            </span>
           </span>
+          <!-- current price -->
           <span class="text-base text-black"
-            ><span class="currency mr-1">EGP</span>35.00</span
+            ><span class="currency mr-1">EGP</span
+            >{{ product?.data.attributes.price }}</span
           >
         </div>
         <div class="flex items-center space-x-2">
@@ -127,32 +133,33 @@
     <div class="mt-8 space-y-4 max-w-[80%] md:max-w-[50%]">
       <h2 class="text-xl font-semibold">Description</h2>
       <p class="text-customSlate text-sm">
-        {{ description }}
+        {{ product?.data.attributes.long_decription }}
       </p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const productImages = [
-  "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080",
-  "https://images.unsplash.com/photo-1496957961599-e35b69ef5d7c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080",
-  "https://images.unsplash.com/photo-1528148343865-51218c4a13e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwzfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080",
-];
-const description = `  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non erat
-quam. Vestibulum aliquam nibh dui, et aliquet nibh euismod quis. Lorem
-ipsum dolor sit amet, consectetur adipiscing elit. Morbi non erat quam.
-Vestibulum aliquam nibh dui, et aliquet nibh euismod quis. Lorem ipsum
-dolor sit amet, consectetur adipiscing elit. Morbi non erat quam.
-Vestibulum aliquam nibh dui, et aliquet nibh euismod quis. Vestibulum
-aliquam nibh dui, et aliquet nibh euismod quis. Lorem ipsum dolor sit
-amet, consectetur adipiscing elit. Morbi non erat quam. Vestibulum
-aliquam nibh dui, et aliquet nibh euismod quis.`;
-
 const colors = ["Red", "Green", "Blue", "Gray"];
 const sizes = ["Small", "Medium", "Large", "X Large"];
 
-const activeImage = ref<string>(productImages[0]);
+const route = useRoute();
+const { getProduct } = useProducts();
+const { data: product, error } = useAsyncData("product", () =>
+  getProduct(route.params.productId as any)
+);
+
+const productImages = computed(() => {
+  const main_image =
+    product?.value?.data?.attributes?.main_image?.data?.attributes?.url;
+  let images = product?.value?.data.attributes.images.data.map((image: any) => {
+    return image.attributes.url;
+  });
+  return [main_image, ...images];
+});
+
+const activeImage = ref<string>(productImages.value[0]);
+
 const quantityCounter = ref<number>(1);
 const decreaseCounter = () => {
   if (quantityCounter.value > 1) {

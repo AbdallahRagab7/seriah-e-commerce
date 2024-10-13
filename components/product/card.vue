@@ -1,8 +1,8 @@
 <template>
-  <NuxtLink to="/product/1">
-    <div
-      class="w-full max-w-sm mx-auto border border-gray-100 rounded-sm max-sm:px-5"
-    >
+  <div
+    class="w-full max-w-sm mx-auto border border-gray-100 rounded-sm max-sm:px-5"
+  >
+    <NuxtLink :to="`product/${product?.id}`">
       <div class="overflow-hidden !rounded-md">
         <NuxtImg
           class="max-h-[90%] max-w-[90%] rounded-md my-5 object-contain mix-blend-multiply mx-auto"
@@ -10,39 +10,39 @@
           alt="product image"
         />
       </div>
+    </NuxtLink>
 
-      <div class="px-5 pb-5">
-        <a href="#">
-          <!-- font-poppins -->
-          <h5
-            class="text-base mb-5 text-customSlate hover:text-primary line-clamp-4"
+    <div class="px-5 pb-5">
+      <NuxtLink :to="`product/${product?.id}`">
+        <!-- font-poppins -->
+        <h5
+          class="text-base mb-5 text-customSlate hover:text-primary line-clamp-4"
+        >
+          {{ product?.attributes?.name }}
+        </h5>
+      </NuxtLink>
+
+      <div class="flex items-center justify-between">
+        <div class="text-lg text-gray-900">
+          <span class="text-[11px] text-black font-medium"> EGP </span>
+
+          <span class="text-sm text-black font-medium">
+            {{ product?.attributes?.price }}</span
           >
-            {{ product?.attributes?.name }}
-          </h5>
-        </a>
 
-        <div class="flex items-center justify-between">
-          <div class="text-lg text-gray-900">
-            <span class="text-[11px] text-black font-medium"> EGP </span>
-
-            <span class="text-sm text-black font-medium">
-              {{ product?.attributes?.price }}</span
-            >
-
-            <span class="sale mx-1 text-xs line-through text-customSlate">
-              {{ product?.attributes?.sale_price }}
-            </span>
-          </div>
-
-          <a
-            href="#"
-            class="add-cart text-[bc8246] relative text-[13px] font-medium hover:text-primary"
-            >+ Add to Cart</a
-          >
+          <span class="sale mx-1 text-xs line-through text-customSlate">
+            {{ product?.attributes?.sale_price }}
+          </span>
         </div>
+
+        <a
+          href="#"
+          class="add-cart text-[bc8246] relative text-[13px] font-medium hover:text-primary"
+          >+ Add to Cart</a
+        >
       </div>
     </div>
-  </NuxtLink>
+  </div>
 </template>
 
 <script setup lang="ts">

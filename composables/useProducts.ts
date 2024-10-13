@@ -1,7 +1,7 @@
 import { toast } from "vue-sonner";
 
 export function useProducts() {
-  const { find } = useStrapi();
+  const { find, findOne } = useStrapi();
 
   const getProducts = async (pagination = { page: 1, pageSize: 10 }) => {
     try {
@@ -16,6 +16,18 @@ export function useProducts() {
       throw new Error((error as Error)?.message || "Failed to fetch products");
     }
   };
+  const getProduct = async (productId: number) => {
+    try {
+      const response = await findOne<IProduct>("products", productId, {
+        populate: "*", // Populate all related data
+      });
+      return response; // here return response to use meta in pagination
+    } catch (error: any) {
+      toast.error(error.message || "Failed to fetch product");
 
-  return { getProducts };
+      throw new Error((error as Error)?.message || "Failed to fetch product");
+    }
+  };
+
+  return { getProducts, getProduct };
 }
