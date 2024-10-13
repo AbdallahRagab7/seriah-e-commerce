@@ -7,12 +7,13 @@
         special offers, and other discount information.
       </p>
 
-      <form class="mt-6">
+      <form class="mt-6" @submit.prevent="subscribe">
         <label for="email" class="sr-only">Email address</label>
         <input
           id="email"
           name="email"
           type="email"
+          v-model="email"
           autocomplete="email"
           required
           class="w-full px-4 py-3 text-center border-0 focus:border-2 rounded-md border-b-2 border-gray-300 focus:outline-none sm:text-sm"
@@ -28,6 +29,7 @@
         <div class="w-full flex items-center justify-center mt-7">
           <BaseButton
             class="text-sm p-3 w-[30%] font-semibold tracking-wide rounded-lg"
+            :isLoading="loading"
           >
             SUBSCRIBE
           </BaseButton>
@@ -36,3 +38,14 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const { createSubscribe } = useHomePage();
+const email = ref("");
+const loading = ref(false);
+const subscribe = async () => {
+  loading.value = true;
+  await createSubscribe(email.value);
+  loading.value = false;
+};
+</script>

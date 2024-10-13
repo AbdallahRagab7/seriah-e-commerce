@@ -9,23 +9,23 @@ export function useProducts() {
         populate: "*", // Populate all related data
         pagination,
       });
-      return response; // here return response to use meta in pagination
+      return response;
     } catch (error: any) {
-      toast.error(error.message || "Failed to fetch products");
+      toast.error(error.error.message || "Failed to fetch products");
 
-      throw new Error((error as Error)?.message || "Failed to fetch products");
+      // throw new Error(error.error.message || "Failed to fetch products");
     }
   };
   const getProduct = async (productId: number) => {
     try {
       const response = await findOne<IProduct>("products", productId, {
-        populate: "*", // Populate all related data
+        populate: "*",
       });
-      return response; // here return response to use meta in pagination
+      return response;
     } catch (error: any) {
-      toast.error(error.message || "Failed to fetch product");
+      toast.error(error.error.message || "Failed to fetch product");
 
-      throw new Error((error as Error)?.message || "Failed to fetch product");
+      // throw new Error(error.error.message || "Failed to fetch product");
     }
   };
 

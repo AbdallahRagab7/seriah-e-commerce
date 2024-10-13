@@ -1,5 +1,8 @@
 <template>
-  <button class="custom-btn disabled:cursor-not-allowed" :disabled="isLoading">
+  <button
+    class="custom-btn disabled:cursor-not-allowed flex items-center justify-center"
+    :disabled="isLoading"
+  >
     <Icon
       v-if="isLoading"
       class="text-white text-xl"
