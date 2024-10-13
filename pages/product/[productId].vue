@@ -20,7 +20,7 @@
         </div>
       </section>
 
-      <section class="space-y-4">
+      <section class="space-y-6">
         <h1 class="text-2xl font-medium text-customGray">
           {{ product?.data.attributes.name }}
 
@@ -46,7 +46,7 @@
             </span>
           </span>
           <!-- current price -->
-          <span class="text-base text-black"
+          <span class="text-lg text-black"
             ><span class="currency mr-1">EGP</span
             >{{ product?.data.attributes.price }}</span
           >
@@ -75,58 +75,14 @@
             </button>
           </div>
         </div>
-
-        <div class="space-y-2">
-          <h2 class="customLabel">
-            Select Size <span class="text-red-600">*</span>
-          </h2>
-          <div class="relative">
-            <select
-              class="block appearance-none w-full border border-gray-300 text-customSlate text-sm py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:border-gray-500"
-            >
-              <option value="">- Please select -</option>
-              <option :value="size" v-for="size in sizes" :key="size">
-                {{ size }}
-              </option>
-            </select>
-            <div
-              class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-            >
-              <Icon name="iconamoon:arrow-down-2-thin " class="text-2xl" />
-            </div>
-          </div>
-        </div>
-
-        <!-- Select Color Dropdown -->
-        <div class="space-y-2">
-          <label class="customLabel"
-            >Select Color <span class="text-red-600">*</span></label
+        <!-- <div class="!mt-16 max-md:!mt-10"> -->
+        <div class="!mt-10 lg:!mt-20 2xl:!mt-36">
+          <BaseButton
+            class="w-full py-3 text-white rounded-md flex items-center justify-center"
           >
-          <div class="relative">
-            <select
-              id="color"
-              class="block appearance-none w-full border border-gray-300 text-customSlate text-sm py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:border-gray-500"
-            >
-              <option value="">- Please select -</option>
-              <option :value="color" v-for="color in colors" :key="color">
-                {{ color }}
-              </option>
-              <Icon name="iconamoon:arrow-down-2-thin " class="text-2xl" />
-            </select>
-
-            <div
-              class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-            >
-              <Icon name="iconamoon:arrow-down-2-thin" class="text-2xl" />
-            </div>
-          </div>
+            <Icon name="iconamoon:sign-plus" /> Add to Cart
+          </BaseButton>
         </div>
-        <!-- End of color -->
-        <BaseButton
-          class="w-full py-3 text-white rounded-md flex items-center justify-center"
-        >
-          <Icon name="iconamoon:sign-plus" /> Add to Cart
-        </BaseButton>
       </section>
     </div>
 
@@ -140,9 +96,6 @@
 </template>
 
 <script setup lang="ts">
-const colors = ["Red", "Green", "Blue", "Gray"];
-const sizes = ["Small", "Medium", "Large", "X Large"];
-
 const route = useRoute();
 const { getProduct } = useProducts();
 
