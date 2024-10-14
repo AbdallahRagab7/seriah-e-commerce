@@ -2,7 +2,13 @@
   <div>
     <!-- <NuxtLoadingIndicator color="rgba(236, 28, 36, 1)" /> -->
 
-    <Toaster position="top-right" :expand="false" richColors />
+    <Toaster
+      position="top-right"
+      :expand="false"
+      richColors
+      closeButton
+      :duration="1600"
+    />
 
     <NuxtLayout>
       <NuxtPage />

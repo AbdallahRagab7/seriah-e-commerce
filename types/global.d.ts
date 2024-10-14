@@ -9,7 +9,7 @@ export interface Image {
   };
 }
 
-export interface myProduct {
+export interface Product {
   name: string;
   main_image: IImage;
   is_featured: boolean;
@@ -22,11 +22,6 @@ export interface myProduct {
   subscriber?: string;
   additional_info?: any;
   subscriber?: any;
-}
-
-export interface Product {
-  id: number;
-  attributes: myProduct;
 }
 
 export interface CartItem {

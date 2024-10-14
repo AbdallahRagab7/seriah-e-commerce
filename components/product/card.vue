@@ -51,8 +51,14 @@
 <script setup lang="ts">
 const cartStore = useCartStore();
 
+// interface Props {
+//   product: IProduct;
+// }
 interface Props {
-  product: IProduct;
+  product: {
+    attributes: IProduct;
+    id: number;
+  };
 }
 
 const props = defineProps<Props>();

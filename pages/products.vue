@@ -42,7 +42,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const { getProducts } = useProducts();
 
 const pageSize = ref(10);
@@ -55,11 +55,11 @@ const pagination = computed(() => {
   };
 });
 
-const onRowsPerPageChange = (value) => {
+const onRowsPerPageChange = (value: any) => {
   pageSize.value = value; // Update rows per page
 };
 
-const onPageChange = (event) => {
+const onPageChange = (event: any) => {
   pageNumber.value = event.page + 1;
   // be aware when page size changes pageNumber in event object will be change
   // sa3tha rkm el page hyb2a rakm el page el mokabl lly kont fih fi page size el 2dem
