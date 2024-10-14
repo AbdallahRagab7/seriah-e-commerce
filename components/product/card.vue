@@ -35,17 +35,22 @@
           </span>
         </div>
 
-        <a
-          href="#"
+        <button
+          @click="
+            cartStore.addItemToCart(product.attributes, product.id, 1, true)
+          "
           class="add-cart text-[bc8246] relative text-[13px] font-medium hover:text-primary"
-          >+ Add to Cart</a
         >
+          + Add to Cart
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+const cartStore = useCartStore();
+
 interface Props {
   product: IProduct;
 }

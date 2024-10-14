@@ -3,16 +3,18 @@
     <div class="col-span-2 flex items-center gap-4">
       <!-- to make image size static , don't shrink when resizing -->
       <div class="w-24 h-24 shrink-0 p-2 rounded-md">
-        <NuxtImg src="/apple-watch.png" class="w-full h-full object-contain" />
+        <NuxtImg
+          :src="`${$config.public.STRAPI_URL}${cartItem?.main_image}`"
+          class="w-full h-full object-contain"
+        />
       </div>
-
       <div>
         <h3 class="text-base mb-1">
-          Apple Watch Series 7 GPS, Aluminium Case, Apple Watch
+          {{ cartItem?.name }}
         </h3>
-        <h6 class="text-xs text-red-500 cursor-pointer mt-0.5 hover:underline">
+        <!-- <h6 class="text-xs text-red-500 cursor-pointer mt-0.5 hover:underline">
           Remove
-        </h6>
+        </h6> -->
 
         <div class="flex gap-4 mt-4">
           <div>
@@ -22,15 +24,15 @@
             >
               <Icon
                 name="iconamoon:sign-minus-bold"
-                class="w-4 h-4 text-black"
-                @click="decreaseCounter"
+                class="w-5 h-5 text-black"
+                @click="cartStore.removeItemFromCart(cartItem.id)"
               />
-              <span class="mx-2 text-sm">{{ quantityCounter }}</span>
+              <span class="mx-2 text-sm">{{ cartItem?.quantity }}</span>
 
               <Icon
                 name="iconamoon:sign-plus-fill"
-                class="w-4 h-4 text-black"
-                @click="quantityCounter++"
+                class="w-5 h-5 text-black"
+                @click="cartStore.addItemToCart(cartItem, cartItem.id, 1)"
               />
             </button>
           </div>
@@ -45,7 +47,7 @@
     <div class="ml-auto">
       <h4 class="text-base text-black">
         <span class="currency">EGP</span>
-        20.00
+        {{ cartItem?.price }}
       </h4>
     </div>
     <!-- <hr class="border-gray-300" /> -->
@@ -53,10 +55,17 @@
 </template>
 
 <script setup lang="ts">
+const cartStore = useCartStore();
+
+interface Props {
+  cartItem: ICartItem;
+}
+const props = defineProps<Props>();
+
 const quantityCounter = ref<number>(1);
-const decreaseCounter = () => {
-  if (quantityCounter.value > 1) {
-    quantityCounter.value--;
-  }
-};
+// const decreaseCounter = () => {
+//   if (quantityCounter.value > 1) {
+//     quantityCounter.value--;
+//   }
+// };
 </script>

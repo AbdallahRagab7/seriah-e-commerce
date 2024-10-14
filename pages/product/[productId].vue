@@ -62,22 +62,31 @@
             >
               <Icon
                 name="iconamoon:sign-minus-bold"
-                class="w-3 h-3 text-black"
+                class="w-5 h-5 text-black"
                 @click="decreaseCounter"
               />
               <span class="mx-2 text-sm">{{ quantityCounter }}</span>
 
               <Icon
                 name="iconamoon:sign-plus-fill"
-                class="w-3 h-3 text-black"
+                class="w-5 h-5 text-black"
                 @click="quantityCounter++"
               />
             </button>
           </div>
         </div>
+
         <!-- <div class="!mt-16 max-md:!mt-10"> -->
         <div class="!mt-10 lg:!mt-20 2xl:!mt-36">
           <BaseButton
+            @click="
+              cartStore.addItemToCart(
+                product?.data?.attributes,
+                product?.data?.id,
+                quantityCounter,
+                true
+              )
+            "
             class="w-full py-3 text-white rounded-md flex items-center justify-center"
           >
             <Icon name="iconamoon:sign-plus" /> Add to Cart
@@ -98,6 +107,7 @@
 <script setup lang="ts">
 const route = useRoute();
 const { getProduct } = useProducts();
+const cartStore = useCartStore();
 
 const { data: product, error } = await useAsyncData("product", () =>
   getProduct(route.params.productId as any)

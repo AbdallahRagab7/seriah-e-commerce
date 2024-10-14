@@ -4,9 +4,13 @@
       <!--START ITEMS CONTAINER -->
       <div class="md:col-span-2 p-4 lg:px-8 bg-gray-50 rounded-md">
         <h2 class="heading1 !text-[29px]">Cart</h2>
+        <!-- {{ items }} -->
         <hr class="border-gray-300 mt-4 mb-8" />
-
-        <CartItem v-for="i in 3" :key="i" />
+        <CartItem
+          v-for="item in cartStore.items"
+          :key="item.id"
+          :cartItem="item"
+        />
       </div>
 
       <!-- END OF ITEMS CONTAINER -->
@@ -19,3 +23,9 @@
     </div>
   </div>
 </template>
+
+<script setup>
+const cartStore = useCartStore();
+
+// console.log(cartStore.items);
+</script>

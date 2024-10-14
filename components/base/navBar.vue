@@ -14,7 +14,7 @@
         <NuxtLink to="/cart">
           <div class="flex items-center gap-1 md:hidden">
             <Icon name="ph:bag-light" class="mb-[2px] !text-[22px]" />
-            Cart (2)
+            Cart ({{ cartStore.totalQuantity }})
           </div>
         </NuxtLink>
 
@@ -81,7 +81,9 @@
           <NuxtLink to="/cart">
             <div class="flex items-center gap-1 hidden md:flex">
               <Icon name="ph:bag-light" class="mb-[2px] !text-[22px]" />
-              <span class="!text-[15px] hover:text-primary"> Cart (2) </span>
+              <span class="!text-[15px] hover:text-primary">
+                Cart ({{ cartStore.totalQuantity }})
+              </span>
             </div>
           </NuxtLink>
 
@@ -107,8 +109,10 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const open = ref(false);
+const cartStore = useCartStore();
+
 const routes = [
   {
     name: "Home",
