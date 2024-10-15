@@ -13,8 +13,8 @@
           id="email"
           name="email"
           type="email"
-          v-model="email"
           autocomplete="email"
+          v-model="email"
           required
           class="w-full px-4 py-3 text-center border-0 focus:border-2 rounded-md border-b-2 border-gray-300 focus:outline-none sm:text-sm"
           placeholder="Subscribe to our newsletter..."

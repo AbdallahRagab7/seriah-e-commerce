@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <NuxtLoadingIndicator color="rgba(236, 28, 36, 1)" /> -->
+    <NuxtLoadingIndicator color="#022f98" />
 
     <Toaster
       position="top-right"
