@@ -1,4 +1,4 @@
-import type { Slider, Home, Collection } from "~/types/home";
+import type { Slider, Home } from "~/types/home";
 import { toast } from "vue-sonner";
 
 export function useHomePage() {
@@ -24,20 +24,6 @@ export function useHomePage() {
       return response?.data;
     } catch (error: any) {
       toast.error(error.error.message || "Failed to fetch home-page");
-
-      // throw new Error(error.error.message || "Failed to home-page");
-    }
-  };
-  const getCollections = async () => {
-    try {
-      const response = await find<Collection>("collections", {
-        populate: "*",
-      });
-      return response?.data;
-    } catch (error: any) {
-      toast.error(error.error.message || "Failed to fetch collections");
-
-      // throw new Error(error.error.message || "Failed to collections");
     }
   };
 
@@ -51,14 +37,9 @@ export function useHomePage() {
 
       return response;
     } catch (error: any) {
-      // console.log(error.error.message);
       toast.error(error.error.message || "Failed to subscribe");
-
-      // throw new Error(error.error.message || "Failed to subscribe");
-      // rethrow error without cathing it will crash the app
-      // so u rethrow it if u will catch it when u call this service
     }
   };
 
-  return { getSliders, getHome, getCollections, createSubscribe };
+  return { getSliders, getHome, createSubscribe };
 }

@@ -22,7 +22,7 @@ const {
   data: products,
   error,
   status,
-} = useAsyncData("products", () => getProducts());
+} = useAsyncData("productsss", () => getProducts());
 </script>
 
 <style scoped>

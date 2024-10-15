@@ -16,8 +16,3 @@ export interface Home {
   refund_policy?: string;
   privacy_policy?: string;
 }
-
-export interface Collection {
-  title: string;
-  background: IImage;
-}

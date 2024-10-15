@@ -26,7 +26,7 @@
         v-model="priceRange"
         range
         :max="1000"
-        :step="10"
+        :step="5"
         class="w-full mb-5 mt-3 !bg-red-50"
       />
 

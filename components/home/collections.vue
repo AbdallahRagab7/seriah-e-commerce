@@ -8,7 +8,7 @@
         :key="collection.id"
         class="rounded-sm overflow-hidden max-sm:px-8 border"
       >
-        <NuxtLink to="/collection/1">
+        <NuxtLink :to="`/collection/${collection.id}`">
           <NuxtImg
             :src="`${$config.public.STRAPI_URL}${collection.attributes?.background?.data?.attributes?.url}`"
             alt="collection Image"
@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-const { getCollections } = useHomePage();
+const { getCollections } = useCollections();
 
 const { data: collections, error } = useAsyncData("collections", () =>
   getCollections()
