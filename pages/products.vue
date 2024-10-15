@@ -80,7 +80,7 @@ const {
   error,
   status,
 } = useAsyncData(
-  "products",
+  "productss",
   () => getProducts(pagination.value, myFilters.value),
   {
     watch: [pagination, myFilters],

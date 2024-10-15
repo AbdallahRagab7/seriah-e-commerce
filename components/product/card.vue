@@ -1,7 +1,24 @@
 <template>
   <div
-    class="w-full max-w-sm mx-auto border border-gray-100 rounded-sm max-sm:px-5 h-fit"
+    class="relative w-full max-w-sm mx-auto border border-gray-100 rounded-sm max-sm:px-5 h-fit"
   >
+    <div
+      v-if="product?.attributes?.sale_price != 0"
+      class="absolute top-[-5px] left-0"
+    >
+      <div
+        class="bg-red-500 text-[10px] rounded-sm text-white text-xs w-[50px] py-[1px] text-center !z-10"
+      >
+        Sale
+        {{
+          Math.floor(
+            ((product?.attributes?.sale_price - product?.attributes?.price) /
+              product?.attributes?.price) *
+              100
+          )
+        }}%
+      </div>
+    </div>
     <NuxtLink :to="`product/${product?.id}`">
       <div class="overflow-hidden !rounded-md">
         <NuxtImg
@@ -25,13 +42,20 @@
       <div class="flex items-center justify-between">
         <div class="text-lg text-gray-900">
           <span class="text-[11px] text-black font-medium"> EGP </span>
-
+          <!-- price after sale -->
           <span class="text-[15px] text-black font-medium">
-            {{ product?.attributes?.price }}</span
+            {{
+              product?.attributes?.sale_price != 0
+                ? product?.attributes?.sale_price
+                : product?.attributes?.price
+            }}</span
           >
-
-          <span class="sale mx-1 text-[13px] line-through text-customSlate">
-            {{ product?.attributes?.sale_price }}
+          <!-- price before sale (original price)  -->
+          <span
+            v-if="product?.attributes?.sale_price != 0"
+            class="sale mx-1 text-[13px] line-through text-customSlate"
+          >
+            {{ product?.attributes?.price }}
           </span>
         </div>
 
