@@ -33,8 +33,19 @@ export interface CartItem {
   price: number;
 }
 
+export interface Category {
+  title: string;
+  image?: IImage;
+}
+
+export interface Collection {
+  title: string;
+  background?: any;
+}
 declare global {
   type IImage = Image;
   type IProduct = Product;
   type ICartItem = CartItem;
+  type ICategory = Category;
+  type ICollection = Collection;
 }

@@ -1,12 +1,11 @@
 <template>
   <div class="myContainer py-[60px] mb-10">
     <h1 class="my-8 heading1 text-center">Products</h1>
-    <!-- {{ products }} -->
 
     <!-- <div class="grid xs:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-14"> -->
     <section class="grid md:grid-cols-7 gap-3">
       <div class="md:col-span-2 xl:max-w-[90%]">
-        <ProductsFilter />
+        <ProductsFilter @filter="setFilter" />
       </div>
 
       <div
@@ -14,6 +13,13 @@
         class="md:col-span-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 2xl:gap-8"
       >
         <ProductSkeleton v-for="i in 6" :key="i" />
+      </div>
+
+      <div
+        v-else-if="products?.data?.length === 0"
+        class="md:col-span-5 grid place-items-center max-md:my-24"
+      >
+        <h1 class="text-2xl text-center">No Products Found</h1>
       </div>
 
       <div
@@ -61,19 +67,25 @@ const onRowsPerPageChange = (value: any) => {
 
 const onPageChange = (event: any) => {
   pageNumber.value = event.page + 1;
-  // be aware when page size changes pageNumber in event object will be change
-  // sa3tha rkm el page hyb2a rakm el page el mokabl lly kont fih fi page size el 2dem
-  // y3ny lw kont fi page 3 , page size now 10
-  // 5let page size 5 yb2a hyro7 3la page 9
+};
+
+// Filter Products
+const myFilters = ref({});
+const setFilter = (filters: any) => {
+  myFilters.value = filters;
 };
 
 const {
   data: products,
   error,
   status,
-} = useAsyncData("products", () => getProducts(pagination.value), {
-  watch: [pagination],
-});
+} = useAsyncData(
+  "products",
+  () => getProducts(pagination.value, myFilters.value),
+  {
+    watch: [pagination, myFilters],
+  }
+);
 </script>
 
 <style scoped>

@@ -1,7 +1,7 @@
 import { toast } from "vue-sonner";
 
 export const useCartStore = defineStore("cart", () => {
-  // My State
+  // My cState
   const items = ref<ICartItem[]>([]);
   const totalQuantity = ref<number>(0);
 

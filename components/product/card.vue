@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full max-w-sm mx-auto border border-gray-100 rounded-sm max-sm:px-5"
+    class="w-full max-w-sm mx-auto border border-gray-100 rounded-sm max-sm:px-5 h-fit"
   >
     <NuxtLink :to="`product/${product?.id}`">
       <div class="overflow-hidden !rounded-md">
@@ -26,11 +26,11 @@
         <div class="text-lg text-gray-900">
           <span class="text-[11px] text-black font-medium"> EGP </span>
 
-          <span class="text-sm text-black font-medium">
+          <span class="text-[15px] text-black font-medium">
             {{ product?.attributes?.price }}</span
           >
 
-          <span class="sale mx-1 text-xs line-through text-customSlate">
+          <span class="sale mx-1 text-[13px] line-through text-customSlate">
             {{ product?.attributes?.sale_price }}
           </span>
         </div>
