@@ -7,7 +7,7 @@
       class="absolute top-[-10px] left-0 rounded-sm"
     >
       <div
-        class="bg-red-500 text-[9.5px] rounded-sm text-white text-xs w-[58px] py-[2px] text-center !z-10"
+        class="bg-red-500 text-[9.5px] rounded-sm text-white text-xs w-[60px] py-[2px] text-center !z-10"
       >
         Sale
         {{

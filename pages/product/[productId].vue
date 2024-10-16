@@ -98,6 +98,7 @@
                 product?.data?.attributes,
                 product?.data?.id,
                 quantityCounter,
+                size,
                 true
               )
             "
@@ -122,7 +123,7 @@
 const route = useRoute();
 const { getProduct } = useProducts();
 const cartStore = useCartStore();
-
+const size = ref("lg");
 const { data: product, error } = await useAsyncData("product", () =>
   getProduct(route.params.productId as any)
 );

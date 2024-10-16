@@ -31,6 +31,7 @@ export interface CartItem {
   quantity: number;
   totalPrice: number;
   price: number;
+  size: string;
 }
 
 export interface Category {

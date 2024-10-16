@@ -12,9 +12,13 @@ export const useCartStore = defineStore(
       newItem: ICartItem,
       itemId: number,
       quantity: number = 1,
+      size: string,
       showToast: boolean = false
     ) => {
-      const existingItem = items.value.find((item) => item.id === itemId);
+      const existingItem = items.value.find((item) => {
+        item.id === itemId && item.size === size;
+        return true;
+      });
       console.log(newItem, "its new item");
       if (!existingItem) {
         totalQuantity.value += quantity;
@@ -25,8 +29,8 @@ export const useCartStore = defineStore(
           main_image: newItem.main_image.data.attributes.url,
           quantity: quantity,
           totalPrice: newItem.price,
+          size: size,
         });
-        console.log(items.value, "its items");
       } else {
         // existingItem.quantity++;
         // existingItem.totalPrice += newItem.attributes.price;
