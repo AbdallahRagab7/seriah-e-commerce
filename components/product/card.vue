@@ -3,11 +3,11 @@
     class="relative w-full max-w-sm mx-auto border border-gray-100 rounded-sm max-sm:px-5 h-fit"
   >
     <div
-      v-if="product?.attributes?.sale_price != 0"
-      class="absolute top-[-5px] left-0"
+      v-if="product?.attributes?.sale_price != product?.attributes?.price"
+      class="absolute top-[-10px] left-0 rounded-sm"
     >
       <div
-        class="bg-red-500 text-[10px] rounded-sm text-white text-xs w-[50px] py-[1px] text-center !z-10"
+        class="bg-red-500 text-[9.5px] rounded-sm text-white text-xs w-[58px] py-[2px] text-center !z-10"
       >
         Sale
         {{
@@ -45,14 +45,14 @@
           <!-- price after sale -->
           <span class="text-[15px] text-black font-medium">
             {{
-              product?.attributes?.sale_price != 0
+              product?.attributes?.sale_price != product?.attributes?.price
                 ? product?.attributes?.sale_price
                 : product?.attributes?.price
             }}</span
           >
           <!-- price before sale (original price)  -->
           <span
-            v-if="product?.attributes?.sale_price != 0"
+            v-if="product?.attributes?.sale_price != product?.attributes?.price"
             class="sale mx-1 text-[13px] line-through text-customSlate"
           >
             {{ product?.attributes?.price }}

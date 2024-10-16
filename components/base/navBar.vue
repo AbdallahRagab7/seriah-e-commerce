@@ -87,21 +87,17 @@
             </div>
           </NuxtLink>
 
-          <!-- <button
-          class="bg-transparent hover:bg-secondary border-secondary border-2 text-slate-200 font-bold p-1 rounded-xl max-md:ml-6 max-md:my-5"
-        >
-          Login
-        </button> -->
-          <!-- <NuxtLink
-          to="/login"
-          class="custom-btn !text-white font-bold p-2 rounded-full max-md:ml-6 max-md:my-5"
-        >
-          Login
-        </NuxtLink> -->
           <NuxtLink
+            v-if="user"
             to="/profile"
             class="text-medium !text-[15px] hover:text-primary max-md:hover:pl-1 max-md:ml-5 max-md:mt-10 max-md:!font-semibold"
             >My Account</NuxtLink
+          >
+          <NuxtLink
+            v-else
+            to="/login"
+            class="text-medium !text-[15px] hover:text-primary max-md:hover:pl-1 max-md:ml-5 max-md:mt-10 max-md:!font-semibold"
+            >Login</NuxtLink
           >
         </div>
       </aside>
@@ -110,6 +106,8 @@
 </template>
 
 <script setup lang="ts">
+const user = useStrapiUser();
+
 const open = ref(false);
 const cartStore = useCartStore();
 

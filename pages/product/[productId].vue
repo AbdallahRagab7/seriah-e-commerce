@@ -38,18 +38,32 @@
         </div>
 
         <div class="flex items-center space-x-4 text-gray-500">
-          <span class="text-xs">
-            <!-- sale price -->
-            <span class="currency mr-1">EGP</span>
-            <span class="line-through">
-              {{ product?.data.attributes.sale_price }}
-            </span>
-          </span>
-          <!-- current price -->
-          <span class="text-lg text-black"
-            ><span class="currency mr-1">EGP</span
-            >{{ product?.data.attributes.price }}</span
+          <span class="text-lg text-black">
+            {{
+              product?.data?.attributes?.sale_price !=
+              product?.data?.attributes?.price
+                ? product?.data?.attributes?.sale_price
+                : product?.data?.attributes?.price
+            }}
+            <span class="currency mr-1">EGP</span></span
           >
+          <span
+            v-if="
+              product?.data.attributes?.sale_price !=
+              product?.data.attributes?.price
+            "
+            class="text-xs"
+          >
+            <!-- sale price -->
+            <span class="line-through">
+              {{ product?.data.attributes.price }}
+            </span>
+            <span class="currency ml-1">EGP</span>
+          </span>
+          <!-- End of sale price -->
+          <!-- Start of  price-->
+
+          <!-- End of price -->
         </div>
         <div class="flex items-center space-x-2">
           <label for="quantity" class="text-customSlate text-sm"

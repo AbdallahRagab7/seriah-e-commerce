@@ -1,68 +1,75 @@
 import { toast } from "vue-sonner";
 
-export const useCartStore = defineStore("cart", () => {
-  // My cState
-  const items = ref<ICartItem[]>([]);
-  const totalQuantity = ref<number>(0);
+export const useCartStore = defineStore(
+  "cart",
+  () => {
+    // My cState
+    const items = ref<ICartItem[]>([]);
+    const totalQuantity = ref<number>(0);
 
-  // Actions
-  const addItemToCart = (
-    newItem: ICartItem,
-    itemId: number,
-    quantity: number = 1,
-    showToast: boolean = false
-  ) => {
-    const existingItem = items.value.find((item) => item.id === itemId);
-    console.log(newItem, "its new item");
-    if (!existingItem) {
-      totalQuantity.value++;
-      items.value.push({
-        id: itemId,
-        price: newItem.price,
-        name: newItem.name,
-        main_image: newItem.main_image.data.attributes.url,
-        quantity: quantity,
-        totalPrice: newItem.price,
-      });
-      console.log(items.value, "its items");
-    } else {
-      // existingItem.quantity++;
-      // existingItem.totalPrice += newItem.attributes.price;
-      if (quantity === 1) {
-        existingItem.quantity++;
-        existingItem.totalPrice += newItem.price;
-        totalQuantity.value++;
-      } else {
-        existingItem.quantity += quantity;
-        existingItem.totalPrice += newItem.price * quantity;
+    // Actions
+    const addItemToCart = (
+      newItem: ICartItem,
+      itemId: number,
+      quantity: number = 1,
+      showToast: boolean = false
+    ) => {
+      const existingItem = items.value.find((item) => item.id === itemId);
+      console.log(newItem, "its new item");
+      if (!existingItem) {
         totalQuantity.value += quantity;
-        // totalQuantity.value += existingItem.quantity;
-      }
-    }
-
-    if (showToast) {
-      toast.success(`${newItem.name} added to cart`);
-    }
-  };
-
-  const removeItemFromCart = (id: number) => {
-    const existingItem = items.value.find((item) => item.id === id);
-    totalQuantity.value--;
-
-    if (existingItem) {
-      if (existingItem.quantity === 1) {
-        items.value = items.value.filter((item) => item.id !== id);
+        items.value.push({
+          id: itemId,
+          price: newItem.price,
+          name: newItem.name,
+          main_image: newItem.main_image.data.attributes.url,
+          quantity: quantity,
+          totalPrice: newItem.price,
+        });
+        console.log(items.value, "its items");
       } else {
-        existingItem.quantity--;
-        existingItem.totalPrice -= existingItem.price;
+        // existingItem.quantity++;
+        // existingItem.totalPrice += newItem.attributes.price;
+        console.log(quantity, "its quantity");
+        if (quantity === 1) {
+          existingItem.quantity++;
+          existingItem.totalPrice += newItem.price;
+          totalQuantity.value++;
+        } else {
+          existingItem.quantity += quantity;
+          existingItem.totalPrice += newItem.price * quantity;
+          totalQuantity.value += quantity;
+          // totalQuantity.value += existingItem.quantity;
+        }
       }
-    }
-  };
 
-  return {
-    items,
-    totalQuantity,
-    addItemToCart,
-    removeItemFromCart,
-  };
-});
+      if (showToast) {
+        toast.success(`${newItem.name} added to cart`);
+      }
+    };
+
+    const removeItemFromCart = (id: number) => {
+      const existingItem = items.value.find((item) => item.id === id);
+      totalQuantity.value--;
+
+      if (existingItem) {
+        if (existingItem.quantity === 1) {
+          items.value = items.value.filter((item) => item.id !== id);
+        } else {
+          existingItem.quantity--;
+          existingItem.totalPrice -= existingItem.price;
+        }
+      }
+    };
+
+    return {
+      items,
+      totalQuantity,
+      addItemToCart,
+      removeItemFromCart,
+    };
+  },
+  {
+    persist: true,
+  }
+);

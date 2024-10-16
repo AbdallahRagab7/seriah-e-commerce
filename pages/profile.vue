@@ -44,7 +44,7 @@
               <span>Change Password</span>
             </li>
             <li
-              @click="logout"
+              @click="onClickLogout"
               class="flex items-center space-x-2 cursor-pointer hover:text-primary pb-3"
             >
               <Icon name="tabler:logout" class="text-lg" />
@@ -69,6 +69,8 @@
 </template>
 
 <script setup lang="ts">
+import { toast } from "vue-sonner";
+
 import ProfileAccount from "~/components/profile/account.vue";
 import ProfileOrders from "~/components/profile/orders.vue";
 import ProfileChangePassword from "~/components/profile/changePassword.vue";
@@ -84,4 +86,14 @@ watch(currentComponent, () => {
     currentComponentToRender.value = ProfileChangePassword;
   }
 });
+
+const { logout } = useStrapiAuth();
+const router = useRouter();
+
+const onClickLogout = async () => {
+  await logout();
+  toast.success("you have been logged out");
+
+  router.push("/");
+};
 </script>

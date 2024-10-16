@@ -25,17 +25,18 @@
       <Slider
         v-model="priceRange"
         range
-        :max="1000"
-        :step="5"
+        :max="5000"
+        :step="10"
         class="w-full mb-5 mt-3 !bg-red-50"
       />
 
       <p class="text-slate-800 text-base">
         Price :
+        {{ priceRange[0] }}
         <span class="currency !text-[10px] !text-slate-500">EGP</span>
-        {{ priceRange[0] }} -
-        <span class="currency !text-[10px !text-slate-500">EGP</span>
+        -
         {{ priceRange[1] }}
+        <span class="currency !text-[10px !text-slate-500">EGP</span>
       </p>
     </div>
 
@@ -64,7 +65,7 @@ const { data: categories, error } = await useAsyncData("categories", () =>
 const emit = defineEmits(["filter"]);
 
 const activeCategory = ref(null);
-const priceRange = ref([0, 0]);
+const priceRange = ref([0, 5000]);
 
 const setActiveCategory = (id: any) => {
   activeCategory.value = id;
@@ -83,7 +84,7 @@ const filters = computed(() => {
     },
   };
   if (!activeCategory.value) delete filters.category;
-  if (priceRange.value[0] === 0 && priceRange.value[1] === 0)
+  if (priceRange.value[0] === 0 && priceRange.value[1] === 5000)
     delete filters.price;
   return filters;
 });

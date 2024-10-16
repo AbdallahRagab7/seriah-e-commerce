@@ -11,22 +11,17 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@nuxtjs/strapi",
     "@pinia/nuxt",
+    "pinia-plugin-persistedstate/nuxt",
     "@primevue/nuxt-module",
   ],
-  // primevue: {
-  //   options: {
-  //     ripple: true,
-  //     inputVariant: "filled",
-  //     theme: {
-  //       preset: Aura,
-  //       options: {
-  //         prefix: "my",
-  //         darkModeSelector: ".my-app-dark",
-  //         cssLayer: false,
-  //       },
-  //     },
-  //   },
-  // },
+
+  piniaPluginPersistedstate: {
+    storage: "cookies",
+    cookieOptions: {
+      sameSite: "lax",
+    },
+    debug: true,
+  },
 
   primevue: {
     options: {
@@ -64,7 +59,12 @@ export default defineNuxtConfig({
     prefix: "/api",
     admin: "/admin",
     version: "v4",
-    cookie: {},
     cookieName: "strapi_jwt",
+    cookie: {
+      path: "/",
+      maxAge: 30 * 24 * 60 * 60,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: true,
+    },
   },
 });
