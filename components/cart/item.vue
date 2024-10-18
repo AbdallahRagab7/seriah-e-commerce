@@ -20,7 +20,7 @@
           Remove
         </h6> -->
 
-        <div class="flex gap-4 mt-4">
+        <div class="flex items-center gap-4 mt-4">
           <div>
             <button
               type="button"
@@ -39,6 +39,12 @@
                 @click="cartStore.addItemToCart(cartItem, cartItem.id, 1)"
               />
             </button>
+          </div>
+          <div>
+            <h1 class="font-medium">
+              Size:
+              <span class="text-gray-700 text-sm"> {{ cartItem?.size }}</span>
+            </h1>
           </div>
         </div>
       </div>

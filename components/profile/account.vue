@@ -48,9 +48,9 @@
         </div>
       </div>
 
-      <div class="w-full flex items-center justify-center mt-10">
+      <div class="w-full flex items-center justify-start mt-10">
         <BaseButton
-          class="text-sm px-4 py-2.5 w-1/2 font-semibold tracking-wide rounded-lg"
+          class="text-sm px-4 py-2.5 w-1/2 font-semibold tracking-wide rounded-sm w-full"
         >
           Submit
         </BaseButton>

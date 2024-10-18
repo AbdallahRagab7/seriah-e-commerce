@@ -19,7 +19,7 @@
         }}%
       </div>
     </div>
-    <NuxtLink :to="`product/${product?.id}`">
+    <NuxtLink :to="`/product/${product?.id}`">
       <div class="overflow-hidden !rounded-md">
         <NuxtImg
           class="max-h-[90%] max-w-[90%] rounded-md my-5 object-contain mix-blend-multiply mx-auto"
@@ -30,7 +30,7 @@
     </NuxtLink>
 
     <div class="px-5 pb-5">
-      <NuxtLink :to="`product/${product?.id}`">
+      <NuxtLink :to="`/product/${product?.id}`">
         <!-- font-poppins -->
         <h5
           class="text-base mb-5 text-customSlate hover:text-primary line-clamp-4"
@@ -58,15 +58,13 @@
             {{ product?.attributes?.price }}
           </span>
         </div>
-
-        <button
-          @click="
-            cartStore.addItemToCart(product.attributes, product.id, 1, true)
-          "
-          class="add-cart text-[bc8246] relative text-[13px] font-medium hover:text-primary"
-        >
-          + Add to Cart
-        </button>
+        <NuxtLink :to="`/product/${product?.id}`">
+          <button
+            class="add-cart text-[bc8246] relative text-[13px] font-medium hover:text-primary"
+          >
+            Buy Now
+          </button>
+        </NuxtLink>
       </div>
     </div>
   </div>
@@ -123,9 +121,9 @@ const props = defineProps<Props>();
   bottom: -2px;
   content: "";
   height: 1px;
-  left: 5px;
+  left: 1px;
   position: absolute;
-  width: 95%;
+  width: 100%;
   transition: all 0.3s ease-out 0s;
 }
 

@@ -1,8 +1,8 @@
 <template>
-  <div class="h-[65vh] container">
+  <div class="container pb-[60px]">
     <form
       @submit.prevent="onSubmit"
-      class="md:max-w-md max-w-sm mx-auto border shadow-[0px_8px_24px_rgba(149,157,165,0.2)] md:px-10 px-5 py-5 rounded-md mt-20 text-center"
+      class="md:max-w-md max-w-sm mx-auto border shadow-[0px_8px_24px_rgba(149,157,165,0.2)] md:px-10 px-5 py-6 rounded-sm mt-20 text-center"
     >
       <h1 class="text-2xl text-primary mb-4">Login</h1>
       <div class="mb-5 text-start">
@@ -41,10 +41,18 @@
       <BaseButton
         :isLoading="isLoading"
         type="submit"
-        class="font-medium rounded-lg text-sm px-6 py-2.5"
+        class="font-medium rounded-sm text-sm px-6 py-2.5 w-full"
       >
         Login
       </BaseButton>
+      <p class="text-sm mt-5">
+        Don’t have an account yet?
+        <NuxtLink
+          to="/register"
+          class="font-medium hover:underline text-blue-700"
+          >Sign up</NuxtLink
+        >
+      </p>
     </form>
   </div>
 </template>

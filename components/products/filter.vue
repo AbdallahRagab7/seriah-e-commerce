@@ -40,7 +40,7 @@
       </p>
     </div>
 
-    <div class="flex items-center justify-center gap-3 !mt-8">
+    <div class="flex items-center justify-center gap-3 !my-8">
       <BaseButton
         @click="filterProducts"
         class="text-sm py-2.5 w-full font-semibold tracking-wide rounded-sm"

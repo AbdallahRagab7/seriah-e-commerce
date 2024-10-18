@@ -17,12 +17,11 @@
 
 <script setup lang="ts">
 const { getProducts } = useProducts();
-//default pagination get first page
 const {
   data: products,
   error,
   status,
-} = useAsyncData("productsss", () => getProducts());
+} = useAsyncData("products", () => getProducts());
 </script>
 
 <style scoped>

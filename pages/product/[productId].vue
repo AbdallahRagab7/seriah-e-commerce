@@ -20,7 +20,7 @@
         </div>
       </section>
 
-      <section class="space-y-6">
+      <section class="space-y-4">
         <h1 class="text-2xl font-medium text-customGray">
           {{ product?.data.attributes.name }}
 
@@ -90,8 +90,30 @@
           </div>
         </div>
 
+        <div class="space-y-2">
+          <h2 class="customLabel">
+            Select Size <span class="text-red-600">*</span>
+          </h2>
+          <div class="relative">
+            <select
+              v-model="size"
+              class="block appearance-none w-full border border-gray-300 text-customSlate text-sm py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:border-gray-500"
+            >
+              <option value="">- Please select -</option>
+              <option :value="size" v-for="size in sizes" :key="size">
+                {{ size }}
+              </option>
+            </select>
+            <div
+              class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+            >
+              <Icon name="iconamoon:arrow-down-2-thin " class="text-2xl" />
+            </div>
+          </div>
+        </div>
+
         <!-- <div class="!mt-16 max-md:!mt-10"> -->
-        <div class="!mt-10 lg:!mt-20 2xl:!mt-36">
+        <div class="!mt-6">
           <BaseButton
             @click="
               cartStore.addItemToCart(
@@ -123,10 +145,13 @@
 const route = useRoute();
 const { getProduct } = useProducts();
 const cartStore = useCartStore();
-const size = ref("lg");
+
 const { data: product, error } = await useAsyncData("product", () =>
   getProduct(route.params.productId as any)
 );
+
+const size = ref("M");
+const sizes = ["S", "M", "D", "L", "XL"];
 
 const productImages = computed(() => {
   const main_image =

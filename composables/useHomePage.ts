@@ -30,16 +30,28 @@ export function useHomePage() {
   const createSubscribe = async (email: string) => {
     try {
       const response = await create<any>("subscribers", {
-        data: {
-          email: email,
-        },
+        email: email,
       });
-
+      toast.success("You have been subscribed");
       return response;
     } catch (error: any) {
       toast.error(error.error.message || "Failed to subscribe");
     }
   };
+  const contactUs = async (data: any) => {
+    try {
+      const response = await create<any>("contacts", {
+        name: data.name,
+        email: data.email,
+        message: data.message,
+        subject: data.subject,
+      });
+      toast.success("Thank you for contact us");
+      return response;
+    } catch (error: any) {
+      toast.error(error.error.message || "Failed to contact");
+    }
+  };
 
-  return { getSliders, getHome, createSubscribe };
+  return { getSliders, getHome, createSubscribe, contactUs };
 }
