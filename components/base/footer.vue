@@ -20,7 +20,8 @@
             ><Icon name="oui:email" /> Email: Contact@basictheme.com
           </span>
           <span class="flex items-center gap-1">
-            <Icon name="lets-icons:phone" />Phone Number: (800) 123 456 789
+            <Icon name="lets-icons:phone" />Phone Number:
+            {{ socialLinks.whatsappNumber }}
           </span>
         </div>
 
@@ -34,7 +35,7 @@
                 <a href="#" class="hover:underline">Seriah</a>
               </li>
               <li>
-                <a href="#" class="hover:underline">Tailwind CSS</a>
+                <a href="#" class="hover:underline">Seirah</a>
               </li>
             </ul>
           </div>
@@ -46,10 +47,20 @@
             </h2>
             <ul class="text-gray-400 font-medium">
               <li class="mb-4">
-                <a href="#" class="hover:underline"> Facebook</a>
+                <a
+                  :href="socialLinks.Instagram"
+                  target="blank"
+                  class="hover:underline"
+                >
+                  Instagram</a
+                >
               </li>
               <li>
-                <a href="#" class="hover:underline">Twitter</a>
+                <a
+                  :href="`https://wa.me/${socialLinks.whatsappNumber}`"
+                  target="_blank"
+                  >WhatsApp
+                </a>
               </li>
             </ul>
           </div>
@@ -129,3 +140,7 @@
     </div>
   </footer>
 </template>
+
+<script setup lang="ts">
+const socialLinks = useSocialLinksStore();
+</script>

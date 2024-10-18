@@ -28,7 +28,7 @@
         </button> -->
         <div class="w-full flex items-center justify-center mt-7">
           <BaseButton
-            class="text-sm p-3 w-[30%] font-semibold tracking-wide rounded-lg"
+            class="text-sm p-3 w-[30%] font-semibold tracking-wide rounded-sm"
             :isLoading="loading"
           >
             SUBSCRIBE

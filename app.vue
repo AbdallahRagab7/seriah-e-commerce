@@ -17,9 +17,16 @@
 </template>
 
 <script setup lang="ts">
-// alternatively, you can also use it here
-// const { $toast } = useNuxtApp();
-// import { toast } from "vue-sonner";
+const { getHome } = useHomePage();
+const socialLinks = useSocialLinksStore();
+
+const { data: home, error } = await useAsyncData("home-page", () => getHome());
+
+socialLinks.setSocialLinks({
+  whatsappNumber: home?.value?.attributes?.whatsappNumber || "",
+  Instagram: home?.value?.attributes?.Instagram || "",
+  youtube: home?.value?.attributes?.youtube || "",
+});
 </script>
 
 <style>

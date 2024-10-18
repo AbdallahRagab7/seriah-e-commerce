@@ -9,7 +9,7 @@ export interface Slider {
 export interface Home {
   about: string;
   mission: string;
-  whatsappNumber: string;
+  whatsappNumber?: string;
   Instagram?: string;
   youtube?: string;
   shipping_policy?: string;
