@@ -15,12 +15,11 @@ export const useCartStore = defineStore(
       size: string,
       showToast: boolean = false
     ) => {
-      const existingItem = items.value.find((item) => {
-        item.id === itemId && item.size === size;
-        return true;
-      });
-      console.log(newItem, "its new item");
+      const existingItem = items.value.find(
+        (item) => item.id === itemId && item.size === size
+      );
       if (!existingItem) {
+        console.log(newItem, "its new item");
         totalQuantity.value += quantity;
         items.value.push({
           id: itemId,
@@ -32,8 +31,6 @@ export const useCartStore = defineStore(
           size: size,
         });
       } else {
-        // existingItem.quantity++;
-        // existingItem.totalPrice += newItem.attributes.price;
         console.log(quantity, "its quantity");
         if (quantity === 1) {
           existingItem.quantity++;

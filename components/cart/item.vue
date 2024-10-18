@@ -6,7 +6,7 @@
         <div class="w-24 h-24 shrink-0 p-2 rounded-md">
           <NuxtImg
             :src="`${$config.public.STRAPI_URL}${cartItem?.main_image}`"
-            class="w-full h-full object-contain"
+            class="w-full h-full object-cover"
           />
         </div>
       </NuxtLink>
