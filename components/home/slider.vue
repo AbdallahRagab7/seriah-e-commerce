@@ -23,10 +23,10 @@
           />
 
           <div
-            class="w-full absolute top-[30%] left-[10%] max-w-[400px] max-sm:max-w-[200px] max-sm:top-[10%]"
+            class="animated-heading w-full absolute top-[30%] left-[10%] max-w-[400px] max-sm:max-w-[200px] max-sm:top-[10%]"
           >
             <h1
-              class="animated-heading !mb-[14px] max-md:!mb-1 text-stroke lg:text-[36px] !text-[#32323] text-[13px] sm:text-3xl font-semibold md:mb-2"
+              class="!mb-[14px] max-md:!mb-1 text-stroke lg:text-[36px] !text-[#32323] text-[13px] sm:text-3xl font-semibold md:mb-2"
             >
               {{ slider.attributes.title }}
             </h1>
@@ -152,7 +152,7 @@ watchEffect(() => {
 @keyframes jump-down {
   0% {
     opacity: 0;
-    transform: translateY(-300%);
+    transform: translateY(-100%);
   }
   100% {
     opacity: 1;

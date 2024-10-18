@@ -1,6 +1,10 @@
 <template>
   <div class="py-12 pt-[60px] mt-20 myContainer">
-    <div class="max-w-xl mx-auto text-center">
+    <div
+      ref="subscribeSection"
+      class="subscribe max-w-xl mx-auto text-center"
+      :class="{ 'animate-subscribe': isVisible }"
+    >
       <h2 class="heading1">Get Discount Info</h2>
       <p class="text-customSlate text-base mt-4">
         Subscribe to the Seriah mailing list to receive updates on new arrivals,
@@ -48,4 +52,34 @@ const subscribe = async () => {
   await createSubscribe(email.value);
   loading.value = false;
 };
+
+const subscribeSection = ref(null);
+const isVisible = ref(false);
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].isIntersecting) {
+        isVisible.value = true;
+      }
+    },
+    { threshold: 0.5 }
+  );
+
+  if (subscribeSection.value) {
+    observer.observe(subscribeSection.value);
+  }
+});
 </script>
+
+<style scoped>
+.subscribe {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(50px);
+}
+
+.animate-subscribe {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
