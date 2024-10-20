@@ -4,7 +4,7 @@
       <section class="space-y-6">
         <NuxtImg
           alt="Product"
-          class="w-full rounded-md shadow-md object-cover"
+          class="w-full rounded-md object-cover"
           :src="`${$config.public.STRAPI_URL}${activeImage}`"
         />
         <div class="flex flex-wrap gap-5">
@@ -14,7 +14,7 @@
             :src="`${$config.public.STRAPI_URL}${image}`"
             @click="activeImage = image"
             alt="ProductImage"
-            class="w-1/6 h-full cursor-pointer object-contain rounded-md shadow-md"
+            class="w-1/6 h-full cursor-pointer object-contain rounded-md"
             :class="activeImage === image ? 'border-2 border-green-500' : ''"
           />
         </div>
@@ -97,18 +97,13 @@
           <div class="relative">
             <select
               v-model="size"
-              class="block appearance-none w-full border border-gray-300 text-customSlate text-sm py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:border-gray-500"
+              class="block w-full border border-gray-300 text-customSlate text-sm py-3 px-4 rounded-md leading-tight focus:outline-none focus:border-gray-500"
             >
               <option value="">- Please select -</option>
               <option :value="size" v-for="size in sizes" :key="size">
                 {{ size }}
               </option>
             </select>
-            <div
-              class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-            >
-              <Icon name="iconamoon:arrow-down-2-thin " class="text-2xl" />
-            </div>
           </div>
         </div>
 

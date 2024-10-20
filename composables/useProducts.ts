@@ -9,7 +9,13 @@ export function useProducts() {
   ) => {
     try {
       const response = await find<IProduct>("products", {
-        populate: "*", // Populate all related data
+        populate: {
+          main_image: true,
+          images: true,
+          product_variants: {
+            populate: "*",
+          },
+        }, // Populate all related data
         pagination,
         filters,
       });
