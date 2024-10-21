@@ -1,11 +1,23 @@
 <template>
-  <div class="container pb-[60px]">
+  <div class="py-[60px]">
     <form
       @submit.prevent="onSubmit"
-      class="md:max-w-md max-w-sm mx-auto border shadow-[0px_8px_24px_rgba(149,157,165,0.2)] md:px-10 px-5 py-6 rounded-sm mt-20 text-center"
+      class="md:max-w-md max-w-sm mx-auto border shadow-[0px_8px_24px_rgba(149,157,165,0.2)] md:px-10 px-5 py-6 rounded-sm text-center"
     >
-      <h1 class="text-2xl text-primary mb-4">Register</h1>
-      <div class="mb-5 text-start">
+      <h1 class="text-2xl text-primary mb-2">Register</h1>
+      <div class="mb-4 text-start">
+        <label for="name" class="block mb-2 text-sm font-semibold text-gray-900"
+          >Name</label
+        >
+        <input
+          v-model="data.name"
+          type="text"
+          id="name"
+          class="bg-gray-50 border border-gray-300 focus:border-secondary focus:outline-none text-gray-900 text-sm rounded-lg w-full p-2.5"
+          required
+        />
+      </div>
+      <div class="mb-4 text-start">
         <label
           for="username"
           class="block mb-2 text-sm font-semibold text-gray-900"
@@ -19,7 +31,7 @@
           required
         />
       </div>
-      <div class="mb-5 text-start">
+      <div class="mb-4 text-start">
         <label
           for="email"
           class="block mb-2 text-sm font-semibold text-gray-900"
@@ -34,7 +46,7 @@
           required
         />
       </div>
-      <div class="mb-5 text-start">
+      <div class="mb-4 text-start">
         <label
           for="password"
           class="block mb-2 text-sm font-semibold text-gray-900"
@@ -49,7 +61,7 @@
         />
       </div>
 
-      <div class="mb-5 text-start">
+      <div class="mb-4 text-start">
         <label
           for="phone"
           class="block mb-2 text-sm font-semibold text-gray-900"
@@ -57,13 +69,13 @@
         >
         <input
           v-model="data.phone"
-          type="number"
+          type="tel"
           id="username"
           class="bg-gray-50 border border-gray-300 focus:border-secondary focus:outline-none text-gray-900 text-sm rounded-lg w-full p-2.5"
           required
         />
       </div>
-      <div class="mb-5 text-start">
+      <div class="mb-4 text-start">
         <label
           for="dateOfBirth"
           class="block mb-2 text-sm font-semibold text-gray-900"
@@ -73,7 +85,7 @@
           id="dateOfBirth"
           type="date"
           class="customInput w-full"
-          v-model="data.birth_date"
+          v-model="data.birthDate"
         />
       </div>
 
@@ -100,11 +112,12 @@ const user = useStrapiUser();
 //user abdallah or email abdallah@email.com
 //Abdallah@2022
 const data = ref({
+  name: "",
   email: "",
   password: "",
   userName: "",
   phone: "",
-  birth_date: "",
+  birthDate: "",
 });
 
 const { register } = useStrapiAuth();
@@ -114,11 +127,12 @@ const onSubmit = async () => {
   try {
     isLoading.value = true;
     await register({
+      name: data.value.name,
       username: data.value.userName,
       email: data.value.email,
       password: data.value.password,
-      phoneNumber: data.value.phone,
-      birth_date: data.value.birth_date,
+      phoneNumber: data.value.phone + "",
+      birthDate: data.value.birthDate,
     });
     isLoading.value = false;
     toast.success("You have been registered");

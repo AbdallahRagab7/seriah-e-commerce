@@ -82,7 +82,7 @@ const onSubmit = async () => {
     router.push("/");
   } catch (error: any) {
     isLoading.value = false;
-    console.log(error, "its error");
+
     toast.error(error.error.message || "Failed to login");
   }
 };

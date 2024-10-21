@@ -93,6 +93,7 @@ watch(currentComponent, () => {
 
 const { logout } = useStrapiAuth();
 const router = useRouter();
+const user = useStrapiUser();
 
 const onClickLogout = async () => {
   await logout();
