@@ -84,10 +84,15 @@
             </button>
           </div>
         </div>
+        <div>
+          <h1 class="text-customSlate text-sm">
+            Maximum Quantity: {{ variant.attributes.quantity }}
+          </h1>
+        </div>
 
         <div class="space-y-2">
           <h2 class="customLabel">
-            Select Size <span class="text-red-600">*</span>
+            Select Variant <span class="text-red-600">*</span>
           </h2>
           <div class="relative">
             <select
@@ -132,6 +137,8 @@
 </template>
 
 <script setup lang="ts">
+import { toast } from "vue-sonner";
+
 const route = useRoute();
 const { getProduct } = useProducts();
 const cartStore = useCartStore();
@@ -173,16 +180,20 @@ const decreaseCounter = () => {
 };
 
 const addCart = () => {
+  if (quantityCounter.value > variant.value?.attributes?.quantity) {
+    toast.error(`Maximum quantity is ${variant.value?.attributes?.quantity}`);
+    return;
+  }
   cartStore.addItemToCart(
     {
       productId: product.value?.data?.id, // 34an aro7 beh ly product fi page cart
-      productTtitle: product.value?.data?.attributes?.name, // to render name of item in cart
       productMainImage:
         product.value?.data?.attributes?.main_image?.data?.attributes?.url ||
-        "", // // to render img of item in cart
+        "", // to render img of item in cart
       variantId: variant.value.id,
       variantTitle: variant.value?.attributes?.title, // to render in cart
       quantity: quantityCounter.value,
+      productTtitle: product.value?.data?.attributes?.name, // to render name of item in cart
       price: currentPrice.value,
     },
     true

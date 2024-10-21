@@ -58,10 +58,6 @@
       </div>
     </div>
 
-    <!-- <div class="flex items-center space-x-4 text-gray-500">
-      <span class="text-xs line-through">$50.00</span>
-      <span class="text-base text-black">$35.00</span>
-    </div> -->
     <div class="ml-auto">
       <h4 class="text-base text-black">
         <span class="currency">EGP</span>
