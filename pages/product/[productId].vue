@@ -113,15 +113,7 @@
         <!-- <div class="!mt-16 max-md:!mt-10"> -->
         <div class="!mt-6">
           <BaseButton
-            @click="
-              cartStore.addItemToCart(
-                product?.data?.attributes,
-                product?.data?.id,
-                quantityCounter,
-                size,
-                true
-              )
-            "
+            @click="addCart"
             class="w-full py-3 text-white rounded-md flex items-center justify-center"
           >
             <Icon name="iconamoon:sign-plus" /> Add to Cart
@@ -178,5 +170,22 @@ const decreaseCounter = () => {
   if (quantityCounter.value > 1) {
     quantityCounter.value--;
   }
+};
+
+const addCart = () => {
+  cartStore.addItemToCart(
+    {
+      productId: product.value?.data?.id, // 34an aro7 beh ly product fi page cart
+      productTtitle: product.value?.data?.attributes?.name, // to render name of item in cart
+      productMainImage:
+        product.value?.data?.attributes?.main_image?.data?.attributes?.url ||
+        "", // // to render img of item in cart
+      variantId: variant.value.id,
+      variantTitle: variant.value?.attributes?.title, // to render in cart
+      quantity: quantityCounter.value,
+      price: currentPrice.value,
+    },
+    true
+  );
 };
 </script>

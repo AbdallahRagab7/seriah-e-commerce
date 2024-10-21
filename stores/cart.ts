@@ -8,54 +8,53 @@ export const useCartStore = defineStore(
     const totalQuantity = ref<number>(0);
 
     // Actions
-    const addItemToCart = (
-      newItem: ICartItem,
-      itemId: number,
-      quantity: number = 1,
-      size: string,
-      showToast: boolean = false
-    ) => {
+    const addItemToCart = (cartItem: ICartItem, showToast: boolean = false) => {
       const existingItem = items.value.find(
-        (item) => item.id === itemId && item.size === size
+        (item) => item.variantId === cartItem.variantId
       );
       if (!existingItem) {
-        console.log(newItem, "its new item");
-        totalQuantity.value += quantity;
+        console.log(cartItem, "its new item");
+        totalQuantity.value += cartItem.quantity;
         items.value.push({
-          id: itemId,
-          price: newItem.price,
-          name: newItem.name,
-          main_image: newItem.main_image.data.attributes.url,
-          quantity: quantity,
-          totalPrice: newItem.price,
-          size: size,
+          productId: cartItem.productId,
+          variantId: cartItem.variantId,
+          price: cartItem.price,
+          productTtitle: cartItem.productTtitle,
+          productMainImage: cartItem.productMainImage,
+          quantity: cartItem.quantity,
+          variantTitle: cartItem.variantTitle,
+          totalPrice: cartItem.price, // 34an h7sb b3ha quantity * price b3d kda
         });
       } else {
-        console.log(quantity, "its quantity");
-        if (quantity === 1) {
+        console.log(cartItem.quantity, "its quantity");
+        if (cartItem.quantity === 1) {
           existingItem.quantity++;
-          existingItem.totalPrice += newItem.price;
+          existingItem.totalPrice += cartItem.price;
           totalQuantity.value++;
         } else {
-          existingItem.quantity += quantity;
-          existingItem.totalPrice += newItem.price * quantity;
-          totalQuantity.value += quantity;
+          existingItem.quantity += cartItem.quantity;
+          existingItem.totalPrice += cartItem.price * cartItem.quantity;
+          totalQuantity.value += cartItem.quantity;
           // totalQuantity.value += existingItem.quantity;
         }
       }
 
       if (showToast) {
-        toast.success(`${newItem.name} added to cart`);
+        toast.success(`${cartItem.productTtitle} added to cart`);
       }
     };
 
-    const removeItemFromCart = (id: number) => {
-      const existingItem = items.value.find((item) => item.id === id);
+    const removeItemFromCart = (variantId: number) => {
+      const existingItem = items.value.find(
+        (item) => item.variantId === variantId
+      );
       totalQuantity.value--;
 
       if (existingItem) {
         if (existingItem.quantity === 1) {
-          items.value = items.value.filter((item) => item.id !== id);
+          items.value = items.value.filter(
+            (item) => item.variantId !== variantId
+          );
         } else {
           existingItem.quantity--;
           existingItem.totalPrice -= existingItem.price;

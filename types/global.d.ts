@@ -25,14 +25,24 @@ export interface Product {
   product_variants: any;
 }
 
+// export interface CartItem {
+//   id: number;
+//   name: string;
+//   main_image: string;
+//   quantity: number;
+//   totalPrice: number;
+//   price: number;
+//   size: string;
+// }
 export interface CartItem {
-  id: number;
-  name: string;
-  main_image: string;
+  productId: any;
+  productTtitle: string;
+  productMainImage: string;
+  variantId: any;
+  variantTitle: string;
   quantity: number;
-  totalPrice: number;
   price: number;
-  size: string;
+  totalPrice: number;
 }
 
 export interface Category {
