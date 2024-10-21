@@ -39,12 +39,7 @@
 
         <div class="flex items-center space-x-4 text-gray-500">
           <span class="text-lg text-black">
-            {{
-              product?.data?.attributes?.sale_price !=
-              product?.data?.attributes?.price
-                ? product?.data?.attributes?.sale_price
-                : product?.data?.attributes?.price
-            }}
+            {{ currentPrice }}
             <span class="currency mr-1">EGP</span></span
           >
           <span
@@ -96,16 +91,24 @@
           </h2>
           <div class="relative">
             <select
-              v-model="size"
+              v-model="variant"
               class="block w-full border border-gray-300 text-customSlate text-sm py-3 px-4 rounded-md leading-tight focus:outline-none focus:border-gray-500"
             >
               <option value="">- Please select -</option>
-              <option :value="size" v-for="size in sizes" :key="size">
-                {{ size }}
+              <option
+                :value="variant"
+                v-for="variant in product?.data.attributes?.product_variants
+                  ?.data"
+                :key="variant.id"
+              >
+                {{ variant?.attributes?.title }}
               </option>
             </select>
           </div>
         </div>
+
+        <!-- {{ product?.data.attributes?.product_variants?.data }} -->
+        <!-- {{ variant }} -->
 
         <!-- <div class="!mt-16 max-md:!mt-10"> -->
         <div class="!mt-6">
@@ -140,13 +143,11 @@
 const route = useRoute();
 const { getProduct } = useProducts();
 const cartStore = useCartStore();
-
-const { data: product, error } = await useAsyncData("product", () =>
+const { data: product } = await useAsyncData("product", () =>
   getProduct(route.params.productId as any)
 );
-
-const size = ref("M");
-const sizes = ["S", "M", "D", "L", "XL"];
+//choose first variant as initial
+const variant = ref(product.value?.data.attributes?.product_variants?.data[0]);
 
 const productImages = computed(() => {
   const main_image =
@@ -155,6 +156,19 @@ const productImages = computed(() => {
 
   images = images.map((image: any) => image.attributes.url) || [];
   return [main_image, ...images];
+});
+
+const currentPrice = computed(() => {
+  let currentPrice =
+    product.value?.data?.attributes?.sale_price ==
+    product.value?.data?.attributes?.price
+      ? product.value?.data?.attributes?.price
+      : product.value?.data?.attributes?.sale_price;
+
+  if (variant.value?.attributes?.price) {
+    return variant.value?.attributes?.price;
+  }
+  return currentPrice;
 });
 
 const activeImage = ref<string>(productImages.value[0]);

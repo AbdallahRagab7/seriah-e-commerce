@@ -15,7 +15,7 @@ export function useProducts() {
           product_variants: {
             populate: "*",
           },
-        }, // Populate all related data
+        },
         pagination,
         filters,
       });
@@ -29,7 +29,13 @@ export function useProducts() {
   const getProduct = async (productId: number) => {
     try {
       const response = await findOne<IProduct>("products", productId, {
-        populate: "*",
+        populate: {
+          main_image: true,
+          images: true,
+          product_variants: {
+            populate: "*",
+          },
+        },
       });
       return response;
     } catch (error: any) {

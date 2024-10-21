@@ -22,6 +22,7 @@ export interface Product {
   subscriber?: string;
   additional_info?: any;
   subscriber?: any;
+  product_variants: any;
 }
 
 export interface CartItem {
