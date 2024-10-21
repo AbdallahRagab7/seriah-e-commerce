@@ -75,11 +75,4 @@ interface Props {
   cartItem: ICartItem;
 }
 const props = defineProps<Props>();
-
-const quantityCounter = ref<number>(1);
-// const decreaseCounter = () => {
-//   if (quantityCounter.value > 1) {
-//     quantityCounter.value--;
-//   }
-// };
 </script>

@@ -74,6 +74,10 @@ import { toast } from "vue-sonner";
 import ProfileAccount from "~/components/profile/account.vue";
 import ProfileOrders from "~/components/profile/orders.vue";
 import ProfileChangePassword from "~/components/profile/changePassword.vue";
+
+definePageMeta({
+  middleware: "is-auth",
+});
 // const currentComponent = ref("ProfileAccount");
 const currentComponent = ref("ProfileAccount");
 const currentComponentToRender = ref(ProfileAccount);

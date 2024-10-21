@@ -56,9 +56,9 @@
           >Phone Number</label
         >
         <input
-          v-model="data.phoneNumber"
+          v-model="data.phone"
           type="number"
-          id="phone"
+          id="username"
           class="bg-gray-50 border border-gray-300 focus:border-secondary focus:outline-none text-gray-900 text-sm rounded-lg w-full p-2.5"
           required
         />
@@ -67,7 +67,7 @@
         <label
           for="dateOfBirth"
           class="block mb-2 text-sm font-semibold text-gray-900"
-          >Birth date</label
+          >Birthdate</label
         >
         <input
           id="dateOfBirth"
@@ -103,7 +103,7 @@ const data = ref({
   email: "",
   password: "",
   userName: "",
-  phoneNumber: "",
+  phone: "",
   birth_date: "",
 });
 
@@ -117,7 +117,7 @@ const onSubmit = async () => {
       username: data.value.userName,
       email: data.value.email,
       password: data.value.password,
-      phoneNumber: data.value.phoneNumber,
+      phoneNumber: data.value.phone,
       birth_date: data.value.birth_date,
     });
     isLoading.value = false;
