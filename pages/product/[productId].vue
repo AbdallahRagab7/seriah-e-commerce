@@ -44,14 +44,14 @@
           >
           <span
             v-if="
-              product?.data.attributes?.sale_price !=
-              product?.data.attributes?.price
+              product?.data?.attributes?.sale_price !=
+              product?.data?.attributes?.price
             "
             class="text-xs"
           >
             <!-- sale price -->
             <span class="line-through">
-              {{ product?.data.attributes.price }}
+              {{ product?.data?.attributes?.price }}
             </span>
             <span class="currency ml-1">EGP</span>
           </span>
@@ -86,7 +86,7 @@
         </div>
         <div>
           <h1 class="text-customSlate text-sm">
-            Maximum Quantity: {{ variant.attributes.quantity }}
+            Maximum Quantity: {{ variant?.attributes?.quantity }}
           </h1>
         </div>
 
@@ -102,7 +102,7 @@
               <option value="">- Please select -</option>
               <option
                 :value="variant"
-                v-for="variant in product?.data.attributes?.product_variants
+                v-for="variant in product?.data?.attributes?.product_variants
                   ?.data"
                 :key="variant.id"
               >
@@ -193,6 +193,7 @@ const addCart = () => {
       variantId: variant.value.id,
       variantTitle: variant.value?.attributes?.title, // to render in cart
       quantity: quantityCounter.value,
+      maximumOrderQuantity: variant.value?.attributes?.quantity, // to disable btn in cart
       productTtitle: product.value?.data?.attributes?.name, // to render name of item in cart
       price: currentPrice.value,
     },

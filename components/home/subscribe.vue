@@ -24,12 +24,6 @@
           placeholder="Subscribe to our newsletter..."
         />
 
-        <!-- <button
-          type="submit"
-          class="mt-4 px-8 py-2 bg-gray-800 text-white font-semibold rounded-md shadow hover:bg-black focus:outline-none"
-        >
-          SUBSCRIBE
-        </button> -->
         <div class="w-full flex items-center justify-center mt-7">
           <BaseButton
             class="text-sm p-3 w-[30%] font-semibold tracking-wide rounded-sm"

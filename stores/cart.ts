@@ -13,7 +13,6 @@ export const useCartStore = defineStore(
         (item) => item.variantId === cartItem.variantId
       );
       if (!existingItem) {
-        console.log(cartItem, "its new item");
         totalQuantity.value += cartItem.quantity;
         items.value.push({
           productId: cartItem.productId,
@@ -23,10 +22,14 @@ export const useCartStore = defineStore(
           productMainImage: cartItem.productMainImage,
           quantity: cartItem.quantity,
           variantTitle: cartItem.variantTitle,
+          maximumOrderQuantity: cartItem.maximumOrderQuantity,
           totalPrice: cartItem.price, // 34an h7sb b3ha quantity * price b3d kda
         });
       } else {
-        console.log(cartItem.quantity, "its quantity");
+        if (cartItem.maximumOrderQuantity <= existingItem.quantity) {
+          toast.error(`Maximum quantity is ${cartItem.maximumOrderQuantity}`);
+          return;
+        }
         if (cartItem.quantity === 1) {
           existingItem.quantity++;
           existingItem.totalPrice += cartItem.price;

@@ -43,6 +43,7 @@ export interface CartItem {
   quantity: number;
   price: number;
   totalPrice: number;
+  maximumOrderQuantity: number;
 }
 
 export interface Category {

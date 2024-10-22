@@ -34,16 +34,22 @@
               <span class="mx-2 text-sm">{{ cartItem?.quantity }}</span>
 
               <!-- @click="cartStore.addItemToCart(cartItem, cartItem.id, 1)" -->
-              <Icon
-                name="iconamoon:sign-plus-fill"
-                class="w-5 h-5 text-black"
+
+              <button
                 @click="
                   cartStore.addItemToCart({
                     ...cartItem,
                     quantity: 1,
                   })
                 "
-              />
+                :disabled="disableIncrease"
+                class="w-5 h-5 text-black"
+              >
+                <Icon
+                  name="iconamoon:sign-plus-fill"
+                  class="w-5 h-5 text-black"
+                />
+              </button>
             </button>
           </div>
           <div>
@@ -74,5 +80,9 @@ const cartStore = useCartStore();
 interface Props {
   cartItem: ICartItem;
 }
+
 const props = defineProps<Props>();
+const disableIncrease = computed(
+  () => props.cartItem?.maximumOrderQuantity <= props.cartItem?.quantity
+);
 </script>

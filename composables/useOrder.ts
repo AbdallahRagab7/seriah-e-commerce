@@ -1,12 +1,12 @@
 import { toast } from "vue-sonner";
 
-export function useAuth() {
+export function useOrder() {
   const { create } = useStrapi();
 
-  const createCheckoutAccount = async (data: any) => {
+  const createOrder = async (data: any) => {
     try {
-      const response = await create<any>("subscribers", {
-        data,
+      const response = await create<any>("order/createOrder", {
+        ...data,
       });
 
       return response;
@@ -15,5 +15,5 @@ export function useAuth() {
     }
   };
 
-  return { createCheckoutAccount };
+  return { createOrder };
 }
