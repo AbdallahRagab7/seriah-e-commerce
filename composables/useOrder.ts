@@ -25,5 +25,16 @@ export function useOrder() {
     }
   };
 
-  return { createOrder, getUserOrders };
+  const applyVoucher = async (data: any) => {
+    try {
+      const response = await create<any>("voucher/isVoucherAvailable", {
+        ...data,
+      });
+      return response;
+    } catch (error: any) {
+      toast.error(error.error.message || "Failed to apply voucher");
+    }
+  };
+
+  return { createOrder, getUserOrders, applyVoucher };
 }
