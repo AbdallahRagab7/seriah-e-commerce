@@ -36,7 +36,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const headers = ["ORDER ID", "NAME", "PRICE", "DETAILS"];
 
 // Define the orders data
@@ -44,4 +44,9 @@ const orders = [
   { id: 3520, name: "University seminar series global.", price: 144.0 },
   { id: 2441, name: "Web coding and apache basics", price: 59.54 },
 ];
+const { getUserOrders } = useOrder();
+
+const { data: myOrders, error } = useAsyncData("myOrders", () =>
+  getUserOrders()
+);
 </script>

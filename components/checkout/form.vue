@@ -1,37 +1,13 @@
 <template>
-  <form class="pb-10">
+  <form @submit.prevent="placeOrder" class="pb-10">
     <div class="grid md:grid-cols-2 gap-3 mt-2">
-      <div>
-        <label class="customLabel" for="firstName"> First Name</label>
+      <div class="">
+        <label class="customLabel" for="city"> Address</label>
         <input
-          id="firstName"
+          id="address"
           type="text"
           class="customInput w-full"
-          v-model="data.firstName"
-        />
-      </div>
-
-      <div>
-        <label class="customLabel" for="lastName"> Last Name</label>
-        <input
-          id="lastName"
-          type="text"
-          class="customInput w-full"
-          v-model="data.lastName"
-        />
-      </div>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-3 mt-2">
-      <div>
-        <label class="customLabel" for="email"> Email Address</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          autocomplete="email"
-          class="customInput w-full"
-          v-model="data.email"
+          v-model="data.address"
         />
       </div>
 
@@ -40,48 +16,29 @@
         <input
           id="phone"
           required
-          type="text"
+          type=""
           class="customInput w-full"
-          v-model="data.phone"
+          v-model="data.phoneNumber"
         />
       </div>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-3 mt-2">
-      <div>
-        <label class="customLabel" for="city"> City</label>
-        <input
-          id="city"
-          type="text"
-          class="customInput w-full"
-          v-model="data.city"
-        />
-      </div>
-
-      <div>
-        <label class="customLabel" for="dateOfBirth"> Date of birth</label>
-        <input
-          id="dateOfBirth"
-          type="date"
-          class="customInput w-full"
-          v-model="data.dateOfBirth"
-        />
-      </div>
-    </div>
     <div class="grid md:grid-cols-2 gap-3 mt-2">
       <div class="col-span-2">
-        <label class="customLabel" for="city"> Address</label>
-        <input
-          id="address"
+        <label class="customLabel" for="notes"> Notes</label>
+        <textarea
+          id="notes"
           type="text"
+          rows="3"
           class="customInput w-full"
-          v-mode="data.address"
+          v-model="data.notes"
         />
       </div>
     </div>
 
     <div class="w-full flex items-center justify-start mt-10">
       <BaseButton
+        :isLoading="loading"
         class="text-sm px-4 py-2.5 w-1/2 font-semibold tracking-wide rounded-sm"
       >
         Place Order
@@ -91,14 +48,31 @@
 </template>
 
 <script setup lang="ts">
+const { createOrder } = useOrder();
+const cartStore = useCartStore();
+
 const data = ref({
-  firstName: "",
-  lastName: "",
-  email: "",
-  phone: "",
-  city: "",
-  dateOfBirth: "",
+  phoneNumber: "",
   address: "",
+  notes: "",
 });
+
+const cartItemsMapper = computed(() => {
+  return cartStore.items.map((item: ICartItem) => {
+    return {
+      variantId: item.variantId,
+      quantity: item.quantity,
+    };
+  });
+});
+
 const loading = ref(false);
+const placeOrder = async () => {
+  loading.value = true;
+  await createOrder({
+    ...data.value,
+    products: cartItemsMapper.value,
+  });
+  loading.value = false;
+};
 </script>

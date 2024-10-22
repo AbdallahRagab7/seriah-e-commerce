@@ -25,15 +25,6 @@ export interface Product {
   product_variants: any;
 }
 
-// export interface CartItem {
-//   id: number;
-//   name: string;
-//   main_image: string;
-//   quantity: number;
-//   totalPrice: number;
-//   price: number;
-//   size: string;
-// }
 export interface CartItem {
   productId: any;
   productTtitle: string;
@@ -45,7 +36,15 @@ export interface CartItem {
   totalPrice: number;
   maximumOrderQuantity: number;
 }
-
+export interface Order {
+  id: any;
+  totalPrice: any;
+  status: string;
+  discountPercent: any;
+  phoneNumber: string;
+  shippingCost: number;
+  estimatedDeliveryData: string;
+}
 export interface Category {
   title: string;
   image?: IImage;
@@ -61,4 +60,5 @@ declare global {
   type ICartItem = CartItem;
   type ICategory = Category;
   type ICollection = Collection;
+  type IOrder = Order;
 }
