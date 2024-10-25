@@ -49,7 +49,7 @@
             "
             class="text-xs"
           >
-            <!-- sale price -->
+            <!-- START OF SALE PRICE -->
             <span class="line-through">
               {{ product?.data?.attributes?.price }}
             </span>
