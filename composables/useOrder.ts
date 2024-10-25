@@ -3,6 +3,7 @@ import { toast } from "vue-sonner";
 export function useOrder() {
   const { create, findOne } = useStrapi();
   const cartStore = useCartStore();
+  const router = useRouter();
 
   const createOrder = async (data: any) => {
     try {
@@ -12,6 +13,8 @@ export function useOrder() {
       toast.success("Order is created successfully");
       cartStore.items = [];
       cartStore.totalQuantity = 0;
+      router.push("/profile");
+
       return response;
     } catch (error: any) {
       toast.error(error.error.message || "Failed to place order");

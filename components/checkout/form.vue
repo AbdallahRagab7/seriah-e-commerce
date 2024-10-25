@@ -93,12 +93,15 @@ const cartItemsMapper = computed(() => {
   });
 });
 
+const globalVoucherCode = useState("globalVoucherCode", () => "");
+
 const loading = ref(false);
 const placeOrder = async () => {
   loading.value = true;
   await createOrder({
     ...data.value,
     products: cartItemsMapper.value,
+    voucher: globalVoucherCode.value,
   });
   loading.value = false;
 };

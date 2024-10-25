@@ -1,6 +1,5 @@
 <template>
   <section>
-    {{ voucherResponse }}
     <div
       v-if="showCheckoutBtnAndPromo"
       class="flex border border-gray-300 overflow-hidden rounded-sm"
@@ -8,7 +7,7 @@
       <input
         type="email"
         placeholder="Promo code"
-        v-model="code"
+        v-model="globalVoucherCode"
         class="w-full outline-none bg-white text-gray-600 text-sm px-4 py-2.5"
       />
       <BaseButton
@@ -89,21 +88,22 @@ const subTotal = computed(() => {
 
 const { applyVoucher } = useOrder();
 const loading = ref(false);
-const code = ref("");
-// const globalVoucherCode = useState("voucherCode", () => "");
+// const code = ref("");
+const globalVoucherCode = useState("globalVoucherCode", () => "");
 
 const voucherResponse = ref();
 const applyVoucherCode = async () => {
-  if (!code.value) {
+  if (!globalVoucherCode.value) {
     useNuxtApp().$toast.error("Please enter promo code");
     return;
   }
   loading.value = true;
   voucherResponse.value = await applyVoucher({
-    code: code.value,
+    code: globalVoucherCode.value,
     orderValue: subTotal.value,
   });
   loading.value = false;
+  globalVoucherCode.value = "";
 };
 
 const Discount = computed(() => {
