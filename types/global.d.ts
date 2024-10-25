@@ -54,6 +54,20 @@ export interface Collection {
   title: string;
   background?: any;
 }
+interface MyOrder {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  totalPrice: string;
+  status: string;
+  discountPercent: number | null;
+  address: string;
+  phoneNumber: string;
+  notes: string;
+  shippingCost: number | null;
+  estimatedDeliveryDate: string | null;
+}
+
 declare global {
   type IImage = Image;
   type IProduct = Product;
@@ -61,4 +75,5 @@ declare global {
   type ICategory = Category;
   type ICollection = Collection;
   type IOrder = Order;
+  type IMyOrder = MyOrder;
 }

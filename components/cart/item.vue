@@ -70,7 +70,6 @@
         {{ cartItem?.price }}
       </h4>
     </div>
-    <!-- <hr class="border-gray-300" /> -->
   </div>
 </template>
 

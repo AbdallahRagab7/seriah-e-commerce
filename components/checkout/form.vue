@@ -2,6 +2,32 @@
   <form @submit.prevent="placeOrder" class="pb-10">
     <div class="grid md:grid-cols-2 gap-3 mt-2">
       <div class="">
+        <label class="customLabel" for="name"> Name</label>
+        <input
+          v-model="user.name"
+          id="name"
+          type="text"
+          class="customInput w-full"
+          disabled
+        />
+      </div>
+
+      <div>
+        <label class="customLabel" for="email">
+          Email <Address></Address
+        ></label>
+        <input
+          v-model="user.email"
+          disabled
+          id="email"
+          required
+          type=""
+          class="customInput w-full"
+        />
+      </div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-3 mt-2">
+      <div class="">
         <label class="customLabel" for="city"> Address</label>
         <input
           id="address"
@@ -50,6 +76,7 @@
 <script setup lang="ts">
 const { createOrder } = useOrder();
 const cartStore = useCartStore();
+const user = useStrapiUser();
 
 const data = ref({
   phoneNumber: "",

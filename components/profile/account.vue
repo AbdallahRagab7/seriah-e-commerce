@@ -114,22 +114,22 @@ const data = ref({
   address: user.value?.address || "",
 });
 
-const { updateUser } = useStrapiAuth();
+const { updateUser } = useCustomAuth();
 const router = useRouter();
 
 const onSubmit = async () => {
   try {
     isLoading.value = true;
-    await updateUser({
+    await updateUser(user.value?.id || 0, {
       name: data.value.name,
       username: data.value.userName,
       email: data.value.email,
       phoneNumber: data.value.phoneNumber + "",
       birthDate: data.value.birthDate,
+      address: data.value.address,
     });
     isLoading.value = false;
     toast.success("Data is updated successfully");
-    router.push("/");
   } catch (error: any) {
     isLoading.value = false;
     toast.error(error.error.message || "Failed to update data");

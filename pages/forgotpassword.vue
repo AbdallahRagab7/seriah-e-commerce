@@ -51,7 +51,6 @@ const onSubmit = async () => {
     await forgotPassword({ email: email.value });
     isLoading.value = false;
     toast.success("email sent successfully");
-    router.push("/");
   } catch (error: any) {
     isLoading.value = false;
 

@@ -36,7 +36,9 @@
       </div>
 
       <div class="text-end mb-2">
-        <a href="#" class="hover:underline text-blue-700">Forgot Password?</a>
+        <NuxtLink to="/forgotpassword" class="hover:underline text-blue-700"
+          >Forgot Password?</NuxtLink
+        >
       </div>
       <BaseButton
         :isLoading="isLoading"

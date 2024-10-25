@@ -1,5 +1,6 @@
 <template>
   <section>
+    {{ response }}
     <div
       v-if="showCheckoutBtnAndPromo"
       class="flex border border-gray-300 overflow-hidden rounded-sm"
@@ -7,14 +8,17 @@
       <input
         type="email"
         placeholder="Promo code"
+        v-model="code"
         class="w-full outline-none bg-white text-gray-600 text-sm px-4 py-2.5"
       />
-      <button
+      <BaseButton
+        @click="applyVoucherCode"
+        :isLoading="loading"
         type="button"
         class="custom-btn flex items-center justify-center font-semibold tracking-wide px-4 text-sm"
       >
         Apply
-      </button>
+      </BaseButton>
     </div>
 
     <ul class="mt-8 space-y-4">
@@ -34,13 +38,6 @@
         </span>
       </li>
 
-      <li class="flex gap-4 text-base">
-        Shipping
-        <span class="ml-auto">
-          <span class="currency">EGP </span>
-          {{ shipping.toFixed(2) }}
-        </span>
-      </li>
       <li class="flex gap-4 text-base">
         Total
         <span class="ml-auto">
@@ -84,10 +81,26 @@ const subTotal = computed(() => {
   );
   return subTotal;
 });
-const totalPrice = computed(() => subTotal.value + shipping.value);
+const totalPrice = computed(() => subTotal.value + 0);
 const route = useRoute();
 const showCheckoutBtnAndPromo = ref<Boolean>(true);
 if (route.path === "/checkout") {
   showCheckoutBtnAndPromo.value = false;
 }
+
+const { applyVoucher } = useOrder();
+const loading = ref(false);
+const code = ref("");
+const applyVoucherCode = async () => {
+  if (!code.value) {
+    useNuxtApp().$toast.error("Please enter promo code");
+    return;
+  }
+  loading.value = true;
+  const response = await applyVoucher({
+    code: code.value,
+    orderValue: subTotal.value,
+  });
+  loading.value = false;
+};
 </script>

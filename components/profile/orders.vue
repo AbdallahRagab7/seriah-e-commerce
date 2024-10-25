@@ -6,6 +6,8 @@
       My Orders
     </h1>
 
+    <!-- {{ myOrders }} -->
+
     <div class="bg-white md:px-[60px] overflow-x-auto max-w-[100%]">
       <div class="overflow-x-auto max-w-[90%]">
         <table class="bg-white rounded-sm border-none border-[#eceaea]">
@@ -21,13 +23,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="order in orders" :key="order.id" class="border-t">
-              <td class="py-4 px-4 text-sm">#{{ order.id }}</td>
-              <td class="py-4 px-4 text-sm">{{ order.name }}</td>
-              <td class="py-4 px-4 text-sm">${{ order.price }}</td>
-              <td class="py-4 px-4 text-sm text-blue-600">
-                <a href="#">View</a>
+            <tr v-for="order in myOrders" :key="order.id" class="border-t">
+              <td class="py-4 px-4 text-sm text-center">#{{ order.id }}</td>
+              <td
+                class="py-4 px-4 text-sm text-center"
+                :class="orderStatus[order.status]?.style"
+              >
+                {{ orderStatus[order.status]?.label }}
               </td>
+              <td class="py-4 px-4 text-sm text-center">
+                {{ order.totalPrice }}
+              </td>
+              <td class="py-4 px-4 text-sm text-center">
+                {{ order.phoneNumber }}
+              </td>
+              <td class="py-4 px-4 text-sm text-center">{{ order.address }}</td>
             </tr>
           </tbody>
         </table>
@@ -36,17 +46,45 @@
   </div>
 </template>
 
-<script setup lang="ts">
-const headers = ["ORDER ID", "NAME", "PRICE", "DETAILS"];
+<script setup>
+const headers = ["Order ID", "Status", "TotalPrice", "Phone Number", "Address"];
 
 // Define the orders data
-const orders = [
-  { id: 3520, name: "University seminar series global.", price: 144.0 },
-  { id: 2441, name: "Web coding and apache basics", price: 59.54 },
-];
+
 const { getUserOrders } = useOrder();
 
 const { data: myOrders, error } = useAsyncData("myOrders", () =>
   getUserOrders()
 );
+
+const orderStatus = {
+  pending: {
+    label: "Pending",
+    style: "text-orange-600	",
+  },
+  processing: {
+    label: "Processing",
+    style: "text-yellow-500",
+  },
+  onHold: {
+    label: "On Hold",
+    style: "text-blue-500",
+  },
+  completed: {
+    label: "Completed",
+    style: "text-green-500",
+  },
+  outForDelivery: {
+    label: "Out For Delivery",
+    style: "text-yellow-500",
+  },
+  canceled: {
+    label: "Canceled",
+    style: "text-red-500",
+  },
+  failed: {
+    label: "Failed",
+    style: "text-red-500",
+  },
+};
 </script>
