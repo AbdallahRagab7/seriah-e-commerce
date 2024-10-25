@@ -24,12 +24,12 @@
         <h1 class="text-2xl font-medium text-customGray">
           {{ product?.data.attributes.name }}
 
-          <span
+          <!-- <span
             class="text-green-500 inline-flex items-center gap-[2px] text-xs font-normal"
           >
             In Stock
             <Icon name="carbon:checkmark-filled" style="color: #0da032" />
-          </span>
+          </span> -->
         </h1>
         <div class="mt-8 space-y-4">
           <p class="text-customSlate text-sm">
@@ -197,6 +197,7 @@ const addCart = () => {
       productTtitle: product.value?.data?.attributes?.name, // to render name of item in cart
       price: currentPrice.value,
     },
+    quantityCounter.value,
     true
   );
 };

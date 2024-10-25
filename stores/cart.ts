@@ -8,11 +8,16 @@ export const useCartStore = defineStore(
     const totalQuantity = ref<number>(0);
 
     // Actions
-    const addItemToCart = (cartItem: ICartItem, showToast: boolean = false) => {
+    const addItemToCart = (
+      cartItem: ICartItem,
+      newQuantity: number,
+      showToast: boolean = false
+    ) => {
       const existingItem = items.value.find(
         (item) => item.variantId === cartItem.variantId
       );
       if (!existingItem) {
+        console.log(cartItem, "its new item");
         totalQuantity.value += cartItem.quantity;
         items.value.push({
           productId: cartItem.productId,
@@ -20,13 +25,19 @@ export const useCartStore = defineStore(
           price: cartItem.price,
           productTtitle: cartItem.productTtitle,
           productMainImage: cartItem.productMainImage,
-          quantity: cartItem.quantity,
+          quantity: cartItem.quantity, // current quantity
           variantTitle: cartItem.variantTitle,
           maximumOrderQuantity: cartItem.maximumOrderQuantity,
           totalPrice: cartItem.price, // 34an h7sb b3ha quantity * price b3d kda
         });
       } else {
-        if (cartItem.maximumOrderQuantity <= existingItem.quantity) {
+        console.log(existingItem, "its existing itemmm");
+        console.log(newQuantity, "its number of new added quantityyy");
+
+        if (
+          cartItem.maximumOrderQuantity <
+          existingItem.quantity + newQuantity
+        ) {
           toast.error(`Maximum quantity is ${cartItem.maximumOrderQuantity}`);
           return;
         }
