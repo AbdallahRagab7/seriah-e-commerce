@@ -1,11 +1,11 @@
 import { toast } from "vue-sonner";
 
 export function useCustomAuth() {
-  const { update } = useStrapi();
+  const { create } = useStrapi();
 
-  const updateUser = async (userId: number, data: any) => {
+  const updateUser = async (data: any) => {
     try {
-      const response = await update<any>("users", userId, {
+      const response = await create<any>("user/updateMe", {
         ...data,
       });
       return response;

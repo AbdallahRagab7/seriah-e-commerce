@@ -75,13 +75,6 @@
         </div>
       </div>
 
-      <!-- <div class="grid md:grid-cols-2 gap-3 mt-2">
-        <div class="col-span-2">
-          <label class="customLabel" for="city"> Address</label>
-          <input id="address" type="text" class="customInput w-full" />
-        </div>
-      </div> -->
-
       <div class="w-full flex items-center justify-start mt-10">
         <BaseButton
           :isLoading="isLoading"
@@ -120,7 +113,7 @@ const router = useRouter();
 const onSubmit = async () => {
   try {
     isLoading.value = true;
-    await updateUser(user.value?.id || 0, {
+    await updateUser({
       name: data.value.name,
       username: data.value.userName,
       email: data.value.email,
