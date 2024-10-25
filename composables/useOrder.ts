@@ -34,6 +34,7 @@ export function useOrder() {
       const response = await create<any>("voucher/isVoucherAvailable", {
         ...data,
       });
+      toast.success("Voucher is applied successfully");
       return response;
     } catch (error: any) {
       toast.error(error.error.message || "Failed to apply voucher");

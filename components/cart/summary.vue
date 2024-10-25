@@ -1,6 +1,6 @@
 <template>
   <section>
-    {{ response }}
+    {{ voucherResponse }}
     <div
       v-if="showCheckoutBtnAndPromo"
       class="flex border border-gray-300 overflow-hidden rounded-sm"
@@ -34,7 +34,7 @@
         Discount
         <span class="ml-auto">
           <span class="currency">EGP </span>
-          0
+          {{ Discount.toFixed(2) }}
         </span>
       </li>
 
@@ -71,8 +71,13 @@
 </template>
 
 <script setup lang="ts">
+const route = useRoute();
+const showCheckoutBtnAndPromo = ref<Boolean>(true);
+if (route.path === "/checkout") {
+  showCheckoutBtnAndPromo.value = false;
+}
+
 const cartStore = useCartStore();
-const shipping = ref(2);
 const subTotal = computed(() => {
   const subTotal = cartStore.items.reduce(
     (totalPrice: number, item: ICartItem) =>
@@ -81,26 +86,38 @@ const subTotal = computed(() => {
   );
   return subTotal;
 });
-const totalPrice = computed(() => subTotal.value + 0);
-const route = useRoute();
-const showCheckoutBtnAndPromo = ref<Boolean>(true);
-if (route.path === "/checkout") {
-  showCheckoutBtnAndPromo.value = false;
-}
 
 const { applyVoucher } = useOrder();
 const loading = ref(false);
 const code = ref("");
+// const globalVoucherCode = useState("voucherCode", () => "");
+
+const voucherResponse = ref();
 const applyVoucherCode = async () => {
   if (!code.value) {
     useNuxtApp().$toast.error("Please enter promo code");
     return;
   }
   loading.value = true;
-  const response = await applyVoucher({
+  voucherResponse.value = await applyVoucher({
     code: code.value,
     orderValue: subTotal.value,
   });
   loading.value = false;
 };
+
+const Discount = computed(() => {
+  if (voucherResponse.value?.newOrderValue) {
+    return subTotal.value - voucherResponse.value?.newOrderValue;
+  } else {
+    return 0;
+  }
+});
+const totalPrice = computed(() => {
+  if (voucherResponse.value?.newOrderValue) {
+    return voucherResponse.value?.newOrderValue;
+  } else {
+    return subTotal.value;
+  }
+});
 </script>
