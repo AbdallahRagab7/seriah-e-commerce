@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-[#f5f5f5] py-[60px]">
+  <section class="bg-[#f5f5f5] py-[60px] min-h-[90vh]">
     <section class="myContainer !max-w-[82%] font-poppins pt-5">
       <div class="grid md:grid-cols-3 gap-4">
         <!-- Sidebar -->
@@ -55,11 +55,7 @@
 
         <!-- Main Content -->
         <div class="md:col-span-2">
-          <!-- <component :is="currentComponent" /> -->
           <section class="">
-            <!-- <ProfileAccount /> -->
-            <!-- <ProfileOrders /> -->
-            <!-- <ProfileChangePassword /> -->
             <Component :is="currentComponentToRender" />
           </section>
         </div>
