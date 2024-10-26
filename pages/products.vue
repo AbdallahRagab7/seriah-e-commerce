@@ -24,7 +24,7 @@
 
       <div
         v-else
-        class="md:col-span-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 2xl:gap-8"
+        class="md:col-span-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-7"
       >
         <ProductCard
           v-for="product in products?.data"

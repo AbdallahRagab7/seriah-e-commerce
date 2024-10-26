@@ -19,11 +19,18 @@
 
 <script setup lang="ts">
 const { getProducts } = useProducts();
+
+const filters = {
+  is_featured: {
+    $eq: true,
+  },
+};
+
 const {
   data: products,
   error,
   status,
-} = useAsyncData("products", () => getProducts());
+} = useAsyncData("productss", () => getProducts({}, filters));
 </script>
 
 <style scoped>

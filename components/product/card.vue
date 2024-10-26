@@ -1,13 +1,13 @@
 <template>
   <div
-    class="relative w-full max-w-sm mx-auto border border-gray-100 rounded-sm max-sm:px-5 h-fit"
+    class="relative w-full max-w-sm mx-auto border border-gray-100 rounded-sm max-sm:px-6"
   >
     <div
       v-if="product?.attributes?.sale_price != product?.attributes?.price"
-      class="absolute top-[-10px] left-0 rounded-sm"
+      class="absolute top-[-19px] left-0 rounded-sm"
     >
       <div
-        class="bg-red-500 text-[9.5px] rounded-sm text-white text-xs w-[60px] py-[2px] text-center !z-10"
+        class="bg-red-500 text-[9.5px] rounded-sm text-white text-xs w-[65px] py-[2px] text-center !z-10"
       >
         Sale
         {{
@@ -20,9 +20,9 @@
       </div>
     </div>
     <NuxtLink :to="`/product/${product?.id}`">
-      <div class="overflow-hidden !rounded-md">
+      <div class="overflow-hidden">
         <NuxtImg
-          class="max-h-[90%] max-w-[90%] rounded-md my-5 object-contain mix-blend-multiply mx-auto"
+          class="mb-5 object-cover mix-blend-multiply"
           :src="`${$config.public.STRAPI_URL}${product?.attributes?.main_image?.data?.attributes?.url}`"
           alt="product image"
         />
@@ -33,7 +33,7 @@
       <NuxtLink :to="`/product/${product?.id}`">
         <!-- font-poppins -->
         <h5
-          class="text-base mb-5 text-customSlate hover:text-primary line-clamp-4"
+          class="text-[15px] mb-3 text-customSlate hover:text-primary line-clamp-3"
         >
           {{ product?.attributes?.name }}
         </h5>
