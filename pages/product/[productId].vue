@@ -97,10 +97,13 @@
               ?.data"
             :key="myVariant.id"
             @click="variant = myVariant"
+            :disabled="myVariant?.attributes?.quantity == 0"
             class="px-2 py-1 mr-6 rounded-sm"
             :class="{
               'border border-gray-800 focus:bg-[#f2f2f2]':
                 variant?.id === myVariant?.id,
+              'cursor-not-allowed line-through':
+                myVariant?.attributes?.quantity == 0,
             }"
           >
             {{ myVariant?.attributes?.title }}
