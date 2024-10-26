@@ -24,7 +24,7 @@
       <!-- END OF ITEMS CONTAINER -->
 
       <!-- START OF SUMMARY -->
-      <div class="rounded-md p-4 lg:p-4 bg-gray-50 max-h-[410px]">
+      <div class="rounded-md p-4 lg:p-4 bg-gray-50">
         <CartSummary />
       </div>
       <!-- END OF ITEMS CONTAINER-->

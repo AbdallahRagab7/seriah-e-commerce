@@ -19,8 +19,35 @@
         Apply
       </BaseButton>
     </div>
+    <table class="w-full text-left text-gray-800 mt-4">
+      <thead>
+        <tr>
+          <th class="border-b py-2 text-sm font-medium">Products</th>
+          <th class="border-b py-2 text-sm font-medium">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="(product, index) in cartStore.items"
+          :key="index"
+          class="border-b"
+        >
+          <td class="py-3 text-sm font-medium">
+            {{ product.productTtitle }}
+            <span class="font-bold">× {{ product.quantity }}</span>
+            <span class="text-xs block text-customSlate">{{
+              product.variantTitle
+            }}</span>
+          </td>
+          <td class="py-3 text-sm">
+            <span class="currency">EGP</span>
+            {{ product.totalPrice }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-    <ul class="mt-8 space-y-4">
+    <ul class="mt-8 space-y-4 text-gray-900">
       <li class="flex gap-4 text-base">
         SubTotal
         <span class="ml-auto">
@@ -70,6 +97,13 @@
 </template>
 
 <script setup lang="ts">
+const products = ref([
+  { name: "Wooden container Bowl", quantity: 1, total: 96 },
+  { name: "Euvira Rocking Chair", quantity: 1, total: 90 },
+  { name: "Rosmo Namino", quantity: 1, total: 180 },
+  { name: "Big sale canvas basket", quantity: 1, total: 400 },
+]);
+
 const route = useRoute();
 const showCheckoutBtnAndPromo = ref<Boolean>(true);
 if (route.path === "/checkout") {
