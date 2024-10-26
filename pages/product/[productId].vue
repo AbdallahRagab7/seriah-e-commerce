@@ -90,32 +90,23 @@
           </h1>
         </div>
 
-        <div class="space-y-2">
-          <h2 class="customLabel">
-            Select Variant <span class="text-red-600">*</span>
-          </h2>
-          <div class="relative">
-            <select
-              v-model="variant"
-              class="block w-full border border-gray-300 text-customSlate text-sm py-3 px-4 rounded-md leading-tight focus:outline-none focus:border-gray-500"
-            >
-              <option value="">- Please select -</option>
-              <option
-                :value="variant"
-                v-for="variant in product?.data?.attributes?.product_variants
-                  ?.data"
-                :key="variant.id"
-              >
-                {{ variant?.attributes?.title }}
-              </option>
-            </select>
-          </div>
+        <h2 class="font-medium text-sm">Variants:</h2>
+        <div class="!mb-8 !mt-3 font-medium text-[15px] text-[#1f2021]">
+          <button
+            v-for="myVariant in product?.data?.attributes?.product_variants
+              ?.data"
+            :key="myVariant.id"
+            @click="variant = myVariant"
+            class="px-2 py-1 mr-6 rounded-sm"
+            :class="{
+              'border border-gray-800 focus:bg-[#f2f2f2]':
+                variant?.id === myVariant?.id,
+            }"
+          >
+            {{ myVariant?.attributes?.title }}
+          </button>
         </div>
 
-        <!-- {{ product?.data.attributes?.product_variants?.data }} -->
-        <!-- {{ variant }} -->
-
-        <!-- <div class="!mt-16 max-md:!mt-10"> -->
         <div class="!mt-6">
           <BaseButton
             @click="addCart"
