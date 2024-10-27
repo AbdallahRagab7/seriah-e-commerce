@@ -1,8 +1,8 @@
 <template>
   <div class="relative">
     <!-- Embla Carousel -->
-    <div class="embla max-h-[500px]" ref="emblaRef">
-      <div class="embla__container">
+    <div class="embla" ref="emblaRef">
+      <div class="embla__container max-h-[500px]">
         <div
           v-for="slider in sliders"
           :key="slider.id"
@@ -15,10 +15,11 @@
             placeholer
             class="object-contain w-full rounded-sm max-h-[450px]"
           />
+          <!-- :src="`${$config.public.STRAPI_URL}${slider.attributes?.image?.data?.attributes?.url}`" -->
           <NuxtImg
             :src="`${$config.public.STRAPI_URL}${slider.attributes?.image?.data?.attributes?.url}`"
             alt="Slider Image"
-            class="object-cover w-full rounded-sm max-h-[520px]"
+            class="object-cover w-full rounded-sm h-full"
           />
 
           <div
