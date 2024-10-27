@@ -1,13 +1,21 @@
 export const useSocialLinksStore = defineStore("socialLinks", () => {
-  const whatsappNumber = ref("");
-  const Instagram = ref("");
-  const youtube = ref("");
+  const footerData = ref({
+    whatsappNumber: "",
+    Instagram: "",
+    youtube: "",
+    email: "",
+    address: "",
+    phoneNumber: "",
+  });
 
   const setSocialLinks = (data: any) => {
-    whatsappNumber.value = data.whatsappNumber;
-    Instagram.value = data.Instagram;
-    youtube.value = data.youtube;
+    footerData.value.whatsappNumber = data.whatsappNumber;
+    footerData.value.Instagram = data.Instagram;
+    footerData.value.youtube = data.youtube;
+    footerData.value.email = data.email;
+    footerData.value.address = data.address;
+    footerData.value.phoneNumber = data.phoneNumber;
   };
 
-  return { whatsappNumber, Instagram, youtube, setSocialLinks };
+  return { footerData, setSocialLinks };
 });

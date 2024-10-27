@@ -12,6 +12,9 @@ export interface Home {
   whatsappNumber?: string;
   Instagram?: string;
   youtube?: string;
+  email?: string;
+  address?: string;
+  phoneNumber: string;
   shipping_policy?: string;
   refund_policy?: string;
   privacy_policy?: string;
