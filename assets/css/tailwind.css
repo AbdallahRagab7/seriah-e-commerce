@@ -18,7 +18,7 @@ body {
 }
 
 .heading1 {
-  @apply text-[36px] leading-[1.2] text-[#201f1f];
+  @apply text-[36px] leading-[1.2] text-[#201f1f] capitalize;
   font-family: "Poppins";
   /* background: linear-gradient(45deg, #022f98 34%, #1672a7 69%, #52b4f5 68%);
   background-clip: text;

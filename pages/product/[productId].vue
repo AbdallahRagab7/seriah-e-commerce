@@ -14,7 +14,7 @@
             :src="`${$config.public.STRAPI_URL}${image}`"
             @click="activeImage = image"
             alt="ProductImage"
-            class="w-1/6 h-full cursor-pointer object-contain rounded-md"
+            class="w-1/6 h-full min-h-[58px] cursor-pointer object-cover rounded-sm"
             :class="activeImage === image ? 'border-2 border-green-500' : ''"
           />
         </div>

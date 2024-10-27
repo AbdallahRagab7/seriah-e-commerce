@@ -71,11 +71,6 @@
 </template>
 
 <script setup lang="ts">
-const cartStore = useCartStore();
-
-// interface Props {
-//   product: IProduct;
-// }
 interface Props {
   product: {
     attributes: IProduct;
@@ -87,35 +82,6 @@ const props = defineProps<Props>();
 </script>
 
 <style scoped>
-/* .custom-btn {
-  position: relative;
-  background: transparent;
-  color: var(--secondary-color);
-  border-color: var(--secondary-color);
-  z-index: 1;
-  overflow: hidden;
-  transition: 0.5s;
-}
-
-.custom-btn:hover {
-  color: white;
-}
-
-.custom-btn::before {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: #201f1f;
-  transition: 0.5s;
-  z-index: -1;
-}
-.custom-btn:hover::before {
-  width: 100%;
-} */
-
 .add-cart:after {
   background: #201f1f;
   bottom: -2px;

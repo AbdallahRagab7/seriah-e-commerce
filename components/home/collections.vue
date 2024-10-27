@@ -1,5 +1,5 @@
 <template>
-  <div class="myContainer pt-[60px]">
+  <div class="myContainer py-[65px]">
     <h1 class="heading1 mb-8 text-center">Collections</h1>
     <!-- <div class="grid xs:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-14"> -->
     <div

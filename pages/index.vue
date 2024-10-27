@@ -4,6 +4,7 @@
     <HomeMisson :HomeMission="home?.attributes.mission" />
     <HomeCollections />
     <HomeProducts />
+    <HomeAdsProducts />
     <HomeSubscribe />
 
     <!-- HTML -->
