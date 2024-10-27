@@ -4,7 +4,7 @@
       <section class="space-y-6">
         <NuxtImg
           alt="Product"
-          class="w-full rounded-md object-cover"
+          class="w-full rounded-sm object-cover lg:h-[350px]"
           :src="`${$config.public.STRAPI_URL}${activeImage}`"
         />
         <div class="flex flex-wrap gap-5">
@@ -14,7 +14,7 @@
             :src="`${$config.public.STRAPI_URL}${image}`"
             @click="activeImage = image"
             alt="ProductImage"
-            class="w-1/6 h-full min-h-[58px] cursor-pointer object-cover rounded-sm"
+            class="w-[18%] cursor-pointer object-cover rounded-sm"
             :class="activeImage === image ? 'border-2 border-green-500' : ''"
           />
         </div>

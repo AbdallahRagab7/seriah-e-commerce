@@ -15,7 +15,6 @@
             placeholer
             class="object-contain w-full rounded-sm max-h-[450px]"
           />
-          <!-- :src="`${$config.public.STRAPI_URL}${slider.attributes?.image?.data?.attributes?.url}`" -->
           <NuxtImg
             :src="`${$config.public.STRAPI_URL}${slider.attributes?.image?.data?.attributes?.url}`"
             alt="Slider Image"
