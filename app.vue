@@ -20,7 +20,7 @@
 const { getHome } = useHomePage();
 const socialLinks = useSocialLinksStore();
 
-const { data: home, error } = await useAsyncData("home-page", () => getHome());
+const { data: home, error } = await useAsyncData("home-pagee", () => getHome());
 
 socialLinks.setSocialLinks({
   whatsappNumber: home?.value?.attributes?.whatsappNumber || "",

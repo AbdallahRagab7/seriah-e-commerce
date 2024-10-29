@@ -86,7 +86,9 @@
                 >
               </li>
               <li>
-                <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                <NuxtLink to="/terms" class="hover:underline"
+                  >Terms &amp; Conditions</NuxtLink
+                >
               </li>
             </ul>
           </div>
