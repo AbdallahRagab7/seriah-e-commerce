@@ -3,7 +3,7 @@
     <div class="col-span-2 flex items-center gap-4">
       <!-- to make image size static , don't shrink when resizing -->
       <NuxtLink :to="`/product/${cartItem?.productId}`">
-        <div class="w-24 h-24 shrink-0 p-2 rounded-md">
+        <div class="w-24 h-20 shrink-0 p-2 rounded-md">
           <NuxtImg
             :src="`${$config.public.STRAPI_URL}${cartItem?.productMainImage}`"
             class="w-full h-full object-cover"

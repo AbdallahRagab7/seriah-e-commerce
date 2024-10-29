@@ -1,9 +1,7 @@
 <template>
-  <section>
-    <div
-      v-if="showCheckoutBtnAndPromo"
-      class="flex border border-gray-300 overflow-hidden rounded-sm"
-    >
+  <section class="">
+    <!-- v-if="! showBtns" -->
+    <div class="flex border border-gray-300 overflow-hidden rounded-sm">
       <input
         type="email"
         placeholder="Promo code"
@@ -72,24 +70,60 @@
         </span>
       </li>
     </ul>
+    <div class="my-5" v-if="!showBtns">
+      <h1 class="mb-3 font-medium text-base">Payment Methods</h1>
+      <ul class="space-y-2">
+        <li class="flex items-center">
+          <input
+            type="radio"
+            name="paymentMethod"
+            value="cod"
+            v-model="selectedPaymentMethod"
+            class="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+          />
+          <label class="text-gray-700">Cash On Delivery</label>
+        </li>
+        <li class="flex items-center">
+          <input
+            type="radio"
+            name="paymentMethod"
+            value="visa"
+            v-model="selectedPaymentMethod"
+            class="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+          />
+          <label class="text-gray-700">Visa</label>
+        </li>
+        <li class="flex items-center">
+          <input
+            type="radio"
+            name="paymentMethod"
+            value="fawry"
+            v-model="selectedPaymentMethod"
+            class="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+          />
+          <label class="text-gray-700">Fawry</label>
+        </li>
+        <li class="flex items-center">
+          <input
+            type="radio"
+            name="paymentMethod"
+            value="ewallet"
+            v-model="selectedPaymentMethod"
+            class="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+          />
+          <label class="text-gray-700">E-Wallet</label>
+        </li>
+      </ul>
+    </div>
 
     <div class="mt-8 flex flex-col gap-3">
       <NuxtLink to="/checkout" v-if="cartStore.items.length > 0">
         <BaseButton
-          v-if="showCheckoutBtnAndPromo"
+          v-if="showBtns"
           type="button"
           class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide rounded-sm"
         >
           Checkout
-        </BaseButton>
-      </NuxtLink>
-
-      <NuxtLink to="/">
-        <BaseButton
-          type="button"
-          class="text-sm font-medium !bg-transparent !text-primary hover:!bg-primary hover:!text-white px-4 py-2.5 w-full tracking-wide border border-primary rounded-sm"
-        >
-          Continue Shopping
         </BaseButton>
       </NuxtLink>
     </div>
@@ -98,10 +132,12 @@
 
 <script setup lang="ts">
 const route = useRoute();
-const showCheckoutBtnAndPromo = ref<Boolean>(true);
+const showBtns = ref<Boolean>(true);
 if (route.path === "/checkout") {
-  showCheckoutBtnAndPromo.value = false;
+  showBtns.value = false;
 }
+
+const selectedPaymentMethod = ref("cod");
 
 const cartStore = useCartStore();
 const subTotal = computed(() => {
@@ -115,7 +151,6 @@ const subTotal = computed(() => {
 
 const { applyVoucher } = useOrder();
 const loading = ref(false);
-// const code = ref("");
 const globalVoucherCode = useState("globalVoucherCode", () => "");
 
 const voucherResponse = ref();
