@@ -27,16 +27,6 @@
       </div>
     </div>
     <div class="grid md:grid-cols-2 gap-3 mt-2">
-      <div class="">
-        <label class="customLabel" for="city"> Address</label>
-        <input
-          id="address"
-          type="text"
-          class="customInput w-full"
-          v-model="data.address"
-        />
-      </div>
-
       <div>
         <label class="customLabel" for="phone"> Phone Number</label>
         <input
@@ -50,7 +40,7 @@
     </div>
 
     <div class="grid md:grid-cols-2 gap-3 mt-2">
-      <div class="col-span-2">
+      <div class="">
         <label class="customLabel" for="notes"> Notes</label>
         <textarea
           id="notes"
@@ -58,6 +48,17 @@
           rows="3"
           class="customInput w-full"
           v-model="data.notes"
+        />
+      </div>
+      <div class="">
+        <label class="customLabel" for="city"> Address</label>
+        <textarea
+          id="address"
+          rows="3"
+          type="text"
+          required
+          class="customInput w-full"
+          v-model="data.address"
         />
       </div>
     </div>

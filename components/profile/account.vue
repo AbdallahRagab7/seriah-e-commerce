@@ -63,10 +63,14 @@
             class="customInput w-full"
           />
         </div>
-        <div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-3 mt-2">
+        <div class="col-span-full">
           <label class="customLabel" for="address"> Address</label>
-          <input
+          <textarea
             v-model="data.address"
+            rows="3"
             id="address"
             required
             type="text"

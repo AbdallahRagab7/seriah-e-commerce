@@ -74,7 +74,7 @@
     </ul>
 
     <div class="mt-8 flex flex-col gap-3">
-      <NuxtLink to="/checkout">
+      <NuxtLink to="/checkout" v-if="cartStore.items.length > 0">
         <BaseButton
           v-if="showCheckoutBtnAndPromo"
           type="button"
