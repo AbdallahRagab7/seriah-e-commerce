@@ -45,16 +45,34 @@
             <td
               class="py-4 px-4 text-sm text-center text-blue-600 cursor-pointer"
             >
-              Print
+              <button @click="printContent">Print</button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+
+    <div class="hidden">
+      <basePrint id="printComponent" ref="printComponent" />
+    </div>
   </div>
 </template>
 
 <script setup>
+import prntr from "prntr";
+const printComponent = ref();
+const printContent = () => {
+  prntr({
+    printable: "printComponent",
+    type: "html",
+    targetStyles: ["*"],
+    style: ".receipt{display:block!important;}",
+  });
+};
+
+// ".receipt{display:block!important;}"
+// ".body{display:block!important;width:100%!important; height: 100% !important;}",
+
 const headers = [
   "ID",
   "Status",
@@ -101,3 +119,25 @@ const orderStatus = {
   },
 };
 </script>
+
+<!-- <style scoped>
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-slate-200;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary rounded-full;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
+}
+</style> -->

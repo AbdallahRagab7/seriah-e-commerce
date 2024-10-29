@@ -45,7 +45,7 @@
       </tbody>
     </table>
 
-    <ul class="mt-8 space-y-4 text-gray-900">
+    <ul class="mt-6 space-y-4 text-gray-900">
       <li class="flex gap-4 text-base">
         SubTotal
         <span class="ml-auto">
