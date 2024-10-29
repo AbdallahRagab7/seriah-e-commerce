@@ -23,6 +23,6 @@
 
 <script setup lang="ts">
 definePageMeta({
-  middleware: "is-auth",
+  middleware: ["is-auth", "is-cart-empty"],
 });
 </script>

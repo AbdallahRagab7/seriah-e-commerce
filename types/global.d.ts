@@ -68,6 +68,15 @@ interface MyOrder {
   estimatedDeliveryDate: string | null;
 }
 
+interface User {
+  name: string;
+  email: string;
+  username: string;
+  phoneNumber?: string;
+  birthDate?: string;
+  address?: string;
+}
+
 declare global {
   type IImage = Image;
   type IProduct = Product;
@@ -76,4 +85,5 @@ declare global {
   type ICollection = Collection;
   type IOrder = Order;
   type IMyOrder = MyOrder;
+  type IUser = User;
 }

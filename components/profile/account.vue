@@ -98,7 +98,7 @@ definePageMeta({
 });
 const isLoading = ref(false);
 
-const user = useStrapiUser();
+const user = useStrapiUser<IUser>();
 
 //user abdallah or email abdallah@email.com
 //Abdallah@2022
