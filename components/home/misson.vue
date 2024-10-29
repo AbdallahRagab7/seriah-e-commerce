@@ -1,6 +1,6 @@
 <template>
   <div class="myContainer pt-[60px] text-center mb-20">
-    <h1 class="heading1 mb-5">MISSION</h1>
+    <h1 class="heading1 mb-5">Mission</h1>
     <p
       ref="missionSection"
       class="text-customSlate text-base md:max-w-[71%] mx-auto mission"

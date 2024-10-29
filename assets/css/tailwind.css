@@ -18,11 +18,23 @@ body {
 }
 
 .heading1 {
-  @apply text-[36px] leading-[1.2] text-[#201f1f] capitalize;
+  @apply text-[36px] leading-[1.2] text-[#201f1f] capitalize relative z-10 overflow-hidden;
   font-family: "Poppins";
-  /* background: linear-gradient(45deg, #022f98 34%, #1672a7 69%, #52b4f5 68%);
-  background-clip: text;
-  color: transparent; */
+}
+.heading1:before,
+.heading1:after {
+  position: absolute;
+  top: 51%;
+  overflow: hidden;
+  width: 48%;
+  height: 1px;
+  content: "\a0";
+  background-color: #ebebeb;
+  margin-left: 2%;
+}
+.heading1:before {
+  margin-left: -50%;
+  text-align: right;
 }
 
 .currency {
