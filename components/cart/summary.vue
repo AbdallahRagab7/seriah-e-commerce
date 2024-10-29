@@ -1,6 +1,6 @@
 <template>
   <section class="">
-    <!-- v-if="! showBtns" -->
+    <!-- v-if="showInCheckout" -->
     <div class="flex border border-gray-300 overflow-hidden rounded-sm">
       <input
         type="email"
@@ -70,7 +70,9 @@
         </span>
       </li>
     </ul>
-    <div class="my-5" v-if="!showBtns">
+
+    <!-- Payment Methods -->
+    <div class="my-5" v-if="showInCheckout">
       <h1 class="mb-3 font-medium text-base">Payment Methods</h1>
       <ul class="space-y-2">
         <li class="flex items-center">
@@ -119,7 +121,7 @@
     <div class="mt-8 flex flex-col gap-3">
       <NuxtLink to="/checkout" v-if="cartStore.items.length > 0">
         <BaseButton
-          v-if="showBtns"
+          v-if="!showInCheckout"
           type="button"
           class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide rounded-sm"
         >
@@ -132,9 +134,9 @@
 
 <script setup lang="ts">
 const route = useRoute();
-const showBtns = ref<Boolean>(true);
+const showInCheckout = ref<Boolean>(false);
 if (route.path === "/checkout") {
-  showBtns.value = false;
+  showInCheckout.value = true;
 }
 
 const selectedPaymentMethod = ref("cod");

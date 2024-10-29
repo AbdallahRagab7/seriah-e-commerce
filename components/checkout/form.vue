@@ -66,7 +66,7 @@
     <div class="w-full flex items-center justify-end mt-10">
       <BaseButton
         :isLoading="loading"
-        class="text-sm px-4 py-2.5 w-[80%] mx-auto font-semibold tracking-wide rounded-sm"
+        class="text-sm px-4 py-2.5 w-[90%] mx-auto font-semibold tracking-wide rounded-sm"
       >
         Place Order
       </BaseButton>
