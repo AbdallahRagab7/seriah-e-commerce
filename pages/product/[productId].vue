@@ -5,7 +5,7 @@
         <div class="lg:h-[350px] overflow-hidden">
           <NuxtImg
             alt="Product"
-            class="w-full rounded-sm object-cover"
+            class="w-full rounded-sm object-cover aspect-[134/89]"
             :src="`${$config.public.STRAPI_URL}${activeImage}`"
           />
         </div>
