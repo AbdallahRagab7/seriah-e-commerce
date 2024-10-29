@@ -32,6 +32,7 @@ export function useProducts() {
         populate: {
           main_image: true,
           images: true,
+          additional_info: true,
           product_variants: {
             populate: "*",
           },

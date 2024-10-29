@@ -2,12 +2,15 @@
   <div class="myContainer mx-auto px-4 py-[65px]">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-9">
       <section class="space-y-6">
-        <NuxtImg
-          alt="Product"
-          class="w-full rounded-sm object-cover lg:h-[350px]"
-          :src="`${$config.public.STRAPI_URL}${activeImage}`"
-        />
-        <div class="flex flex-wrap gap-5">
+        <div class="lg:h-[350px] overflow-hidden">
+          <NuxtImg
+            alt="Product"
+            class="w-full rounded-sm object-cover"
+            :src="`${$config.public.STRAPI_URL}${activeImage}`"
+          />
+        </div>
+
+        <div class="flex flex-wrap gap-5 overflow-hidden">
           <NuxtImg
             v-for="image in productImages"
             :key="image"
@@ -100,8 +103,7 @@
             :disabled="myVariant?.attributes?.quantity == 0"
             class="px-2 py-1 mr-6 rounded-sm"
             :class="{
-              'border border-gray-800 focus:bg-[#f2f2f2]':
-                variant?.id === myVariant?.id,
+              'border border-gray-800 ': variant?.id === myVariant?.id,
               'cursor-not-allowed line-through':
                 myVariant?.attributes?.quantity == 0,
             }"
@@ -120,12 +122,45 @@
         </div>
       </section>
     </div>
-
-    <div class="mt-8 space-y-4 max-w-[80%] md:max-w-[50%]">
-      <h2 class="text-xl font-semibold">Description</h2>
-      <p class="text-customSlate text-sm">
-        {{ product?.data.attributes.long_decription }}
+    <!-- Description and Additional -->
+    <div class="mt-12 mb-10 space-y-4 max-w-[80%] md:max-w-[50%]">
+      <div class="flex items-center gap-10 text-customSlate mb-6">
+        <button
+          class="text-base font-medium"
+          :class="{ 'text-black': activeTab === 'description' }"
+          @click="activeTab = 'description'"
+        >
+          Description
+        </button>
+        <button
+          class="text-base font-medium"
+          @click="activeTab = 'additional'"
+          :class="{ 'text-black': activeTab === 'additional' }"
+          v-if="product?.data?.attributes?.additional_info?.length > 0"
+        >
+          Additional Info
+        </button>
+      </div>
+      <p class="text-customSlate text-sm" v-if="activeTab === 'description'">
+        {{ product?.data?.attributes?.long_decription }}
       </p>
+      <div v-else>
+        <table class="w-full text-left border-gray-300">
+          <tbody>
+            <tr
+              v-for="(item, index) in product?.data?.attributes
+                ?.additional_info"
+              :key="index"
+              class="border-b border-gray-300"
+            >
+              <td class="py-2 px-4 font-medium text-gray-700">
+                {{ item.key }}
+              </td>
+              <td class="py-2 px-4 text-gray-500">{{ item.value }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -136,7 +171,7 @@ import { toast } from "vue-sonner";
 const route = useRoute();
 const { getProduct } = useProducts();
 const cartStore = useCartStore();
-const { data: product } = await useAsyncData("product", () =>
+const { data: product } = await useAsyncData("productt", () =>
   getProduct(route.params.productId as any)
 );
 //choose first variant as initial
@@ -195,4 +230,7 @@ const addCart = () => {
     true
   );
 };
+
+//TABS
+const activeTab = ref("description");
 </script>

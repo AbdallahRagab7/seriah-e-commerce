@@ -2,7 +2,7 @@
   <div class="relative">
     <!-- Embla Carousel -->
     <div class="embla" ref="emblaRef">
-      <div class="embla__container max-h-[500px]">
+      <div class="embla__container max-h-[500px] max-sm:max-h-[362px]">
         <div
           v-for="slider in sliders"
           :key="slider.id"
