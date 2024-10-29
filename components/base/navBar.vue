@@ -3,9 +3,22 @@
     <nav
       class="bg-[#ffff] myContainer py-4 flex justify-between items-center relative w-full"
     >
-      <div class="">
+      <div>
+        <button @click="open = !open" class="flex items-center md:hidden">
+          <!-- <ion-icon :name="open ? 'close' : 'menu'"></ion-icon>
+        -->
+          <Icon
+            name="mingcute:menu-fill"
+            class="!text-xl"
+            v-if="open === false"
+          />
+          <Icon name="ic:baseline-close" v-else />
+        </button>
+      </div>
+
+      <div class="ml-6">
         <NuxtLink to="/">
-          <NuxtImg src="/edited-logo.png" class="h-10 object-cover" />
+          <NuxtImg src="/edited-logo.png" class="h-8 md:h-9 object-cover" />
         </NuxtLink>
       </div>
 
@@ -17,16 +30,6 @@
             Cart ({{ cartStore.totalQuantity }})
           </div>
         </NuxtLink>
-
-        <button
-          @click="open = !open"
-          class="text-3xl flex items-center md:hidden"
-        >
-          <!-- <ion-icon :name="open ? 'close' : 'menu'"></ion-icon>
-        -->
-          <Icon name="mingcute:menu-fill" v-if="open === false" />
-          <Icon name="ic:baseline-close" v-else />
-        </button>
       </div>
 
       <!-- to close the sidebar when click bra el navbar -->
