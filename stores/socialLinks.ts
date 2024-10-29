@@ -8,6 +8,12 @@ export const useSocialLinksStore = defineStore("socialLinks", () => {
     phoneNumber: "",
   });
 
+  const policies = ref({
+    privacy_policy: "",
+    shipping_policy: "",
+    refund_policy: "",
+  });
+
   const setSocialLinks = (data: any) => {
     footerData.value.whatsappNumber = data.whatsappNumber;
     footerData.value.Instagram = data.Instagram;
@@ -17,5 +23,11 @@ export const useSocialLinksStore = defineStore("socialLinks", () => {
     footerData.value.phoneNumber = data.phoneNumber;
   };
 
-  return { footerData, setSocialLinks };
+  const setPolicies = (data: any) => {
+    policies.value.privacy_policy = data.privacy_policy;
+    policies.value.shipping_policy = data.shipping_policy;
+    policies.value.refund_policy = data.refund_policy;
+  };
+
+  return { footerData, policies, setSocialLinks, setPolicies };
 });

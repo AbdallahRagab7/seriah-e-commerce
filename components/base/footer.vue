@@ -81,7 +81,9 @@
             </h2>
             <ul class="text-gray-400 font-medium">
               <li class="mb-4">
-                <a href="#" class="hover:underline">Privacy Policy</a>
+                <NuxtLink to="/privacy-policy" class="hover:underline"
+                  >Privacy Policy</NuxtLink
+                >
               </li>
               <li>
                 <a href="#" class="hover:underline">Terms &amp; Conditions</a>

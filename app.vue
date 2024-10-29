@@ -20,7 +20,7 @@
 const { getHome } = useHomePage();
 const socialLinks = useSocialLinksStore();
 
-const { data: home, error } = await useAsyncData("home-pagee", () => getHome());
+const { data: home, error } = await useAsyncData("home-page", () => getHome());
 
 socialLinks.setSocialLinks({
   whatsappNumber: home?.value?.attributes?.whatsappNumber || "",
@@ -29,6 +29,12 @@ socialLinks.setSocialLinks({
   email: home?.value?.attributes?.email || "",
   phoneNumber: home?.value?.attributes?.phoneNumber || "",
   address: home?.value?.attributes?.address || "",
+});
+
+socialLinks.setPolicies({
+  privacy_policy: home?.value?.attributes?.privacy_policy || "",
+  shipping_policy: home?.value?.attributes?.shipping_policy || "",
+  refund_policy: home?.value?.attributes?.refund_policy || "",
 });
 </script>
 
