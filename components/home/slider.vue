@@ -19,7 +19,7 @@
           <NuxtImg
             :src="`${$config.public.STRAPI_URL}${slider.attributes?.image?.data?.attributes?.url}`"
             alt="Slider Image"
-            class="object-cover w-full rounded-sm h-full"
+            class="object-cover w-full rounded-sm h-full max-h-[500px] max-sm:max-h-[362px]"
           />
 
           <div

@@ -6,7 +6,6 @@
           class="flex flex-col gap-1 mb-6 md:mb-0 text-gray-400 font-medium text-base"
         >
           <a href="#" class="flex items-center mb-3">
-            <NuxtImg src="/edited-logo.png" class="h-8 me-3" alt="Logo" />
             <span
               class="self-center text-2xl text-white font-semibold whitespace-nowrap"
               >SERIAH</span
