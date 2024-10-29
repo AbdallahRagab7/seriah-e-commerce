@@ -97,13 +97,6 @@
 </template>
 
 <script setup lang="ts">
-const products = ref([
-  { name: "Wooden container Bowl", quantity: 1, total: 96 },
-  { name: "Euvira Rocking Chair", quantity: 1, total: 90 },
-  { name: "Rosmo Namino", quantity: 1, total: 180 },
-  { name: "Big sale canvas basket", quantity: 1, total: 400 },
-]);
-
 const route = useRoute();
 const showCheckoutBtnAndPromo = ref<Boolean>(true);
 if (route.path === "/checkout") {
