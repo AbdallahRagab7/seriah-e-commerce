@@ -18,13 +18,6 @@
           </div>
         </NuxtLink>
 
-        <!-- <NuxtLink to="/cart">
-          <div class="flex items-center gap-1 hidden md:flex">
-            <Icon name="ph:bag-light" class="mb-[2px] !text-[22px]" />
-            <span class="!text-[15px] hover:text-primary"> Cart (2) </span>
-          </div>
-        </NuxtLink> -->
-
         <button
           @click="open = !open"
           class="text-3xl flex items-center md:hidden"
@@ -43,7 +36,6 @@
         :class="open ? 'bg-black bg-opacity-50' : ''"
         @click="open = false"
       ></div>
-      <!-- w-[62%] sm:w-[53%] md:w-[60%] -->
       <!-- SideBar -->
       <aside
         :class="open ? 'left-0' : 'left-[-150%] '"
