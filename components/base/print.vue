@@ -4,39 +4,20 @@
   >
     <table class="w-full infoTable">
       <tr>
-        <td>رقم الفاتورة</td>
-        <td class="font-bold">{{ transaction.serialNumber }}</td>
-        <td>نوع الفاتورة</td>
+        <td>رقم الطلب</td>
+        <td class="font-bold">{{ order?.id }}</td>
+
+        <td>حالة الطلب</td>
         <td class="font-bold">
-          {{ getTransactionTypeLabel(transaction.type) }}
+          {{ order?.status }}
         </td>
-        <td>حالة الفاتورة</td>
-        <td class="font-bold">
-          {{
-            transaction.status === "paid"
-              ? "مدفوعة"
-              : transaction.status === "partiallyPaid"
-              ? "مدفوعة جزئيا"
-              : "غير مدفوعه"
-          }}
-        </td>
-        <td v-if="transaction.customer">العميل</td>
-        <td v-if="transaction.customer" class="font-bold">
-          {{ transaction.customer.name }} ({{
-            transaction.customer.phoneNumber
-          }})
-        </td>
+        <td>العميل</td>
+        <td class="font-bold">{{ user?.name }} ({{ user?.phoneNumber }})</td>
       </tr>
       <tr>
-        <td colspan="3">تاريخ الفاتورة</td>
+        <td colspan="3">تاريخ الطلب</td>
         <td colspan="3" class="font-bold">
-          {{ formatDate(transaction.createdAt) }}
-        </td>
-      </tr>
-      <tr>
-        <td colspan="3">تاريخ إستحقاق الفاتورة</td>
-        <td colspan="3" class="font-bold">
-          {{ formatDate(transaction.dueDate) }}
+          {{ formatDate(order?.createdAt) }}
         </td>
       </tr>
     </table>
@@ -73,91 +54,85 @@
       <tbody>
         <tr>
           <td class="font-bold">الإجمالي</td>
-          <td>{{ transaction.total }} ج.م</td>
+          <td>{{ order?.totalPrice }} ج.م</td>
         </tr>
       </tbody>
     </table>
 
     <hr class="my-3" />
-    <div v-if="storeInfo" class="text-black flex justify-around">
-      <span>{{ storeInfo.phoneNumber }}</span>
-      <span>|</span>
-      <span>{{ storeInfo.secondPhoneNumber }}</span>
+    <div class="text-black flex justify-around">
+      <span>{{ socialLinks.footerData.phoneNumber }}</span>
+      <!-- <span>|</span> -->
+      <!-- <span>{{ socialLinks.footerData.phoneNumber }}</span> -->
     </div>
     <hr class="my-3" />
-    <div>{{ storeInfo.address }}</div>
+    <div>{{ socialLinks.footerData.address }}</div>
     <hr class="my-3" />
-    <div>{{ storeInfo.recepitInfo }}</div>
+    <div>Thank you for your purchase!</div>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      config: {
-        public: {
-          APP_NAME: "My Store",
-        },
-      },
-      transaction: {
-        serialNumber: "123456789",
-        type: "sale",
-        status: "paid",
-        createdAt: new Date(),
-        dueDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // One week from now
-        total: 1500,
-        customer: {
-          name: "John Doe",
-          phoneNumber: "01012345678",
-        },
-        TransactionItems: [
-          {
-            id: 1,
-            product: { name: "Product 1" },
-            quantity: 2,
-            buyPrice: 100,
-            sellPrice: 150,
-          },
-          {
-            id: 2,
-            product: { name: "Product 2" },
-            quantity: 1,
-            buyPrice: 200,
-            sellPrice: 300,
-          },
-        ],
-      },
-      storeInfo: {
-        phoneNumber: "01012345678",
-        secondPhoneNumber: "01087654321",
-        address: "123 Main St, City",
-        recepitInfo: "Thank you for your purchase!",
-      },
-    };
+<script setup lang="ts">
+const user = useStrapiUser<IUser>();
+const socialLinks = useSocialLinksStore();
+
+interface Props {
+  order: IMyOrder;
+}
+
+const props = defineProps<Props>();
+
+//fake data
+const transaction = ref({
+  serialNumber: "123456789",
+  type: "sale",
+  status: "paid",
+  createdAt: new Date(),
+  dueDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // One week from now
+  total: 1500,
+  customer: {
+    name: "John Doe",
+    phoneNumber: "01012345678",
   },
-  computed: {
-    isNegativeInvoice() {
-      return this.transaction.total < 0;
+  TransactionItems: [
+    {
+      id: 1,
+      product: { name: "Product 1" },
+      quantity: 2,
+      buyPrice: 100,
+      sellPrice: 150,
     },
-  },
-  methods: {
-    formatDate(date) {
-      return new Date(date).toLocaleDateString("ar-EG", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
+    {
+      id: 2,
+      product: { name: "Product 2" },
+      quantity: 1,
+      buyPrice: 200,
+      sellPrice: 300,
     },
-    getTransactionTypeLabel(type) {
-      const types = { sale: "بيع", purchase: "شراء" };
-      return types[type] || "نوع غير معروف";
-    },
-  },
+  ],
+});
+
+const isNegativeInvoice = computed(() => transaction.value.total < 0);
+
+//date formatter to arabic
+const formatDate = (date: any) => {
+  return new Date(date).toLocaleDateString("ar-EG", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 };
 </script>
 
 <style scoped>
+.receipt {
+  display: none;
+}
+@media print {
+  .receipt {
+    display: block !important;
+  }
+}
 th,
 td {
   border: 1px solid black;

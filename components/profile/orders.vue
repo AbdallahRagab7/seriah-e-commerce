@@ -23,6 +23,13 @@
         </thead>
         <tbody>
           <tr v-for="order in myOrders" :key="order.id" class="border-t">
+            <basePrint
+              id="printComponent"
+              ref="printComponent"
+              :order="order"
+              :key="order.id"
+            />
+
             <td class="py-4 px-4 text-sm text-center">#{{ order.id }}</td>
             <td
               class="py-4 px-4 text-sm text-center"
