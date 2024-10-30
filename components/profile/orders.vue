@@ -23,13 +23,6 @@
         </thead>
         <tbody>
           <tr v-for="order in myOrders" :key="order.id" class="border-t">
-            <basePrint
-              id="printComponent"
-              ref="printComponent"
-              :order="order"
-              :key="order.id"
-            />
-
             <td class="py-4 px-4 text-sm text-center">#{{ order.id }}</td>
             <td
               class="py-4 px-4 text-sm text-center"
@@ -52,15 +45,18 @@
             <td
               class="py-4 px-4 text-sm text-center text-blue-600 cursor-pointer"
             >
-              <button @click="printContent">Print</button>
+              <button @click="printContent(order)">Print</button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-
     <div class="hidden">
-      <basePrint id="printComponent" ref="printComponent" />
+      <basePrint
+        id="printComponent"
+        ref="printComponent"
+        :order="selectedOrder"
+      />
     </div>
   </div>
 </template>
@@ -68,16 +64,21 @@
 <script setup>
 import prntr from "prntr";
 const printComponent = ref();
-const printContent = () => {
-  prntr({
-    printable: "printComponent",
-    type: "html",
-    targetStyles: ["*"],
-    style: ".receipt{display:block!important;}",
-  });
-};
+const selectedOrder = ref("");
+const printContent = (order) => {
+  selectedOrder.value = order;
 
-// ".receipt{display:block!important;}"
+  // Delay to ensure `basePrint` has the order data before printing
+  // without it old selectedOrder data will be displayed
+  setTimeout(() => {
+    prntr({
+      printable: "printComponent",
+      type: "html",
+      targetStyles: ["*"],
+      style: ".receipt{display:block!important;}",
+    });
+  }, 0);
+};
 // ".body{display:block!important;width:100%!important; height: 100% !important;}",
 
 const headers = [
@@ -127,10 +128,10 @@ const orderStatus = {
 };
 </script>
 
-<!-- <style scoped>
+<style scoped>
 ::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
+  width: 6px;
+  height: 6px;
 }
 
 /* Track */
@@ -140,11 +141,11 @@ const orderStatus = {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply bg-secondary rounded-full;
+  @apply bg-gray-600 rounded-full;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary;
+  @apply bg-gray-700;
 }
-</style> -->
+</style>
