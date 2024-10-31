@@ -95,6 +95,10 @@ const cartItemsMapper = computed(() => {
 });
 
 const globalVoucherCode = useState("globalVoucherCode", () => "");
+const globalSelectedShippingMethod = useState<any>(
+  "globalSelectedShippingMethod",
+  () => ""
+);
 
 const loading = ref(false);
 const placeOrder = async () => {
@@ -103,6 +107,7 @@ const placeOrder = async () => {
     ...data.value,
     products: cartItemsMapper.value,
     voucher: globalVoucherCode.value,
+    shippingMethod: globalSelectedShippingMethod.value?.id,
   });
   loading.value = false;
 };

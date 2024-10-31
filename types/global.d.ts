@@ -76,6 +76,10 @@ interface User {
   birthDate?: string;
   address?: string;
 }
+interface ShippingMethods {
+  price: any;
+  title: string;
+}
 
 declare global {
   type IImage = Image;
@@ -86,4 +90,5 @@ declare global {
   type IOrder = Order;
   type IMyOrder = MyOrder;
   type IUser = User;
+  type IShippingMethods = ShippingMethods;
 }

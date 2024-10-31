@@ -55,9 +55,17 @@
       </li>
 
       <li class="flex gap-4 text-base">
+        Shipping Cost
+        <span class="ml-auto">
+          <span class="currency">EGP </span>
+          {{ selectedShippingMethod?.attributes?.price?.toFixed(2) }}
+        </span>
+      </li>
+      <li class="flex gap-4 text-base">
         Discount
         <span class="ml-auto">
           <span class="currency">EGP </span>
+          -
           {{ Discount.toFixed(2) }}
         </span>
       </li>
@@ -70,6 +78,29 @@
         </span>
       </li>
     </ul>
+    <div class="my-5" v-if="showInCheckout">
+      <h1 class="mb-3 font-medium text-base">Shipping Methods</h1>
+      <ul class="space-y-2">
+        <li
+          class="flex items-center"
+          v-for="method in shippingMethods?.data"
+          :key="`${method.id}-shippingMethod`"
+        >
+          <input
+            type="radio"
+            name="shippingMethod"
+            :value="method"
+            v-model="selectedShippingMethod"
+            class="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+          />
+          <label class="text-gray-700">
+            <span> {{ method?.attributes.title }}:</span>
+            <span class="ml-3 text-xs"> <span class="currency">EGP</span></span>
+            {{ method?.attributes.price }}
+          </label>
+        </li>
+      </ul>
+    </div>
 
     <!-- Payment Methods -->
     <div class="my-5" v-if="showInCheckout">
@@ -77,6 +108,7 @@
       <ul class="space-y-2">
         <li class="flex items-center">
           <input
+            key="cod"
             type="radio"
             name="paymentMethod"
             value="cod"
@@ -87,6 +119,7 @@
         </li>
         <li class="flex items-center">
           <input
+            key="visa"
             type="radio"
             name="paymentMethod"
             value="visa"
@@ -97,6 +130,7 @@
         </li>
         <li class="flex items-center">
           <input
+            key="fawry"
             type="radio"
             name="paymentMethod"
             value="fawry"
@@ -107,6 +141,7 @@
         </li>
         <li class="flex items-center">
           <input
+            key="ewallet"
             type="radio"
             name="paymentMethod"
             value="ewallet"
@@ -133,6 +168,12 @@
 </template>
 
 <script setup lang="ts">
+const { getShippingMethods } = useOrder();
+const { data: shippingMethods, error } = await useAsyncData(
+  "MyshippingMethods",
+  () => getShippingMethods()
+);
+console.log(shippingMethods.value?.data[0]?.id, "its id ");
 const route = useRoute();
 const showInCheckout = ref<Boolean>(false);
 if (route.path === "/checkout") {
@@ -140,6 +181,22 @@ if (route.path === "/checkout") {
 }
 
 const selectedPaymentMethod = ref("cod");
+
+const selectedShippingMethod = ref(shippingMethods.value?.data?.[0]);
+
+const globalSelectedShippingMethod = useState(
+  // to use it in form checkout
+  "globalSelectedShippingMethod",
+  () => selectedShippingMethod.value
+);
+
+watch(
+  selectedShippingMethod,
+  () => (globalSelectedShippingMethod.value = selectedShippingMethod.value),
+  {
+    immediate: true,
+  }
+);
 
 const cartStore = useCartStore();
 const subTotal = computed(() => {
@@ -179,7 +236,10 @@ const Discount = computed(() => {
 });
 const totalPrice = computed(() => {
   if (voucherResponse.value?.newOrderValue) {
-    return voucherResponse.value?.newOrderValue;
+    return (
+      voucherResponse.value?.newOrderValue +
+      selectedShippingMethod.value?.attributes.price
+    );
   } else {
     return subTotal.value;
   }

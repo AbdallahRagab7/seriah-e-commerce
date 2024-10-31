@@ -1,7 +1,7 @@
 import { toast } from "vue-sonner";
 
 export function useOrder() {
-  const { create, findOne } = useStrapi();
+  const { create, findOne, find } = useStrapi();
   const cartStore = useCartStore();
   const router = useRouter();
 
@@ -31,6 +31,16 @@ export function useOrder() {
       toast.error(error.error.message || "Failed to fetch orders");
     }
   };
+  const getShippingMethods = async () => {
+    try {
+      const response = await find<IShippingMethods>("shipping-methods", {
+        populate: "*",
+      });
+      return response;
+    } catch (error: any) {
+      toast.error(error.error.message || "Failed to fetch shipping methods");
+    }
+  };
 
   const applyVoucher = async (data: any) => {
     try {
@@ -44,5 +54,5 @@ export function useOrder() {
     }
   };
 
-  return { createOrder, getUserOrders, applyVoucher };
+  return { createOrder, getUserOrders, applyVoucher, getShippingMethods };
 }
