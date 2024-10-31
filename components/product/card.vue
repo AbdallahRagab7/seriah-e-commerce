@@ -22,7 +22,7 @@
     <NuxtLink :to="`/product/${product?.id}`">
       <div class="overflow-hidden">
         <NuxtImg
-          class="mb-5 object-cover mix-blend-multiply aspect-[259/172]"
+          class="mb-5 w-full object-cover mix-blend-multiply aspect-[259/172]"
           :src="`${$config.public.STRAPI_URL}${product?.attributes?.main_image?.data?.attributes?.url}`"
           alt="product image"
         />
