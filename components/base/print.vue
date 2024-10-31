@@ -2,6 +2,10 @@
   <div
     class="receipt p-3 top-0 left-[50%] text-center py-3 text-black w-full text-sm h-full bg-red-500"
   >
+    <div class="text-center mb-10">
+      <NuxtImg src="/edited-logo.png" class="h-9 md:h-9 object-cover mx-auto" />
+    </div>
+
     <table class="w-full infoTable">
       <tr>
         <td>رقم الطلب</td>
@@ -32,17 +36,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="product in transaction.TransactionItems" :key="product.id">
-          <td>{{ product.product.name }}</td>
-          <td>{{ product.quantity }}</td>
+        <tr v-for="product in order.items" :key="product.id">
+          <td>{{ product?.productName }}</td>
+          <td>{{ product?.quantity }}</td>
           <td>
-            {{ isNegativeInvoice ? product.buyPrice : product.sellPrice }}
+            {{ product?.sellPrice }}
+            ج.م
           </td>
           <td>
-            {{
-              (isNegativeInvoice ? product.buyPrice : product.sellPrice) *
-              product.quantity
-            }}
+            {{ product?.quantity * product?.sellPrice }}
             ج.م
           </td>
         </tr>
@@ -53,6 +55,10 @@
     <table class="w-full">
       <tbody>
         <tr>
+          <td class="font-bold">مصاريف الشحن</td>
+          <td>{{ order?.shippingCost }} ج.م</td>
+        </tr>
+        <tr>
           <td class="font-bold">الإجمالي</td>
           <td>{{ order?.totalPrice }} ج.م</td>
         </tr>
@@ -62,8 +68,6 @@
     <hr class="my-3" />
     <div class="text-black flex justify-around">
       <span>{{ socialLinks.footerData.phoneNumber }}</span>
-      <!-- <span>|</span> -->
-      <!-- <span>{{ socialLinks.footerData.phoneNumber }}</span> -->
     </div>
     <hr class="my-3" />
     <div>{{ socialLinks.footerData.address }}</div>

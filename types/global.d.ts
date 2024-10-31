@@ -54,6 +54,14 @@ export interface Collection {
   title: string;
   background?: any;
 }
+
+interface MyOrderItem {
+  id: number;
+  quantity: number;
+  sellPrice: number;
+  productName: string;
+}
+
 interface MyOrder {
   id: number;
   createdAt: string;
@@ -66,6 +74,7 @@ interface MyOrder {
   notes: string;
   shippingCost: number | null;
   estimatedDeliveryDate: string | null;
+  items: MyOrderItem[];
 }
 
 interface User {
