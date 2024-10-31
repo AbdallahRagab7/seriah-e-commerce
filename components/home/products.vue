@@ -1,12 +1,12 @@
 <template>
-  <div class="myContainer py-[60px] mb-10">
+  <div class="myContainer py-[60px]">
     <h1 class="my-10 heading1 text-center hover:text-primary">
       <NuxtLink to="/products"> Products </NuxtLink>
     </h1>
 
     <!-- <div class="grid xs:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-14"> -->
     <div
-      class="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6 md:gap-3 lg:gap-8"
+      class="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6 md:gap-3 lg:gap-8 max-sm:px-6"
     >
       <ProductCard
         v-for="product in products?.data"

@@ -10,11 +10,11 @@
       </div>
     </NuxtLink>
 
-    <div class="absolute top-1/4 left-[5%]">
-      <h4>
+    <div class="absolute max-sm:top-[22%] top-1/4 left-[5%]">
+      <h4 class="max-sm:w-[180px] line-clamp-2">
         <NuxtLink
           :to="`/product/${product?.id}`"
-          class="font-medium hover:text-primary"
+          class="font-medium hover:text-primary max-sm:text-[13px]"
         >
           {{ product?.attributes?.name }}
         </NuxtLink>
@@ -22,7 +22,7 @@
 
       <NuxtLink :to="`/product/${product?.id}`">
         <button
-          class="text-[#323232] hover:text-primary flex items-center justify-center text-[13px] font-semibold mt-5 bg-transparent border-2 py-3 px-8 border-[#323232]"
+          class="text-[#323232] hover:text-primary flex items-center justify-center text-[11px] md:text-[13px] font-semibold mt-5 bg-transparent border-2 py-2 md:py-3 px-2 md:px-8 border-[#323232]"
         >
           Buy Now /
           <span class="mx-1 text-[10px] font-medium">EGP</span>

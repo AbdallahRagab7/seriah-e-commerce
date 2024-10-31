@@ -1,5 +1,5 @@
 <template>
-  <div class="px-10 py-[60px] mb-10">
+  <div class="px-10 py-[60px]">
     <h1 class="mb-10 heading1 text-center hover:text-primary">
       <NuxtLink to="/products"> Best Sale </NuxtLink>
     </h1>

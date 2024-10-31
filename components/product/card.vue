@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative w-full max-w-sm mx-auto border border-gray-100 rounded-sm max-sm:px-6"
+    class="relative w-full max-w-sm mx-auto mb-3 border border-gray-100 rounded-sm"
   >
     <div
       v-if="product?.attributes?.sale_price != product?.attributes?.price"
