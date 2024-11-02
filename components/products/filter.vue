@@ -27,6 +27,7 @@
         range
         :max="5000"
         :step="10"
+     
         class="w-full mb-5 mt-3 !bg-red-50"
       />
 

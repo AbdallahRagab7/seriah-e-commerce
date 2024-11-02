@@ -1,40 +1,30 @@
 <template>
-  <div
-    class="relative w-full max-w-sm mx-auto mb-3 border border-gray-100 rounded-sm"
-  >
-    <div
-      v-if="product?.attributes?.sale_price != product?.attributes?.price"
-      class="absolute top-[-19px] left-0 rounded-sm"
-    >
-      <div
-        class="bg-red-500 text-[9.5px] rounded-sm text-white text-xs w-[65px] py-[2px] text-center !z-10"
-      >
-        Sale
+  <div class="relative w-full max-w-sm mx-auto mb-3 border border-gray-100 rounded-sm">
+    <div v-if="product?.attributes?.sale_price != product?.attributes?.price"
+      class="absolute top-[-19px] left-0 rounded-sm">
+      <div class="bg-red-500 text-sm  text-white rounded-sm font-bold w-[65px] py-[2px] text-center !z-10 absolute top-2 ">
+
         {{
           Math.floor(
             ((product?.attributes?.sale_price - product?.attributes?.price) /
               product?.attributes?.price) *
-              100
+            100
           )
         }}%
       </div>
     </div>
     <NuxtLink :to="`/product/${product?.id}`">
       <div class="overflow-hidden">
-        <NuxtImg
-          class="mb-5 w-full object-cover mix-blend-multiply aspect-[259/172]"
+        <NuxtImg class="mb-5 w-full object-cover mix-blend-multiply aspect-[259/172]"
           :src="`${$config.public.STRAPI_URL}${product?.attributes?.main_image?.data?.attributes?.url}`"
-          alt="product image"
-        />
+          alt="product image" />
       </div>
     </NuxtLink>
 
     <div class="px-5 pb-5">
       <NuxtLink :to="`/product/${product?.id}`">
         <!-- font-poppins -->
-        <h5
-          class="text-[15px] mb-3 text-customSlate hover:text-primary line-clamp-3"
-        >
+        <h5 class="text-[15px] mb-3 text-customSlate hover:text-primary line-clamp-3">
           {{ product?.attributes?.name }}
         </h5>
       </NuxtLink>
@@ -48,20 +38,15 @@
               product?.attributes?.sale_price != product?.attributes?.price
                 ? product?.attributes?.sale_price
                 : product?.attributes?.price
-            }}</span
-          >
+            }}</span>
           <!-- price before sale (original price)  -->
-          <span
-            v-if="product?.attributes?.sale_price != product?.attributes?.price"
-            class="sale mx-1 text-[13px] line-through text-customSlate"
-          >
+          <span v-if="product?.attributes?.sale_price != product?.attributes?.price"
+            class="sale mx-1 text-[13px] line-through text-customSlate">
             {{ product?.attributes?.price }}
           </span>
         </div>
         <NuxtLink :to="`/product/${product?.id}`">
-          <button
-            class="add-cart text-[bc8246] relative text-[13px] font-medium hover:text-primary"
-          >
+          <button class="add-cart text-[bc8246] relative text-[13px] font-medium hover:text-primary">
             Buy Now
           </button>
         </NuxtLink>

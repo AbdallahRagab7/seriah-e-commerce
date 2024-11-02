@@ -26,7 +26,7 @@
         />
       </div>
     </div>
-    <div class="grid md:grid-cols-2 gap-3 mt-2">
+    <div class="grid  gap-3 mt-2">
       <div>
         <label class="customLabel" for="phone"> Phone Number</label>
         <input
@@ -39,17 +39,7 @@
       </div>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-3 mt-2">
-      <div class="">
-        <label class="customLabel" for="notes"> Notes</label>
-        <textarea
-          id="notes"
-          type="text"
-          rows="3"
-          class="customInput w-full"
-          v-model="data.notes"
-        />
-      </div>
+    <div class="grid  gap-3 mt-2">
       <div class="">
         <label class="customLabel" for="city"> Address</label>
         <textarea
@@ -61,12 +51,23 @@
           v-model="data.address"
         />
       </div>
+      <div class="">
+        <label class="customLabel" for="notes"> Notes</label>
+        <textarea
+          id="notes"
+          type="text"
+          rows="3"
+          class="customInput w-full"
+          v-model="data.notes"
+        />
+      </div>
+     
     </div>
 
     <div class="w-full flex items-center justify-end mt-10">
       <BaseButton
         :isLoading="loading"
-        class="text-sm px-4 py-2.5 w-[90%] mx-auto font-semibold tracking-wide rounded-sm"
+        class="text-sm px-4 py-2.5 w-[30%] ms-auto font-semibold tracking-wide rounded-sm"
       >
         Place Order
       </BaseButton>

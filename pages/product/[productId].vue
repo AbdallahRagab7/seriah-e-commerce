@@ -101,9 +101,9 @@
             :key="myVariant.id"
             @click="variant = myVariant"
             :disabled="myVariant?.attributes?.quantity == 0"
-            class="px-2 py-1 mr-6 rounded-sm"
+            class="px-2 py-1 mr-6 rounded-sm min-h-8 min-w-8 border border-gray-100 border-2"
             :class="{
-              'border border-gray-800 ': variant?.id === myVariant?.id,
+              ' border-primary ': variant?.id === myVariant?.id,
               'cursor-not-allowed line-through':
                 myVariant?.attributes?.quantity == 0,
             }"
@@ -115,13 +115,13 @@
         <div class="!mt-6 flex items-center gap-3">
           <BaseButton
             @click="addCart"
-            class="w-full py-3 text-white rounded-md flex items-center justify-center"
+            class="w-full py-3 text-white rounded-sm flex items-center justify-center"
           >
             <Icon name="iconamoon:sign-plus" /> Add to Cart
           </BaseButton>
           <BaseButton
             @click="buyNow"
-            class="w-full py-3 text-white rounded-md flex items-center justify-center !bg-secondary"
+            class="w-full py-3 text-white rounded-sm flex items-center justify-center !bg-secondary"
           >
             <Icon name="material-symbols-light:shopping-cart-checkout-sharp" /> BUY NOW
           </BaseButton>
@@ -219,19 +219,19 @@ const decreaseCounter = () => {
 
 // seo section
 useSeoMeta({
- title: product?.value?.data.attributes?.seo?.metaTitle ||  product.value?.data.attributes.name ,
+ title: product?.value?.data?.attributes?.seo?.metaTitle ||  product.value?.data.attributes.name ,
  description: product?.value?.data.attributes?.seo?.metaDescription || product.value?.data.attributes.short_description,
- ogImage: `${useRuntimeConfig().public.STRAPI_URL}${product?.value?.data.attributes?.seo?.metaImage?.data?.attributes?.url || product.value?.data?.attributes?.main_image?.data?.attributes?.url}` || "" ,
+ ogImage: `${useRuntimeConfig().public.STRAPI_URL}${product?.value?.data?.attributes?.seo?.metaImage?.data?.attributes?.url || product.value?.data?.attributes?.main_image?.data?.attributes?.url}` || "" ,
  keywords:() => product.value?.data.attributes?.seo?.keywords || "",
 })
 
 useSchemaOrg(
   defineProduct({
-    name: product.value?.data.attributes.name,
-    image: `${useRuntimeConfig().public.STRAPI_URL}${product?.value?.data.attributes?.main_image?.data?.attributes?.url || ""}`,
-    description: product.value?.data.attributes.short_description,
+    name: product.value?.data?.attributes.name,
+    image: `${useRuntimeConfig().public.STRAPI_URL}${product?.value?.data?.attributes?.main_image?.data?.attributes?.url || ""}`,
+    description: product.value?.data.attributes?.short_description,
     offers:currentPrice.value,
-    sku: product.value?.data.attributes.product_variants.data[0].attributes.sku,
+    sku: product.value?.data?.attributes?.product_variants.data?.[0]?.attributes?.sku,
   })
 )
 

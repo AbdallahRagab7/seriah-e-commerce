@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import Aura from "@primevue/themes/aura";
+import mainPreset from "./presets/main";
 import XML2JSON from "xml2json";
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
@@ -33,7 +34,7 @@ export default defineNuxtConfig({
       ripple: true,
       inputVariant: "filled",
       theme: {
-        preset: Aura,
+        preset: mainPreset,
         options: {
           prefix: "p",
           darkModeSelector: ".my-app-dark",
