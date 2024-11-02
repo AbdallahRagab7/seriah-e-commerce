@@ -4,7 +4,6 @@
       <NuxtLink to="/products"> Best Sale </NuxtLink>
     </h1>
 
-    <!-- <div class="grid xs:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-14"> -->
     <div class="grid md:grid-cols-2 gap-7">
       <ProductAdCard
         v-for="product in products?.data"
