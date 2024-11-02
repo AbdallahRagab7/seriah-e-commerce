@@ -26,11 +26,12 @@
             class="animated-heading w-full absolute top-[30%] left-[10%] max-w-[400px] max-sm:max-w-[200px] max-sm:top-[10%]"
           >
             <h1
+            :style="`color: ${slider.attributes.textColor || '#52d4f5'} `"
               class="!mb-[14px] max-md:!mb-1 text-stroke lg:text-[36px] !text-[#32323] text-[13px] sm:text-3xl font-semibold md:mb-2"
             >
               {{ slider.attributes.title }}
             </h1>
-            <p class="text-[#32323] text-xs md:text-sm mb-8 max-md:!mb-3">
+            <p :style="`color: ${slider.attributes.textColor || '#52d4f5'} `" class="text-[#32323] text-xs md:text-sm mb-8 max-md:!mb-3">
               {{ slider.attributes.description }}
             </p>
 

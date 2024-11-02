@@ -1,5 +1,6 @@
 <template>
   <div>
+   
     <NuxtLoadingIndicator color="#022f98" />
 
     <Toaster
@@ -20,8 +21,19 @@
 const { getHome } = useHomePage();
 const socialLinks = useSocialLinksStore();
 
-const { data: home, error } = await useAsyncData("home-pagee", () => getHome());
-
+const { data: home, error } = await useAsyncData("home-page", () => getHome());
+useSeoMeta({
+ title: home?.value?.attributes?.seo?.metaTitle || "",
+ description: home?.value?.attributes?.seo?.metaDescription || "",
+ ogImage: `${useRuntimeConfig().public.STRAPI_URL}${home?.value?.attributes?.seo?.metaImage?.data?.attributes?.url}` || "",
+ keywords:() => home.value?.attributes?.seo?.keywords || "",
+})
+if (home.value?.attributes.seo.structuredData)
+{
+  useSchemaOrg(
+    JSON.parse(home.value?.attributes.seo.structuredData)
+  )
+}
 socialLinks.setSocialLinks({
   whatsappNumber: home?.value?.attributes?.whatsappNumber || "",
   Instagram: home?.value?.attributes?.Instagram || "",

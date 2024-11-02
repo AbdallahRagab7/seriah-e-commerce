@@ -1,4 +1,5 @@
 <template>
+  <Title>Products</Title>
   <div class="myContainer py-[60px] mb-10">
     <h1 class="my-8 heading1 text-center">Products</h1>
 

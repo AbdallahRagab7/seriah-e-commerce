@@ -62,6 +62,11 @@ const {
   getCollection(route.params.collectionId as any)
 );
 
+useSeoMeta({
+  title: collection?.value?.data?.attributes?.title,
+  ogImage: `${useRuntimeConfig().public.STRAPI_URL}${collection?.value?.data?.attributes?.background?.data?.attributes?.url}` || "",
+})
+
 //Pagination
 const pageSize = ref(10);
 const pageNumber = ref(1);

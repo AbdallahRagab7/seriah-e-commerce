@@ -1,3 +1,5 @@
+import type { Seo } from "./global";
+
 export interface Slider {
   image: IImage;
   title: string;
@@ -18,4 +20,5 @@ export interface Home {
   shipping_policy?: string;
   refund_policy?: string;
   privacy_policy?: string;
+  seo:Seo
 }

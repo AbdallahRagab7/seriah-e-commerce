@@ -10,6 +10,11 @@ export function useProducts() {
     try {
       const response = await find<IProduct>("products", {
         populate: {
+          seo:{
+            populate:{
+              socialMeta:true
+            }
+          },
           main_image: true,
           images: true,
           product_variants: {
@@ -30,6 +35,11 @@ export function useProducts() {
     try {
       const response = await findOne<IProduct>("products", productId, {
         populate: {
+          seo:{
+            populate:{
+              socialMeta:true
+            }
+          },
           main_image: true,
           images: true,
           additional_info: true,

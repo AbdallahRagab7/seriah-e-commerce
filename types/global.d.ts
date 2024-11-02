@@ -23,6 +23,7 @@ export interface Product {
   additional_info?: any;
   subscriber?: any;
   product_variants: any;
+  seo:Seo
 }
 
 export interface CartItem {
@@ -100,4 +101,21 @@ declare global {
   type IMyOrder = MyOrder;
   type IUser = User;
   type IShippingMethods = ShippingMethods;
+}
+
+export interface Seo {
+  metaTitle: string;
+  metaDescription: string;
+  metaImage: IImage;
+  keywords:string;
+  metaRobots:string;
+  structuredData?:string;
+  metaViewport?:string;
+  canonicalURL?:string
+  metaSocial: {
+    socialNetwork: string;
+    title:string;
+    description:string
+    image: IImage;
+  };
 }

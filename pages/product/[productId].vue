@@ -88,12 +88,12 @@
           </div>
         </div>
         <div>
-          <h1 class="text-customSlate text-sm">
+          <h3 class="text-customSlate text-sm">
             Maximum Quantity: {{ variant?.attributes?.quantity }}
-          </h1>
+          </h3>
         </div>
 
-        <h2 class="font-medium text-sm">Variants:</h2>
+        <h2 class="font-medium text-sm">Size:</h2>
         <div class="!mb-8 !mt-3 font-medium text-[15px] text-[#1f2021]">
           <button
             v-for="myVariant in product?.data?.attributes?.product_variants
@@ -112,12 +112,18 @@
           </button>
         </div>
 
-        <div class="!mt-6">
+        <div class="!mt-6 flex items-center gap-3">
           <BaseButton
             @click="addCart"
             class="w-full py-3 text-white rounded-md flex items-center justify-center"
           >
             <Icon name="iconamoon:sign-plus" /> Add to Cart
+          </BaseButton>
+          <BaseButton
+            @click="buyNow"
+            class="w-full py-3 text-white rounded-md flex items-center justify-center !bg-secondary"
+          >
+            <Icon name="material-symbols-light:shopping-cart-checkout-sharp" /> BUY NOW
           </BaseButton>
         </div>
       </section>
@@ -174,6 +180,9 @@ const cartStore = useCartStore();
 const { data: product } = await useAsyncData("productt", () =>
   getProduct(route.params.productId as any)
 );
+
+
+
 //choose first variant as initial
 const variant = ref(product.value?.data.attributes?.product_variants?.data[0]);
 
@@ -208,6 +217,24 @@ const decreaseCounter = () => {
   }
 };
 
+// seo section
+useSeoMeta({
+ title: product?.value?.data.attributes?.seo?.metaTitle ||  product.value?.data.attributes.name ,
+ description: product?.value?.data.attributes?.seo?.metaDescription || product.value?.data.attributes.short_description,
+ ogImage: `${useRuntimeConfig().public.STRAPI_URL}${product?.value?.data.attributes?.seo?.metaImage?.data?.attributes?.url || product.value?.data?.attributes?.main_image?.data?.attributes?.url}` || "" ,
+ keywords:() => product.value?.data.attributes?.seo?.keywords || "",
+})
+
+useSchemaOrg(
+  defineProduct({
+    name: product.value?.data.attributes.name,
+    image: `${useRuntimeConfig().public.STRAPI_URL}${product?.value?.data.attributes?.main_image?.data?.attributes?.url || ""}`,
+    description: product.value?.data.attributes.short_description,
+    offers:currentPrice.value,
+    sku: product.value?.data.attributes.product_variants.data[0].attributes.sku,
+  })
+)
+
 const addCart = () => {
   if (quantityCounter.value > variant.value?.attributes?.quantity) {
     toast.error(`Maximum quantity is ${variant.value?.attributes?.quantity}`);
@@ -230,6 +257,11 @@ const addCart = () => {
     true
   );
 };
+
+const buyNow = () => {
+  addCart();
+  navigateTo("/checkout");
+}
 
 //TABS
 const activeTab = ref("description");

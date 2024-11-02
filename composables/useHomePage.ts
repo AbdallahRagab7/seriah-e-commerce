@@ -20,7 +20,20 @@ export function useHomePage() {
   };
   const getHome = async () => {
     try {
-      const response = await findOne<Home>("home-page");
+      const response = await findOne<Home>("home-page",{
+        populate:{
+          seo:{
+            populate:{
+              metaImage:true,
+              metaSocial:{
+                populate:{
+                  image:true
+                }
+              }
+            }
+          }
+        }
+      });
       return response?.data;
     } catch (error: any) {
       toast.error(error.error.message || "Failed to fetch home-page");
