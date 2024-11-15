@@ -103,21 +103,25 @@
     </div>
 
     <!-- Payment Methods -->
-    <div class="my-5" v-if="showInCheckout">
+    <div class="my-5 space-y-3" v-if="showInCheckout">
       <h1 class="mb-3 font-medium text-base">Payment Methods</h1>
-      <ul class="space-y-2">
+      <ul class="space-y-5" v-for="paymentMethod in paymentMethods?.data">
         <li class="flex items-center">
           <input
-            key="cod"
+            :key="paymentMethod.id"
             type="radio"
             name="paymentMethod"
-            value="cod"
+            :value="paymentMethod.id"
             v-model="selectedPaymentMethod"
-            class="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+            class="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 accent-primary"
           />
-          <label class="text-gray-700">Cash On Delivery</label>
+          <img class="w-6 h-6 mr-2 rounded-md" :src="`${$config.public.STRAPI_URL}${paymentMethod.attributes.icon?.data?.attributes?.url}`" />
+         <div class="flex flex-col">
+          <label class="text-gray-700">{{paymentMethod.attributes.title}}</label>
+          <p v-if="selectedPaymentMethod === paymentMethod.id" class="text-xs text-gray-600">{{ paymentMethod.attributes.description }}</p>
+         </div>
         </li>
-        <li class="flex items-center">
+        <!-- <li class="flex items-center">
           <input
             key="visa"
             type="radio"
@@ -149,7 +153,7 @@
             class="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
           />
           <label class="text-gray-700">E-Wallet</label>
-        </li>
+        </li> -->
       </ul>
     </div>
 
@@ -168,11 +172,17 @@
 </template>
 
 <script setup lang="ts">
-const { getShippingMethods } = useOrder();
+const { getShippingMethods,getPaymentMethods } = useOrder();
 const { data: shippingMethods, error } = await useAsyncData(
   "MyshippingMethods",
   () => getShippingMethods()
 );
+
+const { data: paymentMethods, error: paymentError } = await useAsyncData(
+  "MyPaymentMethods",
+  () => getPaymentMethods()
+);
+
 console.log(shippingMethods.value?.data[0]?.id, "its id ");
 const route = useRoute();
 const showInCheckout = ref<Boolean>(false);
@@ -180,7 +190,7 @@ if (route.path === "/checkout") {
   showInCheckout.value = true;
 }
 
-const selectedPaymentMethod = ref("cod");
+const selectedPaymentMethod = ref();
 
 const selectedShippingMethod = ref(shippingMethods.value?.data?.[0]);
 
@@ -189,10 +199,23 @@ const globalSelectedShippingMethod = useState(
   "globalSelectedShippingMethod",
   () => selectedShippingMethod.value
 );
+const globalSelectedPaymentMethod = useState(
+  // to use it in form checkout
+  "globalSelectedPaymentMethod",
+  () => selectedPaymentMethod.value
+)
 
 watch(
   selectedShippingMethod,
   () => (globalSelectedShippingMethod.value = selectedShippingMethod.value),
+  {
+    immediate: true,
+  }
+);
+
+watch(
+  selectedPaymentMethod,
+  () => (globalSelectedPaymentMethod.value = selectedPaymentMethod.value),
   {
     immediate: true,
   }

@@ -91,6 +91,13 @@ interface ShippingMethods {
   title: string;
 }
 
+interface PaymentMethods{
+  title: string;
+  description: string;
+  icon: IImage;
+  slug:string
+}
+
 declare global {
   type IImage = Image;
   type IProduct = Product;
@@ -101,6 +108,7 @@ declare global {
   type IMyOrder = MyOrder;
   type IUser = User;
   type IShippingMethods = ShippingMethods;
+  type IPaymentMethods = PaymentMethods
 }
 
 export interface Seo {

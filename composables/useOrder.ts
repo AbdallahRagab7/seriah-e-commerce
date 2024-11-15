@@ -41,6 +41,16 @@ export function useOrder() {
       toast.error(error.error.message || "Failed to fetch shipping methods");
     }
   };
+  const getPaymentMethods = async () => {
+    try {
+      const response = await find<IPaymentMethods>("payment-methods", {
+        populate: "*",
+      });
+      return response;
+    } catch (error: any) {
+      toast.error(error.error.message || "Failed to fetch shipping methods");
+    }
+  };
 
   const applyVoucher = async (data: any) => {
     try {
@@ -54,5 +64,5 @@ export function useOrder() {
     }
   };
 
-  return { createOrder, getUserOrders, applyVoucher, getShippingMethods };
+  return { createOrder, getUserOrders, applyVoucher, getShippingMethods,getPaymentMethods };
 }
