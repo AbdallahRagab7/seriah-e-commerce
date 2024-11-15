@@ -17,30 +17,6 @@
       </li>
     </ul>
 
-    <div class="flex flex-col items-start">
-      <label for="price-range" class="mb-2 text-lg font-poppins font-medium"
-        >Filter By Price</label
-      >
-
-      <Slider
-        v-model="priceRange"
-        range
-        :max="5000"
-        :step="10"
-     
-        class="w-full mb-5 mt-3 !bg-red-50"
-      />
-
-      <p class="text-slate-800 text-base">
-        Price :
-        {{ priceRange[0] }}
-        <span class="currency !text-[10px] !text-slate-500">EGP</span>
-        -
-        {{ priceRange[1] }}
-        <span class="currency !text-[10px !text-slate-500">EGP</span>
-      </p>
-    </div>
-
     <div class="flex items-center justify-center gap-3 !my-8">
       <BaseButton
         @click="filterProducts"
