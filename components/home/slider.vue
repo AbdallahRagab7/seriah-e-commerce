@@ -29,7 +29,7 @@
               :style="`color: ${slider?.attributes?.textColor || '#52d4f5'} `"
               class="!mb-[14px] max-md:!mb-1 text-stroke lg:text-[36px] !text-[#32323] text-[13px] sm:text-3xl font-semibold md:mb-2"
             >
-              {{ slider.attributes.title }}
+              {{ slider?.attributes?.title }}
             </h1>
             <p
               :style="`color: ${slider?.attributes?.textColor || '#52d4f5'} `"
