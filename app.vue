@@ -1,6 +1,5 @@
 <template>
   <div>
-   
     <NuxtLoadingIndicator color="#022f98" />
 
     <Toaster
@@ -22,17 +21,30 @@ const { getHome } = useHomePage();
 const socialLinks = useSocialLinksStore();
 
 const { data: home, error } = await useAsyncData("home-page", () => getHome());
+
+const runtime = useRuntimeConfig();
+const seo = computed(() => home.value?.attributes?.seo);
+
+const ogImageUrl = computed(() => {
+  const imagePath = seo.value?.metaImage?.data?.attributes?.url;
+  if (!imagePath) return "";
+  const base = runtime.public.STRAPI_URL || "";
+  return base ? `${base}${imagePath}` : imagePath;
+});
+
 useSeoMeta({
- title: home?.value?.attributes?.seo?.metaTitle || "",
- description: home?.value?.attributes?.seo?.metaDescription || "",
- ogImage: `${useRuntimeConfig().public.STRAPI_URL}${home?.value?.attributes?.seo?.metaImage?.data?.attributes?.url}` || "",
- keywords:() => home.value?.attributes?.seo?.keywords || "",
-})
-if (home.value?.attributes?.seo?.structuredData)
-{
-  useSchemaOrg(
-    JSON.parse(home.value?.attributes?.seo.structuredData)
-  )
+  title: seo.value?.metaTitle || "",
+  description: seo.value?.metaDescription || "",
+  ogImage: ogImageUrl.value || "",
+  keywords: () => seo.value?.keywords || "",
+});
+
+if (seo.value?.structuredData) {
+  try {
+    useSchemaOrg(JSON.parse(seo.value.structuredData));
+  } catch (_) {
+    // ignore invalid structured data
+  }
 }
 socialLinks.setSocialLinks({
   whatsappNumber: home?.value?.attributes?.whatsappNumber || "",
