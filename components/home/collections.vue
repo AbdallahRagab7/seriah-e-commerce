@@ -18,7 +18,7 @@
           <h2
             class="text-[18px] max-sm:text-sm font-poppins text-center p-4 text-[#201f1f] font-medium hover:text-primary"
           >
-            {{ collection.attributes.title }}
+            {{ collection?.attributes?.title }}
           </h2>
         </NuxtLink>
       </div>

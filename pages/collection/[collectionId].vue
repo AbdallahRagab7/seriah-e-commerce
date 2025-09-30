@@ -1,7 +1,7 @@
 <template>
   <div class="myContainer py-[60px] mb-10">
     <h1 class="my-8 heading1 text-center">
-      {{ collection?.data?.attributes.title }}
+      {{ collection?.data?.attributes?.title }}
     </h1>
 
     <!-- <div class="grid xs:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-14"> -->

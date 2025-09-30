@@ -10,7 +10,7 @@
       >
         <p
           class="flex items-center justify-between text-base cursor-pointer capitalize hover:text-primary"
-          :class="activeCategory === category.id ? 'text-primary' : ''"
+          :class="activeCategory === category?.id ? 'text-primary' : ''"
         >
           {{ category?.attributes?.title }}
         </p>

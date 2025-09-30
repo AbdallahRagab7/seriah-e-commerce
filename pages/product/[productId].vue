@@ -123,7 +123,8 @@
             @click="buyNow"
             class="w-full py-3 text-white rounded-sm flex items-center justify-center !bg-secondary"
           >
-            <Icon name="material-symbols-light:shopping-cart-checkout-sharp" /> BUY NOW
+            <Icon name="material-symbols-light:shopping-cart-checkout-sharp" />
+            BUY NOW
           </BaseButton>
         </div>
       </section>
@@ -181,8 +182,6 @@ const { data: product } = await useAsyncData("productt", () =>
   getProduct(route.params.productId as any)
 );
 
-
-
 //choose first variant as initial
 const variant = ref(product.value?.data.attributes?.product_variants?.data[0]);
 
@@ -201,7 +200,8 @@ const currentPrice = computed(() => {
     product.value?.data?.attributes?.sale_price ==
     product.value?.data?.attributes?.price
       ? product.value?.data?.attributes?.price
-      : product.value?.data?.attributes?.sale_price; isSelectedSalePrice = true
+      : product.value?.data?.attributes?.sale_price;
+  isSelectedSalePrice = true;
 
   if (variant.value?.attributes?.price && !isSelectedSalePrice) {
     return variant.value?.attributes?.price;
@@ -220,21 +220,32 @@ const decreaseCounter = () => {
 
 // seo section
 useSeoMeta({
- title: product?.value?.data?.attributes?.seo?.metaTitle ||  product.value?.data.attributes.name ,
- description: product?.value?.data.attributes?.seo?.metaDescription || product.value?.data.attributes.short_description,
- ogImage: `${useRuntimeConfig().public.STRAPI_URL}${product?.value?.data?.attributes?.seo?.metaImage?.data?.attributes?.url || product.value?.data?.attributes?.main_image?.data?.attributes?.url}` || "" ,
- keywords:() => product.value?.data.attributes?.seo?.keywords || "",
-})
+  title:
+    product?.value?.data?.attributes?.seo?.metaTitle ||
+    product.value?.data?.attributes?.name,
+  description:
+    product?.value?.data.attributes?.seo?.metaDescription ||
+    product.value?.data.attributes.short_description,
+  ogImage:
+    `${useRuntimeConfig().public.STRAPI_URL}${
+      product?.value?.data?.attributes?.seo?.metaImage?.data?.attributes?.url ||
+      product.value?.data?.attributes?.main_image?.data?.attributes?.url
+    }` || "",
+  keywords: () => product.value?.data.attributes?.seo?.keywords || "",
+});
 
 useSchemaOrg(
   defineProduct({
     name: product.value?.data?.attributes.name,
-    image: `${useRuntimeConfig().public.STRAPI_URL}${product?.value?.data?.attributes?.main_image?.data?.attributes?.url || ""}`,
+    image: `${useRuntimeConfig().public.STRAPI_URL}${
+      product?.value?.data?.attributes?.main_image?.data?.attributes?.url || ""
+    }`,
     description: product.value?.data.attributes?.short_description,
-    offers:currentPrice.value,
-    sku: product.value?.data?.attributes?.product_variants.data?.[0]?.attributes?.sku,
+    offers: currentPrice.value,
+    sku: product.value?.data?.attributes?.product_variants.data?.[0]?.attributes
+      ?.sku,
   })
-)
+);
 
 const addCart = () => {
   if (quantityCounter.value > variant.value?.attributes?.quantity) {
@@ -262,7 +273,7 @@ const addCart = () => {
 const buyNow = () => {
   addCart();
   navigateTo("/checkout");
-}
+};
 
 //TABS
 const activeTab = ref("description");
