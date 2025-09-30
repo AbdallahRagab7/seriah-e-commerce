@@ -94,9 +94,9 @@
             class="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
           />
           <label class="text-gray-700">
-            <span> {{ method?.attributes.title }}:</span>
+            <span> {{ method?.attributes?.title }}:</span>
             <span class="ml-3 text-xs"> <span class="currency">EGP</span></span>
-            {{ method?.attributes.price }}
+            {{ method?.attributes?.price }}
           </label>
         </li>
       </ul>
@@ -108,18 +108,28 @@
       <ul class="space-y-5" v-for="paymentMethod in paymentMethods?.data">
         <li class="flex items-center">
           <input
-            :key="paymentMethod.id"
+            :key="paymentMethod?.id"
             type="radio"
             name="paymentMethod"
-            :value="paymentMethod.id"
+            :value="paymentMethod?.id"
             v-model="selectedPaymentMethod"
             class="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 accent-primary"
           />
-          <img class="w-6 h-6 mr-2 rounded-md" :src="`${$config.public.STRAPI_URL}${paymentMethod.attributes.icon?.data?.attributes?.url}`" />
-         <div class="flex flex-col">
-          <label class="text-gray-700">{{paymentMethod.attributes.title}}</label>
-          <p v-if="selectedPaymentMethod === paymentMethod.id" class="text-xs text-gray-600">{{ paymentMethod.attributes.description }}</p>
-         </div>
+          <img
+            class="w-6 h-6 mr-2 rounded-md"
+            :src="`${$config.public.STRAPI_URL}${paymentMethod.attributes.icon?.data?.attributes?.url}`"
+          />
+          <div class="flex flex-col">
+            <label class="text-gray-700">{{
+              paymentMethod?.attributes?.title
+            }}</label>
+            <p
+              v-if="selectedPaymentMethod === paymentMethod?.id"
+              class="text-xs text-gray-600"
+            >
+              {{ paymentMethod?.attributes?.description }}
+            </p>
+          </div>
         </li>
         <!-- <li class="flex items-center">
           <input
@@ -172,7 +182,7 @@
 </template>
 
 <script setup lang="ts">
-const { getShippingMethods,getPaymentMethods } = useOrder();
+const { getShippingMethods, getPaymentMethods } = useOrder();
 const { data: shippingMethods, error } = await useAsyncData(
   "MyshippingMethods",
   () => getShippingMethods()
@@ -203,7 +213,7 @@ const globalSelectedPaymentMethod = useState(
   // to use it in form checkout
   "globalSelectedPaymentMethod",
   () => selectedPaymentMethod.value
-)
+);
 
 watch(
   selectedShippingMethod,
