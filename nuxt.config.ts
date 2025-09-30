@@ -73,31 +73,31 @@ export default defineNuxtConfig({
       sameSite: true,
     },
   },
-  schemaOrg:{
-    identity:{
-      type: "Organization",
-      name: "Seirah",
-      logo: "/logo.png",
-      sameAs:[
-        'https://amazon.com.eg',
-        'https://noon.com'
-      ]
-    },
+  // schemaOrg:{
+  //   identity:{
+  //     type: "Organization",
+  //     name: "Seirah",
+  //     logo: "/logo.png",
+  //     sameAs:[
+  //       'https://amazon.com.eg',
+  //       'https://noon.com'
+  //     ]
+  //   },
     
-  },
-  site:{
-    url: 'https://www.seirah-eg.com/',
-    name: 'Seirah',
-    description: 'We redefine elegance through storytelling',
-    defaultLocale: 'en', 
-  },
-  sitemap:{
-    urls: async () => {
-      let xmlResponse = await fetch('https://seirah.mbadr.dev/api/sitemap/index.xml');
-      const xmlData = await xmlResponse.text();
-      const jsonResponse =XML2JSON.toJson(xmlData);
-      return JSON.parse(jsonResponse)?.urlset?.url || [];
+  // },
+  // site:{
+  //   url: 'https://www.seirah-eg.com/',
+  //   name: 'Seirah',
+  //   description: 'We redefine elegance through storytelling',
+  //   defaultLocale: 'en', 
+  // },
+  // sitemap:{
+  //   urls: async () => {
+  //     let xmlResponse = await fetch('https://seirah.mbadr.dev/api/sitemap/index.xml');
+  //     const xmlData = await xmlResponse.text();
+  //     const jsonResponse =XML2JSON.toJson(xmlData);
+  //     return JSON.parse(jsonResponse)?.urlset?.url || [];
       
-    }
-  }
+  //   }
+  // }
 });
