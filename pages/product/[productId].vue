@@ -196,13 +196,14 @@ const productImages = computed(() => {
 });
 
 const currentPrice = computed(() => {
+  let isSelectedSalePrice = false;
   let currentPrice =
     product.value?.data?.attributes?.sale_price ==
     product.value?.data?.attributes?.price
       ? product.value?.data?.attributes?.price
-      : product.value?.data?.attributes?.sale_price;
+      : product.value?.data?.attributes?.sale_price; isSelectedSalePrice = true
 
-  if (variant.value?.attributes?.price) {
+  if (variant.value?.attributes?.price && !isSelectedSalePrice) {
     return variant.value?.attributes?.price;
   }
   return currentPrice;

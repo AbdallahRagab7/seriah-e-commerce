@@ -97,7 +97,7 @@
       <hr class="my-6 border-gray-700 lg:my-8" />
       <div class="sm:flex sm:items-center sm:justify-between">
         <span class="text-sm sm:text-center text-gray-400"
-          >© 2024 <a href="#" class="hover:underline">Seriah™</a>. All Rights
+          >© 2024 <a href="#" class="hover:underline">Ragab™</a>. All Rights
           Reserved.
         </span>
         <div class="flex mt-4 sm:justify-center items-center sm:mt-0">

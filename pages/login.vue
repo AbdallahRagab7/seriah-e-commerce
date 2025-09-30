@@ -69,7 +69,7 @@ const isLoading = ref(false);
 const user = useStrapiUser();
 
 //user abdallah or email abdallah@email.com
-//Abdallah@2022
+
 const email = ref("");
 const password = ref("");
 const { login } = useStrapiAuth();

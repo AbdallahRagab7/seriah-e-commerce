@@ -100,6 +100,10 @@ const globalSelectedShippingMethod = useState<any>(
   "globalSelectedShippingMethod",
   () => ""
 );
+const globalSelectedPaymentMethod = useState<any>(
+  "globalSelectedPaymentMethod",
+  () => ""
+)
 
 const loading = ref(false);
 const placeOrder = async () => {
@@ -109,6 +113,7 @@ const placeOrder = async () => {
     products: cartItemsMapper.value,
     voucher: globalVoucherCode.value,
     shippingMethod: globalSelectedShippingMethod.value?.id,
+    paymentMethod:globalSelectedPaymentMethod.value
   });
   loading.value = false;
 };
