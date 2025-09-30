@@ -28,10 +28,10 @@ useSeoMeta({
  ogImage: `${useRuntimeConfig().public.STRAPI_URL}${home?.value?.attributes?.seo?.metaImage?.data?.attributes?.url}` || "",
  keywords:() => home.value?.attributes?.seo?.keywords || "",
 })
-if (home.value?.attributes.seo.structuredData)
+if (home.value?.attributes?.seo?.structuredData)
 {
   useSchemaOrg(
-    JSON.parse(home.value?.attributes.seo.structuredData)
+    JSON.parse(home.value?.attributes?.seo.structuredData)
   )
 }
 socialLinks.setSocialLinks({
