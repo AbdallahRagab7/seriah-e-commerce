@@ -1,7 +1,7 @@
 <template>
   <div>
     <HomeSlider />
-    <HomeMisson :HomeMission="home?.attributes.mission" />
+    <HomeMisson :HomeMission="home?.attributes?.mission" />
     <HomeCollections />
     <HomeProducts />
     <HomeAdsProducts />
